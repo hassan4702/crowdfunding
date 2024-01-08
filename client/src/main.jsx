@@ -13,7 +13,7 @@ root.render(
   <ThirdwebProvider activeChain="goerli" clientId="67f9d109194f7343d2c9a621f0ef549f"> 
     <Router>
       <StateContextProvider>
-        <App />
+        <App/>
       </StateContextProvider>
     </Router>
   </ThirdwebProvider> 
