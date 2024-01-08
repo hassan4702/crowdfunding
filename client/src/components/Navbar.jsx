@@ -44,7 +44,7 @@ const Navbar = () => {
       {/* Small screen navigation */}
         <div className="sm:hidden flex justify-between items-center relative">
         <div className="w-[40px] h-[40px] rounded-[10px] bg-[#2c2f32] flex justify-center items-center cursor-pointer">
-            <img src={logo} alt="user" className="w-[60%] h-[60%] object-contain" />
+            <img src={"/crowdfunding-removebg-preview.png"} alt="user" className="w-[100%] h-[100%] bg-white rounded-md object-contain" />
           </div>
 
           <img 
@@ -71,7 +71,7 @@ const Navbar = () => {
                     alt={link.name}
                     className={`w-[24px] h-[24px] object-contain ${isActive === link.name ? 'grayscale-0' : 'grayscale'}`}
                   />
-                  <p className={`ml-[20px] font-epilogue font-semibold text-[14px] ${isActive === link.name ? 'text-[#1dc071]' : 'text-[#808191]'}`}>
+                  <p className={`ml-[20px] font-epilogue font-semibold text-[14px] ${isActive === link.name ? 'text-white' : 'text-[#808191]'}`}>
                     {link.name}
                   </p>
                 </li>
