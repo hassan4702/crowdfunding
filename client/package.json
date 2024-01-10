@@ -9,9 +9,12 @@
     "deploy": "yarn build && npx thirdweb@latest upload dist"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.2.9",
     "@thirdweb-dev/react": "^4",
     "@thirdweb-dev/sdk": "^4",
     "ethers": "^5",
+    "framer-motion": "^10.18.0",
+    "prettier": "^3.1.1",
     "react": "^18.2",
     "react-dom": "^18.2",
     "react-router-dom": "^6.21.1"
