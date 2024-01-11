@@ -26,15 +26,15 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
             You have not created any campaigns yet
           </p>
         )}
-
         {!isLoading && campaigns.length > 0 && campaigns.map((campaign) =>
-
-                campaign.image && (
+                campaign.image!==" " && (
+                    <>
                     <FundCard
                         key={uuidv4()}
                         {...campaign}
                         handleClick={() => handleNavigate(campaign)}
                     />
+                    </>
                 )
         )}
       </div>
