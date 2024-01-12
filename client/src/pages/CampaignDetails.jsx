@@ -44,9 +44,7 @@ const CampaignDetails = () => {
       <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">
         <div className="flex-1 flex-col">
           <div className={"font-epilogue font-semibold text-[20px] text-white uppercase p-2"}>
-
             {state.title}
-
           </div>
 
           <img src={state.image} alt="campaign" className="w-full h-[410px] object-cover rounded-xl"/>
@@ -58,7 +56,7 @@ const CampaignDetails = () => {
 
         <div className="flex md:w-[150px] w-full flex-wrap justify-between gap-[30px]">
           <CountBox title="Days Left" value={remainingDays} />
-          <CountBox title={`Raised of ${state.target}`} value={state.amountCollected} />
+          <CountBox title={`Raised of ${state.target} ETH`} value={state.amountCollected}  />
           <CountBox title="Total Backers" value={donators.length} />
         </div>
       </div>
@@ -83,7 +81,7 @@ const CampaignDetails = () => {
             <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Story</h4>
 
               <div className="mt-[20px]">
-                <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] text-justify">{state.description}</p>
+                <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px]  text-justify">{state.description}</p>
               </div>
           </div>
 

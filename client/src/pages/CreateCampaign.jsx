@@ -6,6 +6,7 @@ import { useStateContext } from '../context';
 import { money } from '../assets';
 import { CustomButton, FormField, Loader } from '../components';
 import { checkIfImage } from '../utils';
+import {Button} from "@nextui-org/react";
 
 const CreateCampaign = () => {
   const navigate = useNavigate();
@@ -64,8 +65,7 @@ const CreateCampaign = () => {
             handleChange={(e) => handleFormFieldChange('title', e)}
           />
         </div>
-
-        <FormField 
+        <FormField
             labelName="Story *"
             placeholder="Write your story"
             isTextArea
@@ -73,7 +73,7 @@ const CreateCampaign = () => {
             handleChange={(e) => handleFormFieldChange('description', e)}
           />
 
-        <div className="w-full flex justify-start items-center p-4 bg-[#8c6dfd] h-[120px] rounded-[10px]">
+        <div className="w-full flex justify-center items-center p-4 bg-[#8c6dfd] h-[120px] rounded-[10px]">
           <img src={money} alt="money" className="w-[40px] h-[40px] object-contain"/>
           <h4 className="font-epilogue font-bold text-[25px] text-white ml-[20px]">You will get 100% of the raised amount</h4>
         </div>
@@ -82,7 +82,7 @@ const CreateCampaign = () => {
           <FormField 
             labelName="Goal *"
             placeholder="ETH 0.50"
-            inputType="text"
+            inputType="number"
             value={form.target}
             handleChange={(e) => handleFormFieldChange('target', e)}
           />
@@ -104,11 +104,16 @@ const CreateCampaign = () => {
           />
 
           <div className="flex justify-center items-center mt-[40px]">
-            <CustomButton 
-              btnType="submit"
-              title="Submit new campaign"
-              styles="bg-[#1dc071]"
-            />
+            <Button
+                type={"submit"}
+                fullWidth={true}
+                className={
+                  "font-epilogue h-[50px] font-semibold text-[18px]  text-white px-4 rounded-[10px] bg-[#8c6dfd]"
+                }
+
+              >
+              Submit new campaign
+              </Button>
           </div>
       </form>
     </div>

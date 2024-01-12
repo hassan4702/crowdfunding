@@ -22,7 +22,7 @@ const Sidebar = () => {
     <div className="flex justify-between items-center flex-col sticky top-5 h-[93vh]">
       <Link to="/">
         {/* <Icon styles="w-[52px] h-[52px] bg-[#2c2f32]" ={"client/public/crowdfunding-removebg-preview.png"} /> */}
-          <img src={"/crowdfunding-removebg-preview.png"} alt="logo" className="w-[52px] h-[52px] bg-white rounded-md" />
+          <img src={"/crowdfunding-removebg-preview.png"} width={"50px"} height={"50px"} alt="logo" className=" bg-white rounded-md" />
       </Link>
 
       <div className="flex-1 flex flex-col justify-between items-center bg-[#1c1c24] rounded-[20px] w-[76px] py-4 mt-12">
