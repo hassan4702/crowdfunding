@@ -2,8 +2,22 @@ import React, { useState, useEffect } from 'react'
 
 import { DisplayCampaigns } from '../components';
 import { useStateContext } from '../context'
+import image1 from '../assets/image1.jpg';
+import image2 from '../assets/image2.jpg';
+import image3 from '../assets/image3.jpg';
 
 const Home = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+    const images = [image1, image2, image3];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 3000); // Change image every 3 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([
     {
@@ -274,6 +288,17 @@ const Home = () => {
 
   return (
 <>
+<div className="carousel mb-3">
+            {images.map((image, index) => (
+                <img
+                    key={index}
+                    src={image}
+                    alt={`Carousel Image ${index + 1}`}
+                    className={index === currentIndex ? "visible" : "hidden"}
+                    style={{ width: '1300px', maxWidth: '100%', height: '480px'  }} // Set width to auto and max-width to 100%
+                />
+            ))}
+        </div>
 
     <DisplayCampaigns
       title="All Campaigns"
