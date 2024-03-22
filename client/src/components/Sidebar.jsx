@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { logo, sun } from '../assets';
@@ -12,17 +12,28 @@ const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
       <img src={imgUrl} alt="fund_logo" className={`w-1/2 h-1/2 ${isActive !== name && 'grayscale'}`} />
     )}
   </div>
-)
+);
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState('dashboard');
+  const [theme, setTheme] = useState('light'); // Default theme is 'light'
+
+  // Function to toggle between light and dark modes
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
     <div className="flex justify-between items-center flex-col sticky top-5 h-[93vh]">
       <Link to="/">
-        {/* <Icon styles="w-[52px] h-[52px] bg-[#2c2f32]" ={"client/public/crowdfunding-removebg-preview.png"} /> */}
-          <img src={"/crowdfunding-removebg-preview.png"} width={"50px"} height={"50px"} alt="logo" className=" bg-white rounded-md" />
+      <img src={"/crowdfunding-removebg-preview.png"} width={"50px"} height={"50px"} alt="logo" className=" bg-white rounded-md" />
       </Link>
 
       <div className="flex-1 flex flex-col justify-between items-center bg-[#1c1c24] rounded-[20px] w-[76px] py-4 mt-12">
@@ -42,10 +53,11 @@ const Sidebar = () => {
           ))}
         </div>
 
-        <Icon styles="bg-[#1c1c24] shadow-secondary" imgUrl={sun} />
+        {/* Toggle theme icon */}
+        <Icon styles="bg-[#1c1c24] " imgUrl={sun} handleClick={toggleTheme} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
