@@ -17,7 +17,7 @@ const CampaignDetails = () => {
 
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { donate, getDonations, contract, address } = useStateContext();
+  const { donate, getDonations, contract, address,deleteCampaign } = useStateContext();
 
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState('');
@@ -25,6 +25,24 @@ const CampaignDetails = () => {
 
   const remainingDays = daysLeft(state.deadline);
 
+  const compareAmounts = () => {
+    const collected = parseFloat(ethers.utils.parseEther(state.amountCollected));
+    const target = parseFloat(ethers.utils.parseEther(state.target));
+    return (collected <= target)
+  }
+  const handleUpdate = async () => {
+    setIsLoading(true);
+    navigate(`/campaign-update/${state.pId}`)
+    setIsLoading(false);
+  }
+
+  const handleDelete = async () => {
+      setIsLoading(true);
+      
+      await deleteCampaign(state.pId);
+      navigate('/')
+      setIsLoading(false);
+  }
   const fetchDonators = async () => {
     const data = await getDonations(state.pId);
 
@@ -169,6 +187,32 @@ const CampaignDetails = () => {
                 styles="w-full bg-[#8c6dfd]"
                 handleClick={handleDonate}
               />
+              {state.owner == address ? 
+                ( 
+                  <CustomButton 
+                  btnType="button"
+                  title={remainingDays >= 0 && compareAmounts() ?  
+                  "Edit" : "" }
+                  styles="w-full bg-[#8c6dfd]"
+                  handleClick={() => {
+                    if(state.owner == address) handleUpdate()
+                  }}
+                  />
+                ) : ""
+              } <br/><br/>
+                {state.owner == address ? 
+                  (
+                    <CustomButton 
+                    btnType="button"
+                    title={remainingDays >= 0 && compareAmounts() ?  
+                    "Delete" : "" }
+                    styles="w-full bg-[#8c6dfd]"
+                    handleClick={() => {
+                      if(state.owner == address) handleDelete(state.pId)
+                    }}
+                    />
+                  ) : "" 
+                }
             </div>
           </div>
         </div>

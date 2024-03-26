@@ -32,7 +32,7 @@ module.exports = {
     tests: "./test",
   },
   solidity: {
-    version: "0.8.17",
+    version: "0.8.19",
     defaultNetwork: "sepolia",
     networks: {
       hardhat: {},
@@ -47,6 +47,7 @@ module.exports = {
         enabled: true,
         runs: 200,
       },
+      viaIR:true,
     },
   },
 };
