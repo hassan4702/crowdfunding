@@ -52,7 +52,7 @@ const Card = ({ image, name, link, amount, percent }) => {
           <p className="text-white text-xl font-semibold">{amount}<span className='text-lg font-normal pl-1'>USD raised</span></p>
           <p className="text-white text-lg font-normal">{percent}</p>
         </div>
-        <div className=" h-2 bg-[#66c74e] rounded-full mt-1"></div>
+        <div className=" h-2 bg-[#8c6dfd] rounded-full mt-1"></div>
       </div>
     </div>
   );
@@ -69,23 +69,22 @@ const CardsGrid = () => {
       </div>
     </div>
 
-    <div className="flex justify-center items-center min-h-screen">
-  <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
-    <img src={game} alt="Left Image" className="w-48 h-auto mb-4" />
-  </div>
-  <div className='w-full md:w-1/2 flex justify-center items-center'> 
-    <a href="#" className="text-[#808191] text-2xl mb-2 text-center md:text-left">
-      Back the Project, take the ride<br/>
-      <span className=" text-justify text-lg">Block Fund is your destination for clever innovation in tech, design and more often with special perks and pricing for early adopters. Back a campaign, share your ideas and feedback with the project team - and join the rewards of bringing new products to life. <br/><span className='hover:text-[#3f7930]'>LEARN ABOUT CROWDFUNDING</span></span>
-    </a>
-  </div>
-  <div className="w-full md:w-1/2 flex justify-center items-center">
-    <img src={cycle} alt="Right Image" className="w-48 h-auto" />
-  </div>
-</div>
-
+    <div className="flex justify-center items-center pt-20 pb-20">
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
+        <img src={game} alt="Left Image" className="w-48 h-auto mb-4" />
+      </div>
+      <div className='w-full md:w-1/2'> 
+        <a href="#" className=" text-3xl font-semibold mb-2 md:text-left text-center ">
+          Back the Project, take the ride
+       </a>
+        <p className=" text-justify text-lg">Block Fund is your destination for clever innovation in tech, design and more often with special perks and pricing for early adopters. Back a campaign, share your ideas and feedback with the project team - and join the rewards of bringing new products to life.</p>
+        <a href='#' className='hover:text-[#808191] text-lg'>LEARN ABOUT CROWDFUNDING</a>
+      </div>
+      <div className="w-full md:w-1/2 flex justify-center items-center">
+        <img src={cycle} alt="Right Image" className="w-48 h-auto" />
+      </div>
+    </div>
     </>
-    
   );
 };
 

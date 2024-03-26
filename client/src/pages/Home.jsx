@@ -5,6 +5,7 @@ import { useStateContext } from '../context';
 import CardsGrid from '../components/CardsGrid';
 import Footer from '../components/Footer';
 import Carousel from '../components/Carousel';
+import CategoriesComponent from '../components/CategoriesComponent';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([
@@ -283,6 +284,7 @@ const Home = () => {
       campaigns={campaigns}
     />
     <CardsGrid />
+    <CategoriesComponent />
     <Footer />
 </>
   )

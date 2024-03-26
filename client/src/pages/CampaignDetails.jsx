@@ -8,6 +8,13 @@ import { calculateBarPercentage, daysLeft } from '../utils';
 import { thirdweb } from '../assets';
 
 const CampaignDetails = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   const { state } = useLocation();
   const navigate = useNavigate();
   const { donate, getDonations, contract, address } = useStateContext();
@@ -43,7 +50,7 @@ const CampaignDetails = () => {
 
       <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">
         <div className="flex-1 flex-col">
-          <div className={"font-epilogue font-semibold text-[20px] text-white uppercase p-2"}>
+          <div className={"font-epilogue font-semibold text-[20px] uppercase p-2"}>
             {state.title}
           </div>
 
@@ -64,21 +71,21 @@ const CampaignDetails = () => {
       <div className="mt-[60px] flex lg:flex-row flex-col gap-5">
         <div className="flex-[2] flex flex-col gap-[40px]">
           <div>
-            <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Creator</h4>
+            <h4 className="font-epilogue font-semibold text-[18px]  uppercase">Creator</h4>
 
             <div className="mt-[20px] flex flex-row items-center flex-wrap gap-[14px]">
               <div className="w-[52px] h-[52px] flex items-center justify-center rounded-full bg-[#2c2f32] cursor-pointer">
                 <img src={thirdweb} alt="user" className="w-[60%] h-[60%] object-contain"/>
               </div>
               <div>
-                <h4 className="font-epilogue font-semibold text-[14px] text-white break-all">{state.owner}</h4>
+                <h4 className="font-epilogue font-semibold text-[14px] break-all">{state.owner}</h4>
                 <p className="mt-[4px] font-epilogue font-normal text-[12px] text-[#808191]">10 Campaigns</p>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Story</h4>
+            <h4 className="font-epilogue font-semibold text-[18px]  uppercase">Story</h4>
 
               <div className="mt-[20px]">
                 <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px]  text-justify">{state.description}</p>
@@ -86,7 +93,7 @@ const CampaignDetails = () => {
           </div>
 
           <div>
-            <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Donators</h4>
+            <h4 className="font-epilogue font-semibold text-[18px]  uppercase">Donators</h4>
 
               <div className="mt-[20px] flex flex-col gap-4">
                 {donators.length > 0 ? donators.map((item, index) => (
@@ -102,12 +109,45 @@ const CampaignDetails = () => {
         </div>
 
         <div className="flex-1">
-          <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">Fund</h4>   
+          <h4 className="font-epilogue font-semibold text-[18px]  uppercase">Fund</h4>   
 
           <div className="mt-[20px] flex flex-col p-4 bg-[#1c1c24] rounded-[10px]">
-            <p className="font-epilogue fount-medium text-[20px] leading-[30px] text-center text-[#808191]">
-              Fund the campaign
-            </p>
+            <div className="flex items-center justify-center">
+              <p className="font-epilogue fount-medium text-[20px] leading-[30px] text-center text-[#808191]">
+                Fund the campaign
+                <button
+                  onClick={toggleDropdown}
+                  type="button"
+                  className="inline-flex items-center justify-center ml-2 w-8 h-8 bg-gray-200 rounded-full text-gray-600 hover:text-gray-800 focus:outline-none focus:bg-gray-300"
+                >
+                  <svg
+                    className="h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3.293 6.707a1 1 0 011.414 0L10 12.586l5.293-5.293a1 1 0 111.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </p>
+              {isOpen && (
+                <div className="relative left-0 right-0 mt-2 w-20 ml-2 bg-white rounded-md shadow-lg">
+                  <div className="py-1" role="menu" aria-orientation="vertical">
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200"
+                      role="menuitem"
+                    >
+                      Donate
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
             <div className="mt-[30px]">
               <input 
                 type="number"

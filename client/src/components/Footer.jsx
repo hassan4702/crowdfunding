@@ -50,15 +50,15 @@ const Footer = () => {
               <input type="checkbox" className="mr-2" />
               <span className="text-sm text-justify">I agree to the <span className='font-bold underline'><a href='#'>Terms of Use</a></span> and have read and understand the <span className='font-bold underline'><a href='#'>Privacy Policy</a></span></span>
             </label>
-            <button className="bg-[#66c74e] text-white px-6 py-3 rounded hover:bg-[#3f7930] transition-colors w-full">Sign Me Up</button>
+            <button className="bg-[#8c6dfd] text-white px-6 py-3 rounded hover:bg-[#7359d3] transition-colors w-full">Sign Me Up</button>
           </div>
         </div>
 
         {/* Social icons and currency selection */}
         <div className="flex flex-col md:flex-row items-center md:items-start mt-8">
-          <button className="bg-[#dedee4] text-[#646574] px-6 py-3 rounded hover:bg-white transition-colors mb-4 md:mb-0 md:mr-6">
+          {/* <button className="bg-[#dedee4] text-[#646574] px-6 py-3 rounded hover:bg-white transition-colors mb-4 md:mb-0 md:mr-6">
             Select currency
-          </button>
+          </button> */}
           <div className='flex'>
             <a href="#"><img className=" bg-white rounded mr-6 mt-3" src={facebook} alt={'facebook'} /></a>
             <a href="#"><img className=" bg-white rounded mr-6 mt-3" src={twitter} alt={'twitter'} /></a>
