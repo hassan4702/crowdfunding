@@ -7,6 +7,7 @@ import { money } from '../assets';
 import { CustomButton, FormField, Loader } from '../components';
 import { checkIfImage } from '../utils';
 import {Button} from "@nextui-org/react";
+import { useStorageUpload } from '@thirdweb-dev/react';
 
 const CreateCampaign = () => {
   const navigate = useNavigate();
@@ -21,25 +22,41 @@ const CreateCampaign = () => {
     deadline: '',
     image: ''
   });
-
+  const [file, setFile] = useState(null);
+  const { mutateAsync: upload } = useStorageUpload();
   const handleFormFieldChange = (fieldName, e) => {
     setForm({ ...form, [fieldName]: e.target.value })
   }
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    // setForm({ ...form, image: selectedFile });
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    checkIfImage(form.image, async (exists) => {
-      if(exists) {
-        setIsLoading(true)
-        await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18)})
-        setIsLoading(false);
-        navigate('/');
-      } else {
-        alert('Provide valid image URL')
-        setForm({ ...form, image: '' });
-      }
-    })
+    if (!file) {
+      alert('Please select an image file');
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const uploadUrl = await upload({
+        data: [file],
+        options: { uploadWithGatewayUrl: true },
+      });
+      setForm({ ...form, image: uploadUrl[0].toString() });
+      console.log('uploadUrl:', uploadUrl[0].toString())
+      console.log('form:', form); 
+      await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18),image: uploadUrl[0].toString()});
+      navigate('/');
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      alert('Error uploading image. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -106,10 +123,11 @@ const CreateCampaign = () => {
         <FormField 
             labelName="Campaign image *"
             placeholder="Place image URL of your campaign"
-            inputType="url"
-            value={form.image}
-            handleChange={(e) => handleFormFieldChange('image', e)}
+            inputType="file"
+            // value={form.image}
+            handleChange={handleFileChange}
           />
+          
 
           <div className="flex justify-center items-center mt-[40px]">
             <Button

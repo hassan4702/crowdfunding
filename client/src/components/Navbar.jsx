@@ -51,19 +51,24 @@ const Navbar = () => {
         </Button> */}
         <CustomButton 
           btnType="button"
-          title={!address ? 'Connect' : handleUserAccount() }
+          title={!address ? 'Log In / Sign up' : handleUserAccount() }
           styles={!address ? 'bg-[#8c6dfd]' : '' /*'bg-[#8c6dfd]'*/ }
           handleClick={() => {
-            if(address) navigate('create-campaign')
+            if (window.ethereum && window.ethereum.isMetaMask) {
+              console.log('MetaMask is installed!');
+            }else{
+              alert('MetaMask extension is not installed!');
+            }
+            if(address) navigate('/')
             else connect()
           }}
         />
 
-        <Link to="/profile">
+        {/* <Link to="/profile">
           <div className="w-[52px] h-[52px] flex justify-center items-center cursor-pointer">
             <Avatar src={"/img.png"}></Avatar>
           </div>
-        </Link>
+        </Link> */}
 
       </div>
 
