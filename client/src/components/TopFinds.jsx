@@ -3,7 +3,11 @@ import funding_img1 from '../assets/funding_img1.jpg';
 import funding_img2 from '../assets/funding_img2.jpg';
 import funding_img3 from '../assets/funding_img3.jpg';
 import funding_img4 from '../assets/funding_img4.jpg';
-
+import akaso from '../assets/akaso.jpg';
+import AYANEO from '../assets/AYANEO.jpg';
+import BLUTTI from '../assets/BLUTTI.jpg';
+import VeraRing from '../assets/VeraRing.jpg';
+import MinimalPhone from '../assets/MinimalPhone.jpg';
 const cardsData = [
   {
     id: 1,
@@ -37,6 +41,54 @@ const cardsData = [
     amount: "$5,164,077",
     percent: '10,328%',
   },
+  {
+    id: 5,
+    image: MinimalPhone,
+    name: 'Funding',
+    link: 'The Minimal Phone: First E-Ink QWERTY Phone',
+    amount: "$518,198",
+    percent: '104%',
+  },
+  {
+    id: 6,
+    image: BLUTTI,
+    name: 'Funding',
+    link: 'BLUTTI SwapSolar - An Ecosystem to Power & Chill',
+    amount: "$719,056",
+    percent: '1,438%',
+  },
+  {
+    id: 7,
+    image: VeraRing,
+    name: 'Funding',
+    link: 'The Vera Ring: Peace of Mind About Health',
+    amount: "$322,212",
+    percent: '1,611%',
+  },
+  {
+    id: 8,
+    image: akaso,
+    name: 'Funding',
+    link: 'AKASO Seemor: AI-ISP Full-Color Night Vision Goggle',
+    amount: "$716,850",
+    percent: '14,120%',
+  },
+  {
+    id: 9,
+    image: AYANEO,
+    name: 'Funding',
+    link: 'AYANEO AMO2:784OHS Retro Mini PC With a 4 Screen',
+    amount: "$2,198,126",
+    percent: '3,664%',
+  },
+  {
+    id: 10,
+    image: funding_img2,
+    name: 'Funding',
+    link: 'Ozlo Sleepbuds: The Next-Generation Sleepbuds',
+    amount: "$3,000,000",
+    percent: '30,000%',
+  },
 ];
 
 const Card = ({ image, name, link, amount, percent }) => {
@@ -57,9 +109,12 @@ const Card = ({ image, name, link, amount, percent }) => {
   );
 };
 
-const CardsGrid = () => {
+const TopFinds = () => {
   return (
     <div className="container mx-auto mt-5">
+      <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-center mt-10 sm:mt-20 mb-6'>10 Cool & Clever Finds</h1>
+<p className='text-lg sm:text-xl lg:text-2xl text-center px-4 sm:px-32 mb-10'>Discover your next "a-ha" moment in our roundup of standout projects, from live crowdfunding & InDemand campaigns to innovative products shipping now.</p>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
         {cardsData.map((card) => (
           <Card key={card.id} {...card} />
@@ -69,4 +124,4 @@ const CardsGrid = () => {
   );
 };
 
-export default CardsGrid;
+export default TopFinds;

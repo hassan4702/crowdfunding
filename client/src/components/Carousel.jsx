@@ -38,7 +38,7 @@ const Carousel = () => {
           className="w-full h-96 object-cover"
           // Adjust h-96 to your desired height
         />
-        <div className="absolute left-5 bottom-10 font-bold text-lg text-black p-2 opacity-75">
+        <div className="absolute left-5 bottom-10 font-bold text-2xl text-white p-2 opacity-75">
           {images[currentImage].text}
         </div>
       </div>
