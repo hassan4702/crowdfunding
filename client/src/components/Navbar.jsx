@@ -6,6 +6,7 @@ import { CustomButton } from "./";
 import { logo, menu, search, thirdweb } from "../assets";
 import { navlinks } from "../constants";
 import { Avatar, Button } from "@nextui-org/react";
+import BlockFundLogo from '../assets/BlockFundLogo.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Navbar = () => {
   const { connect, address } = useStateContext();
 
   return (
-    <div className="flex md:flex-row flex-col-reverse  justify-between mb-[35px] gap-6">
+    <div className="flex md:flex-row flex-col-reverse  justify-between mb-[10px] gap-6">
       <div></div>
       <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-[#1c1c24] rounded-[100px] ">
         <input
@@ -56,11 +57,11 @@ const Navbar = () => {
 
       {/* Small screen navigation */}
       <div className="sm:hidden flex justify-between items-center relative">
-        <div className="w-[40px] h-[40px] rounded-[10px] bg-[#2c2f32] flex justify-center items-center cursor-pointer">
+        <div className="w-[40px] h-[40px] rounded-[10px] flex justify-center items-center cursor-pointer">
           <img
-            src={"/crowdfunding-removebg-preview.png"}
+            src={BlockFundLogo}
             alt="user"
-            className="w-[100%] h-[100%] bg-white rounded-md object-contain"
+            className="w-[100%] h-[100%] object-contain"
           />
         </div>
 

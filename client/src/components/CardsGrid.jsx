@@ -3,8 +3,7 @@ import funding_img1 from '../assets/funding_img1.jpg';
 import funding_img2 from '../assets/funding_img2.jpg';
 import funding_img3 from '../assets/funding_img3.jpg';
 import funding_img4 from '../assets/funding_img4.jpg';
-import game from '../assets/game.png';
-import cycle from '../assets/cycle.png';
+
 const cardsData = [
   {
     id: 1,
@@ -60,7 +59,6 @@ const Card = ({ image, name, link, amount, percent }) => {
 
 const CardsGrid = () => {
   return (
-    <>
     <div className="container mx-auto mt-5">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
         {cardsData.map((card) => (
@@ -68,23 +66,6 @@ const CardsGrid = () => {
         ))}
       </div>
     </div>
-
-    <div className="flex justify-center items-center pt-20 pb-20">
-      <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
-        <img src={game} alt="Left Image" className="w-48 h-auto mb-4" />
-      </div>
-      <div className='w-full md:w-1/2'> 
-        <a href="#" className=" text-3xl font-semibold mb-2 md:text-left text-center ">
-          Back the Project, take the ride
-       </a>
-        <p className=" text-justify text-lg">Block Fund is your destination for clever innovation in tech, design and more often with special perks and pricing for early adopters. Back a campaign, share your ideas and feedback with the project team - and join the rewards of bringing new products to life.</p>
-        <a href='#' className='hover:text-[#808191] text-lg'>LEARN ABOUT CROWDFUNDING</a>
-      </div>
-      <div className="w-full md:w-1/2 flex justify-center items-center">
-        <img src={cycle} alt="Right Image" className="w-48 h-auto" />
-      </div>
-    </div>
-    </>
   );
 };
 

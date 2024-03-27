@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { logo, sun } from '../assets';
 import { navlinks } from '../constants';
-
+import BlockFundLogo from '../assets/BlockFundLogo.png';
 const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
   <div className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disabled && 'cursor-pointer'} ${styles}`} onClick={handleClick}>
     {!isActive ? (
@@ -17,9 +17,8 @@ const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState('dashboard');
-  const [theme, setTheme] = useState('light'); // Default theme is 'light'
+  const [theme, setTheme] = useState('light');
 
-  // Function to toggle between light and dark modes
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
@@ -33,7 +32,7 @@ const Sidebar = () => {
   return (
     <div className="flex justify-between items-center flex-col sticky top-5 h-[93vh]">
       <Link to="/">
-      <img src={"/crowdfunding-removebg-preview.png"} width={"50px"} height={"50px"} alt="logo" className=" bg-white rounded-md" />
+      <img src={BlockFundLogo} width={"50px"} height={"50px"} alt="logo" className=" rounded-md" />
       </Link>
 
       <div className="flex-1 flex flex-col justify-between items-center bg-[#1c1c24] rounded-[20px] w-[76px] py-4 mt-12">
@@ -53,7 +52,6 @@ const Sidebar = () => {
           ))}
         </div>
 
-        {/* Toggle theme icon */}
         <Icon styles="bg-[#1c1c24] " imgUrl={sun} handleClick={toggleTheme} />
       </div>
     </div>

@@ -6,6 +6,8 @@ import CardsGrid from '../components/CardsGrid';
 import Footer from '../components/Footer';
 import Carousel from '../components/Carousel';
 import CategoriesComponent from '../components/CategoriesComponent';
+import ImageGallery from '../components/ImageGallery';
+import BacktheProject from '../components/BacktheProject';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([
@@ -283,7 +285,8 @@ const Home = () => {
       isLoading={isLoading}
       campaigns={campaigns}
     />
-    <CardsGrid />
+    <ImageGallery />
+    <BacktheProject />
     <CategoriesComponent />
     <Footer />
 </>
