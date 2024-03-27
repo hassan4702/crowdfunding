@@ -1,13 +1,14 @@
 import React, { useContext, createContext } from 'react';
-
+import {abi} from '../abis/contractAbi.json';
 import { useAddress, useContract, useMetamask, useContractWrite } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
 import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-  const { contract } = useContract('0xf59A1f8251864e1c5a6bD64020e3569be27e6AA9');
+  const { contract } = useContract('0x7c08FBb90de5D5752D5EC230dA373eCDf9382136');
   const { mutateAsync: createCampaign } = useContractWrite(contract, 'createCampaign');
 
   const address = useAddress();
@@ -19,6 +20,7 @@ export const StateContextProvider = ({ children }) => {
 				args: [
 					address, // owner
 					form.title, // title
+          form.category, // category
 					form.description, // description
 					form.target,
 					new Date(form.deadline).getTime(), // deadline,
@@ -31,6 +33,37 @@ export const StateContextProvider = ({ children }) => {
       console.log("contract call failure", error)
     }
   }
+  const updateCampaign = async (form) => {
+    try {
+      const data = await contract.call('updateCampaign', [
+        form.id, // campaign id
+        form.title, // title
+        form.category,
+        form.description, // description
+        form.target,
+        new Date(form.deadline).getTime() , // deadline,
+        form.image
+      ])
+      toast.success('Campaign updated successfully.');
+      console.log("contract call success", data)
+    } catch (error) {
+      toast.error('Error while creating Campaign, please try again');
+      console.log("contract call failure", error)
+    }
+  }
+
+  const deleteCampaign = async (pId) => {
+    try {
+      const data = await contract.call('deleteCampaign', [pId])
+      
+      toast.success('Campaign deleted successfully.');
+      console.log("contract call success", data)
+      return data;
+    } catch (error) {
+      toast.error('Error while deleting Campaign, please try again');
+      console.log("contract call failure", error)
+    }
+  }
 
   const getCampaigns = async () => {
     const campaigns = await contract.call('getCampaigns');
@@ -38,6 +71,7 @@ export const StateContextProvider = ({ children }) => {
     const parsedCampaings = campaigns.map((campaign, i) => ({
       owner: campaign.owner,
       title: campaign.title,
+      category: campaign.category,
       description: campaign.description,
       target: ethers.utils.formatEther(campaign.target.toString()),
       deadline: campaign.deadline.toNumber(),
@@ -58,11 +92,24 @@ export const StateContextProvider = ({ children }) => {
   }
 
   const donate = async (pId, amount) => {
-    const data = await contract.call('donateToCampaign', [pId], { value: ethers.utils.parseEther(amount)});
-
-    return data;
+    try{
+      const data = await contract.call('donateToCampaign', [pId], { value: ethers.utils.parseEther(amount)});
+      return data;
+    } catch (err) {
+      console.log("Error occured while making donation", err);
+    }
   }
 
+  const payOutToCampaignTeam = async (pId) => {
+    try {
+      const data = await contract.call('payOutToCampaignTeam', [pId]);
+      toast.success('Campaign funds successfully withdrawed.');
+      return data;
+    } catch(err) {
+      toast.error("Error occured while withdrawing funds.");
+      console.log("Error occured while withdrawing funds", err);
+    }
+  }
   const getDonations = async (pId) => {
     const donations = await contract.call('getDonators', [pId]);
     const numberOfDonations = donations[0].length;
@@ -90,7 +137,10 @@ export const StateContextProvider = ({ children }) => {
         getCampaigns,
         getUserCampaigns,
         donate,
-        getDonations
+        getDonations,
+        payOutToCampaignTeam,
+        updateCampaign,
+        deleteCampaign,
       }}
     >
       {children}
