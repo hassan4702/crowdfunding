@@ -30,8 +30,8 @@ const Carousel = () => {
   }, [currentImage]);
 
   return (
-    <div className="relative">
-      <div className="overflow-hidden">
+    <div className="relative ">
+      <div className="overflow-hidden rounded-lg" >
         <img
           src={images[currentImage].src}
           alt={images[currentImage].alt}
@@ -39,10 +39,11 @@ const Carousel = () => {
           // Adjust h-96 to your desired height
         />
         <div className="absolute left-5 bottom-10 font-bold text-2xl text-white p-2 opacity-75">
+        {/* <div className="absolute left-5 bottom-10 font-bold text-lg text-black p-2 opacity-75">
           {images[currentImage].text}
-        </div>
+        </div> */}
       </div>
-      <button
+      {/* <button
         onClick={handlePrev}
         className="absolute top-1/2 left-0 transform -translate-y-1/2 text-white p-2 rounded-l-md"
       >
@@ -51,11 +52,12 @@ const Carousel = () => {
       <button
         onClick={handleNext}
         className="absolute top-1/2 right-0 transform -translate-y-1/2 text-white p-2 rounded-r-md"
-      >
-        <img src={right} className='h-20'></img>
-      </button>
+      > */}
+        {/* <img src={right} className='h-20'></img>
+      </button> */}
     </div>
   );
+
 };
 
 export default Carousel;
