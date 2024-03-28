@@ -56,6 +56,7 @@ const Carousel = () => {
         {/* <img src={right} className='h-20'></img>
       </button> */}
     </div>
+    </div>
   );
 
 };
