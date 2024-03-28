@@ -13,7 +13,6 @@ const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
     )}
   </div>
 );
-
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState('dashboard');
@@ -51,7 +50,6 @@ const Sidebar = () => {
             />
           ))}
         </div>
-
         <Icon styles="bg-[#1c1c24] " imgUrl={sun} handleClick={toggleTheme} />
       </div>
     </div>

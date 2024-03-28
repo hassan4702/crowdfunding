@@ -291,6 +291,7 @@ const Home = () => {
     <BacktheProject />
     <CategoriesComponent />
     <Footer />
+    
 
 </>
   )
