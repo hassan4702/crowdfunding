@@ -4,6 +4,9 @@ import { Route, Routes } from 'react-router-dom';
 import { Sidebar,Navbar } from './components';
 import { CampaignDetails, CreateCampaign, Home, Profile } from './pages';
 import UpdateCampaign from './pages/UpdateCampaign';
+import About from './components/About';
+import WhatWeDo from './components/WhatWeDo';
+import TopFinds from './components/TopFinds';
 
 const App = () => {
   return (
@@ -21,6 +24,10 @@ const App = () => {
           <Route path="/create-campaign" element={<CreateCampaign />} />
           <Route path="/campaign-details/:id" element={<CampaignDetails />} />
           <Route path="/campaign-update/:id" element={<UpdateCampaign />} />
+          <Route path="/aboutus" element={<About />} />
+          <Route path="/whatwedo" element={<WhatWeDo />} />
+          <Route path="/topfinds" element={<TopFinds />} />
+
         </Routes>
       </div>
     </div>

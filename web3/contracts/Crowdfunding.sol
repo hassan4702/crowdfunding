@@ -2,13 +2,10 @@
 pragma solidity ^0.8.19;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-// To use circuit-breaker pattern from oz-contracts, can use:
-//  import "@openzeppelin/contracts/security/Pausable.sol"; 
-//  (As a tradeoff, I decided to just implement my simple circuit-breaker for gas efficiency)
 // Todo: import {CampaignTypes} from "./CampaignTypes.sol";
 
 /// @title The crowdfunding platform
-/// @author hassan shakil
+/// @author Hassan shakil
 /// @dev This is a sample crowdfunding smart contract.
 /// @notice As this contract is not audited, use at your own risk!
 contract CrowdFunding is Ownable {

@@ -78,10 +78,10 @@ const CampaignDetails = () => {
 
           <MediaRenderer
             src={state.image}
-            width="full"
+            width="100%"
             height="410px"
             alt="campaign"
-            className="w-full h-[410px] object-cover rounded-xl"
+            className="w-full h-[410px] overflow-auto object-cover rounded-xl"
           />
           <div className="relative w-full h-[5px] bg-[#3a3a43] mt-2">
             <div
