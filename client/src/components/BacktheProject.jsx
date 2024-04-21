@@ -4,7 +4,7 @@ import cycle from '../assets/cycle.png';
 
 const BacktheProject = () => {
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center pb-10 px-1">
+        <div className="flex flex-col md:flex-row items-center justify-center py-20 px-1">
             <div className="w-full md:w-1/3 flex justify-center items-center mb-6 md:mb-0">
                 <img src={game} alt="Left Image" className="w-40 h-auto mb-4" />
             </div>

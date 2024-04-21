@@ -2,37 +2,43 @@ import React from 'react';
 import Bluesmart from '../assets/Bluesmart.png';
 import Evapolar from '../assets/Evapolar.png';
 import Explore from '../assets/Explore.png';
-import GetTheTech from '../assets/GetTheTech.jpg';
+import GetTheTech from '../assets/GetTheTech.png';
 import inspired from '../assets/inspired.png';
 import perk from '../assets/perk.png';
 import SuperTroopers from '../assets/SuperTroopers.png';
 import MisfitShine from '../assets/MisfitShine.png';
-
+import Journey from '../assets/Journey.png';
 const WhatWeDo = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center pb-20">
 
       {/* Tech Image Section */}
-      <div className="relative">
-        <img src={GetTheTech} alt="Tech Image" className="w-full h-screen object-cover" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-          <h1 className="text-4xl font-bold pb-3">
-            Get the tech that gets people talking
-          </h1>
-          <p className="font-bold">With both live crowdfunding campaigns and innovative products shipping now, there’s no better place to start the hunt for cool and clever innovations that surprise and delight. Block Fund is where new launches.</p>
+        <div className="relative">
+            <img src={GetTheTech} alt="Tech Image" className="md:w-full lg:w-screen h-screen object-cover" />
+            <div className="absolute inset-0 flex flex-col justify-center items-center">
+                <div className="max-w-3xl mx-auto text-center">
+                    <h1 className="text-4xl font-bold pb-3 text-[#8c6dfd]">
+                        Get the tech that gets people talking
+                    </h1>
+                    <p className="font-bold text-[#8c6dfd]">With both live crowdfunding campaigns and innovative products shipping now, there’s no better place to start the hunt for cool and clever innovations that surprise and delight. Block Fund is where new launches.</p>
+                </div>
+            </div>
         </div>
-      </div>
+
 
       {/* Fund the next big thing Section */}
-      <div className="text-center my-8 max-w-xl mx-auto">
+      <div className="text-center my-8 max-w-3xl mx-auto">
         <h2 className="text-2xl font-bold pb-3">Fund the next big thing</h2>
         <p className='text-justify'>Block Fund's crowdfunding campaigns are where new and groundbreaking products take flight, sometimes long before they hit mainstream availability. With thousands of campaigns launching every week, there's great tech, design, and much more around every corner — often with limited-time perks and pricing for the earliest backers. Before it's everywhere, it's on Block Fund.</p>
       </div>
 
       {/* Join the journey from idea to market Section */}
-      <div className="text-center my-8 max-w-xl mx-auto">
-        <h2 className="text-2xl font-bold pb-3">Join the journey from idea to market</h2>
-        <p className='text-justify'>With Block Fund, you have the opportunity to support entrepreneurs and new technology from the earliest stages of development. Be sure to evaluate every campaign closely and contribute at a level you can afford in the event that the team is unable to complete the project as planned.</p>
+      <div className="text-center my-8 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold pb-10">Join the journey from idea to market</h2>
+        <div className="flex justify-center ">
+         <img src={Journey} alt="Journey" className="object-contain h-auto max-w-full" />
+       </div>
+        <p className='text-justify pt-8'>With Block Fund, you have the opportunity to support entrepreneurs and new technology from the earliest stages of development. Be sure to evaluate every campaign closely and contribute at a level you can afford in the event that the team is unable to complete the project as planned.</p>
         <p className='text-justify'>Browse campaigns, read the stories from the entrepreneurs themselves, evaluate the stage of development and any potential production risks — and then fund the projects that you want to help succeed.</p>
         <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-bold py-2 px-4 rounded mt-4 mb-4">
           Explore Projects
@@ -41,7 +47,7 @@ const WhatWeDo = () => {
       </div>
 
       {/* Great finds, delivered daily Section */}
-      <div className="text-center my-8 max-w-xl mx-auto">
+      <div className="text-center my-8 max-w-3xl mx-auto">
         <h2 className="text-2xl font-bold pb-3">Great finds, delivered daily</h2>
         <p>We surface the best and brightest of Block Fund in our newsletter. Sign up to find out about great technology, design, film, and much more — all before it hits the mainstream.</p>
         <div className="flex flex-col md:flex-row justify-center items-center my-4">
@@ -115,9 +121,9 @@ const WhatWeDo = () => {
       </div>
 
       {/* Ready? Explore and Feeling Inspired Section */}
-      <div className="text-center my-8">
+      <div className="text-center lg:my-8">
         <div className="flex flex-col md:flex-row justify-center items-center my-4">
-          <div className="flex flex-col items-center mr-8 mb-4 md:mb-0">
+          <div className="flex flex-col items-center lg:mr-20 mb-4 md:mb-0">
             <img src={Explore} alt="Explore" className="w-1/3 md:w-auto h-auto" />
             <h1 className='text-2xl font-bold  mb-5 md:mb-10'>Ready? Explore</h1>
             <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-bold py-2 px-4 rounded">
@@ -125,8 +131,8 @@ const WhatWeDo = () => {
             </button>
           </div>
           <div className="h-80 border-l border-gray-200 hidden md:block mx-6"></div>
-          <div className="flex flex-col items-center">
-            <img src={inspired} alt="inspired" className="w-1/3 md:w-auto h-auto" />
+          <div className="flex flex-col items-center lg:ml-20">
+            <img src={inspired} alt="inspired" className="w-1/3 md:w-auto h-auto lg:mb-12 md:mb-12" />
             <h1 className='text-2xl font-bold mt-5 mb-5 md:mt-0 md:mb-10'>Feeling Inspired?</h1>
             <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-bold py-2 px-4 rounded">
               Become an Entrepreneur

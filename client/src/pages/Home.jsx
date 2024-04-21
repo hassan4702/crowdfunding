@@ -2,14 +2,11 @@ import React, { useState, useEffect } from 'react'
 
 import { DisplayCampaigns } from '../components';
 import { useStateContext } from '../context';
-import TopFinds from '../components/TopFinds';
 import Footer from '../components/Footer';
 import Carousel from '../components/Carousel';
 import CategoriesComponent from '../components/CategoriesComponent';
 import ImageGallery from '../components/ImageGallery';
 import BacktheProject from '../components/BacktheProject';
-import WhatWeDo from'../components/WhatWeDo';
-import About from'../components/About';
 import Upload from '../components/IPFSupload';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);

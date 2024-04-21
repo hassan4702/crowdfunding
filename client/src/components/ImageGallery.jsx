@@ -1,14 +1,13 @@
 import React from 'react';
-import funding_img4 from '../assets/funding_img4.jpg';
 import CoolClever from '../assets/CoolClever.jpg';
 import TeamFavorites from '../assets/TeamFavorites.jpg';
 import StudentFilm from '../assets/StudentFilm.jpg';
-import WhatWeDo from '../assets/WhatWeDo.png';
+import WhatWeDo from '../assets/WhatWeDo.jpg';
 
 const ImageGallery = () => {
   return (
     <>
-      <div className="container mx-auto text-center py-10">
+      <div className="container mx-auto text-center py-10 pt-24">
         <h1 className="text-3xl md:text-4xl lg:text-3xl font-semibold mb-4">Find it first on Block Fund.</h1>
         <p>Block Fund is where early adopters and innovation seekers find lively, imaginative tech before it hits the mainstream.</p>
       </div>
