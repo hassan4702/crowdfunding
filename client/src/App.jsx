@@ -4,9 +4,9 @@ import { Route, Routes } from 'react-router-dom';
 import { Sidebar,Navbar } from './components';
 import { CampaignDetails, CreateCampaign, Home, Profile } from './pages';
 import UpdateCampaign from './pages/UpdateCampaign';
-import About from './components/About';
-import WhatWeDo from './components/WhatWeDo';
-import TopFinds from './components/TopFinds';
+import About from './pages/About';
+import WhatWeDo from './pages/WhatWeDo';
+import TopFinds from './pages/TopFinds';
 
 const App = () => {
   return (
