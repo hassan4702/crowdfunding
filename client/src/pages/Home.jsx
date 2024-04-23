@@ -9,7 +9,7 @@ import CategoriesComponent from '../components/CategoriesComponent';
 import ImageGallery from '../components/ImageGallery';
 import BacktheProject from '../components/BacktheProject';
 import WhatWeDo from'../components/WhatWeDo';
-import About from'../components/About';
+import About from'../components/About'; 
 import Upload from '../components/IPFSupload';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,11 +38,9 @@ const Home = () => {
       campaigns={campaigns}
     />
     <ImageGallery />
-    <BacktheProject />
+    <BacktheProject />z
     <CategoriesComponent />
     <Footer />
-    
-
 </>
   )
 }
