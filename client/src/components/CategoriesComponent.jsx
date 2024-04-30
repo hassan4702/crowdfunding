@@ -15,48 +15,48 @@ const CategoriesComponent = () => {
       <h1 className="text-3xl font-semibold text-center mb-4">Which categories interest you?</h1>
       <p className="text-center mb-6">Discover projects just for you and get great recommendations when your interests.</p>
       <button className="bg-[#8c6dfd] text-white py-2 px-4 rounded mb-6">SIGN UP AND SELECT INTERESTS</button>
-      <p className="text-center mb-4">Or explore our top categories</p>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full max-w-screen-lg">
-        <div className="flex flex-col items-center">
-          <a href="#" className="hover:bg-gray-200 rounded-lg p-2">
-            <img src={home} alt="Category 1" className="w-16 h-auto mb-2 rounded-lg mx-auto" />
-            <p className="text-sm text-center">HOME</p>
-          </a>
+      <p className="text-center mb-5">Or explore our top categories</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full max-w-screen-lg shadow-gray-400 shadow-sm">
+        <div className="flex flex-col items-center pt-2">
+            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
+                <img src={home} alt="home" className="w-16 h-16 object-cover rounded-lg" />
+                <p className="text-sm text-center pb-5 pt-1">HOME</p>
+            </a>
         </div>
-        <div className="flex flex-col items-center">
-          <a href="#" className="hover:bg-gray-200 rounded-lg p-2">
-            <img src={phone} alt="Category 2" className="w-16 h-auto mb-2 rounded-lg mx-auto" />
-            <p className="text-sm text-center">PHONES & ACCESSORIES</p>
-          </a>
+        <div className="flex flex-col items-center pt-2">
+            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
+                <img src={phone} alt="phone" className="w-16 h-16 object-cover rounded-lg" />
+                <p className="text-sm text-center pb-5 pt-1">PHONES & ACCESSORIES</p>
+            </a>
         </div>
-        <div className="flex flex-col items-center">
-          <a href="#" className="hover:bg-gray-200 rounded-lg p-2">
-            <img src={bag} alt="Category 3" className="w-16 h-auto    mb-2 rounded-lg mx-auto" />
-            <p className="text-sm text-center">TRAVEL & OUTDOORS</p>
-          </a>
+        <div className="flex flex-col items-center pt-2">
+            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
+                <img src={bag} alt="bag" className="w-16 h-16 object-cover rounded-lg" />
+                <p className="text-sm text-center pb-5 pt-1">TRAVEL & OUTDOORS</p>
+            </a>
         </div>
-        <div className="flex flex-col items-center">
-          <a href="#" className="hover:bg-gray-200 rounded-lg p-2">
-            <img src={fitness} alt="Category 4" className="w-16 h-auto mb-2 rounded-lg mx-auto" />
-            <p className="text-sm text-center">HEALTH & FITNESS</p>
-          </a>
+        <div className="flex flex-col items-center pt-2">
+            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
+                <img src={fitness} alt="fitness" className="w-16 h-16 object-cover rounded-lg" />
+                <p className="text-sm text-center pb-5 pt-1">HEALTH & FITNESS</p>
+            </a>
         </div>
-        <div className="flex flex-col items-center">
-          <a href="#" className="hover:bg-gray-200 rounded-lg p-2">
-            <img src={audio} alt="Category 5" className="w-16 h-auto mb-2 rounded-lg mx-auto" />
-            <p className="text-sm text-center">AUDIO</p>
-          </a>
+        <div className="flex flex-col items-center pt-2">
+            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
+                <img src={audio} alt="audio" className="w-16 h-16 object-cover rounded-lg" />
+                <p className="text-sm text-center pb-5 pt-1">AUDIO</p>
+            </a>
         </div>
-        <div className="flex flex-col items-center">
-          <a href="#" className="hover:bg-gray-200 rounded-lg p-2">
-            <img src={film} alt="Category 6" className="w-16 h-auto mb-2 rounded-lg mx-auto" />
-            <p className="text-sm text-center">FILM</p>
-          </a>
+        <div className="flex flex-col items-center pt-2">
+            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
+                <img src={film} alt="film" className="w-16 h-16 object-cover rounded-lg" />
+                <p className="text-sm text-center pb-5 pt-1">FILM</p>
+            </a>
         </div>
       </div>
     </div>
 
-    <div className="flex flex-col items-center justify-center px-4 pb-10">
+    <div className="flex flex-col items-center justify-center px-4 pb-10 pt-14">
   <h1 className="text-3xl font-semibold text-center mb-4">From the Block Fund Review</h1>
   <p className="text-center mb-2">Your behind-the-scenes</p>
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-screen-lg">
@@ -80,7 +80,6 @@ const CategoriesComponent = () => {
     </div>
   </div>
 </div>
-
     </>
   );
 };

@@ -8,8 +8,13 @@ const FundCard = ({ owner, title,category, description, target, deadline, amount
   const remainingDays = daysLeft(deadline);
   
   return (
+<<<<<<< HEAD
     <div className="sm:w-[272px] w-full rounded-[15px] bg-[#1c1c24] cursor-pointer" onClick={handleClick}>
       <MediaRenderer width='100%' height='158px' src={image} alt="fund" className="w-full h-[158px] object-cover rounded-[15px]"/>
+=======
+    <div className="sm:w-[272px] w-full rounded-[15px] shadow-gray-400 shadow-sm cursor-pointer" onClick={handleClick}>
+      <img src={image} alt="fund" className="w-full h-[158px] object-cover rounded-[15px]"/>
+>>>>>>> 7f98523ddf02499538881212ce9226f6985ba444
 
       <div className="flex flex-col p-4">
         <div className="flex flex-row items-center mb-[18px]">
@@ -18,7 +23,7 @@ const FundCard = ({ owner, title,category, description, target, deadline, amount
         </div>
 
         <div className="block">
-          <h3 className="font-epilogue font-semibold text-[16px] text-white text-left leading-[26px] truncate">{title}</h3>
+          <h3 className="font-epilogue font-semibold text-[16px] text-left leading-[26px] truncate">{title}</h3>
           <p className="mt-[5px] font-epilogue font-normal text-[#808191] text-left leading-[18px] truncate">{description}</p>
         </div>
 

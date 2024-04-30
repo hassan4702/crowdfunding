@@ -6,8 +6,8 @@ const About = () => {
     <div className="px-4 sm:px-6 lg:px-8 py-12">
       <h1 className="text-4xl sm:text-4xl lg:text-4xl font-bold text-center mb-8">About Us</h1>
 
-      <p className="text-lg sm:text-xl lg:text-2xl \ text-center mb-8 lg:px-32 lg:text-justify">
-      Block Fund is a Blockchain based Crowd Funding platform, designed to overcome the challenges faced by traditional crowdfunding platforms like Kickstarter. Our primary focus is to revolutionize the funding landscape by introducing transparency, security, efficiency, eliminating high intermediary costs and geographical limitations to transform the way projects are funded. 
+      <p className="text-lg sm:text-xl lg:text-xl text-center mb-8 lg:px-32 lg:text-justify">
+        Block Fund is a Blockchain based Crowd Funding platform, designed to overcome the challenges faced by traditional crowdfunding platforms like Kickstarter. Our primary focus is to revolutionize the funding landscape by introducing transparency, security, efficiency, eliminating high intermediary costs and geographical limitations to transform the way projects are funded. 
       </p>
 
       <img src={mission} alt="About Us" className="w-full mb-8"/>
@@ -30,7 +30,16 @@ const About = () => {
         </div>
       </div>
 
-      <img src={about} alt="About Us" className="w-full mb-8"/>
+      <div className="relative">
+        <img src={about} alt="About Us" className="w-full h-96 mb-8 object-cover" />
+        <div className="absolute inset-0 flex flex-col justify-center items-center">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl font-bold text-black">
+              Find it first on Block Fund
+            </h1>
+          </div>
+        </div>
+      </div>
 
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4">The Creative Independent</h2>
 
@@ -43,6 +52,36 @@ const About = () => {
       <p className="text-lg sm:text-xl lg:text-lg text-center lg:text-justify lg:px-32">
       We're an independent company of passionate people working together. We spend our time designing and building Block Fund, forging community around creative projects, and supporting the creative ecosystem around us. We’re developers, designers, support specialists, writers.
       </p>
+
+      <div className="flex flex-col items-center pt-20 sm:pt-10 md:pt-20 lg:pt-24 xl:pt-32">
+        <button className="text-white px-6 py-3 rounded-[10px] bg-[#8c6dfd] mb-14">EXPLORE</button>
+        <div className="flex flex-col sm:flex-row justify-between w-full mb-8">
+          <div className="w-full sm:w-1/3 text-center mb-6 sm:mb-0">
+            <p className='font-semibold'>LEARN MORE</p>
+            <hr className='border-t-2 border-gray-300 mt-3 mr-7 mb-8' />
+            <a href='#' className='text-[#8c6dfd] text-lg font-semibold'>
+              <span>What we do</span>
+              <span className="ml-1">→</span>
+            </a>
+          </div>
+          <div className="w-full sm:w-1/3 text-center mb-6 sm:mb-0">
+            <p className='font-semibold'>DISCOVER</p>
+            <hr className='border-t-2 border-gray-300 mt-3 mr-7 mb-8' />
+            <a href='#' className='text-[#8c6dfd] text-lg font-semibold'>
+              <span>Explore clever things</span>
+              <span className="ml-1">→</span>
+            </a>
+          </div>
+          <div className="w-full sm:w-1/3 text-center">
+            <p className='font-semibold'>JOIN US</p>
+            <hr className='border-t-2 border-gray-300 mt-3 mb-8' />
+            <a href='#' className='text-[#8c6dfd] text-lg font-semibold'>
+              <span>View careers</span>
+              <span className="ml-1">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
