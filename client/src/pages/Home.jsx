@@ -7,12 +7,9 @@ import Carousel from '../components/Carousel';
 import CategoriesComponent from '../components/CategoriesComponent';
 import ImageGallery from '../components/ImageGallery';
 import BacktheProject from '../components/BacktheProject';
-<<<<<<< HEAD
-import WhatWeDo from'../components/WhatWeDo';
-import About from'../components/About'; 
-=======
->>>>>>> 7f98523ddf02499538881212ce9226f6985ba444
-import Upload from '../components/IPFSupload';
+import WhatWeDo from'../pages/WhatWeDo';
+import About from'../pages/About'; 
+// import Upload from '../pages/IPFSupload';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([
