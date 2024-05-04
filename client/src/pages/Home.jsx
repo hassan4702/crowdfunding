@@ -288,7 +288,7 @@ const Home = () => {
       campaigns={campaigns}
     />
     <ImageGallery />
-    <BacktheProject />z
+    <BacktheProject />
     <CategoriesComponent />
     <Footer />
 </>
