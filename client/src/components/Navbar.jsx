@@ -20,14 +20,14 @@ const Navbar = () => {
   return (
     <div className="flex md:flex-row flex-col-reverse  justify-between mb-[10px] gap-6">
       <div></div>
-      <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] shadow-gray-400 shadow-sm rounded-[100px] ">
+      <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] shadow-sm rounded-[100px] dark:bg-[#1c1c24] bg-white"> {/* Conditional background */}
         <input
           type="text"
           placeholder="Search for campaigns"
-          className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none"
+          className="flex w-full font-epilogue font-normal text-[14px] dark:text-white text-black bg-transparent outline-none"
         />
 
-        <div className="w-[62px] h-full rounded-[20px] bg-[#8c6dfd] flex justify-center items-center cursor-pointer">
+        <div className="w-[62px] h-full rounded-[20px] dark:bg-[#8c6dfd] bg-[#8c6dfd] flex justify-center items-center cursor-pointer">
           <img
             src={search}
             alt="search"
@@ -63,12 +63,6 @@ const Navbar = () => {
             else connect()
           }}
         />
-
-        {/* <Link to="/profile">
-          <div className="w-[52px] h-[52px] flex justify-center items-center cursor-pointer">
-            <Avatar src={"/img.png"}></Avatar>
-          </div>
-        </Link> */}
 
       </div>
 
@@ -126,16 +120,6 @@ const Navbar = () => {
           </ul>
 
           <div className="flex flex-row justify-between items-center mx-4">
-
-            {/* <CustomButton */}
-            {/*   btnType="button" */}
-            {/*   title={address ? "Create a campaign" : "Connect"} */}
-            {/*   styles={address ? "bg-[#1dc071]" : "bg-[#8c6dfd]"} */}
-            {/*   handleClick={() => { */}
-            {/*     if (address) navigate("create-campaign"); */}
-            {/*     else connect(); */}
-            {/*   }} */}
-            {/* /> */}
             <Button
                 className={
                   "font-epilogue font-semibold text-[16px]  text-white px-4 rounded-[10px] bg-[#8c6dfd]"

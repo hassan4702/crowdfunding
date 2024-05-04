@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { tagType, thirdweb } from '../assets';
 import { daysLeft } from '../utils';
 
@@ -7,7 +6,7 @@ const FundCard = ({ owner, title,category, description, target, deadline, amount
   const remainingDays = daysLeft(deadline);
   
   return (
-    <div className="sm:w-[272px] w-full rounded-[15px] shadow-gray-400 shadow-sm cursor-pointer" onClick={handleClick}>
+    <div className="sm:w-[272px] w-full rounded-[15px] shadow-lg cursor-pointer bg-white dark:bg-[#1c1c24]" onClick={handleClick}>
       <img src={image} alt="fund" className="w-full h-[158px] object-cover rounded-[15px]"/>
 
       <div className="flex flex-col p-4">

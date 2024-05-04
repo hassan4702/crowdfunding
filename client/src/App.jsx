@@ -7,7 +7,15 @@ import UpdateCampaign from './pages/UpdateCampaign';
 import About from './pages/About';
 import WhatWeDo from './pages/WhatWeDo';
 import TopFinds from './pages/TopFinds';
+import HowItWorks from './pages/HowItWorks';
+import HelpAndSupport from './pages/HelpAndSupport';
+import FindExperts from './pages/FindExperts';
+import Contact from './pages/Contact';
+import CommunityGuidelines from './pages/CommunityGuidelines';
+import BlockFundVsKickstarter from './pages/BlockFundVsKickstarter';
+import TermsOfUse from './pages/TermsOfUse';
 
+import TrustAndSafety from './pages/TrustAndSafety';
 const App = () => {
   return (
     <div className="relative sm:-8 p-4  min-h-screen flex flex-row">
@@ -24,10 +32,17 @@ const App = () => {
           <Route path="/create-campaign" element={<CreateCampaign />} />
           <Route path="/campaign-details/:id" element={<CampaignDetails />} />
           <Route path="/campaign-update/:id" element={<UpdateCampaign />} />
-          <Route path="/aboutus" element={<About />} />
+          <Route path="/about" element={<About /> } />
           <Route path="/whatwedo" element={<WhatWeDo />} />
           <Route path="/topfinds" element={<TopFinds />} />
-
+          <Route path="/howitworks" element={<HowItWorks/>} />
+          <Route path="/HelpAndSupport" element={<HelpAndSupport/>} />
+          <Route path="/FindExperts" element={<FindExperts/>} />
+          <Route path="/Contact" element={<Contact/>} />
+          <Route path="/communityGuidelines" element={<CommunityGuidelines/>} />
+          <Route path="/blockFundVskickstarter" element={<BlockFundVsKickstarter/>} />
+          <Route path="/TermsOfUse" element={<TermsOfUse/>} />
+          <Route path="/TrustAndSafety" element={<TrustAndSafety/>} />
         </Routes>
       </div>
     </div>

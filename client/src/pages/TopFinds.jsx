@@ -93,15 +93,15 @@ const cardsData = [
 
 const Card = ({ image, name, link, amount, percent }) => {
   return (
-    <div className="max-w-[570px] rounded-[15px] overflow-hidden shadow-lg mb-4 mx-auto md:mx-0 bg-[#1c1c24] transition-transform hover:-translate-y-1">
+    <div className="max-w-[570px] rounded-[15px] overflow-hidden mb-4 mx-auto md:mx-0 shadow-lg bg-white dark:bg-[#1c1c24] transition-transform hover:-translate-y-1">
       <img className="w-full h-auto max-h-64" src={image} alt={name} />
       <div className="px-6 py-8">
         <div className="font-bold text-lg mb-3 text-[#808191]">{name}</div>
         <hr className="mb-5" />
-        <a href="#" className="text-white text-xl font-semibold">{link}</a>
+        <a href="#" className=" text-xl font-semibold">{link}</a>
         <div className="flex justify-between mt-2 pt-20">
-          <p className="text-white text-xl font-semibold">{amount}<span className='text-lg font-normal pl-1'>USD raised</span></p>
-          <p className="text-white text-lg font-normal">{percent}</p>
+          <p className="text-xl font-semibold">{amount}<span className='text-lg font-normal pl-1'>USD raised</span></p>
+          <p className="text-lg font-normal">{percent}</p>
         </div>
         <div className=" h-2 bg-[#8c6dfd] rounded-full mt-1"></div>
       </div>
@@ -112,8 +112,8 @@ const Card = ({ image, name, link, amount, percent }) => {
 const TopFinds = () => {
   return (
     <div className="container mx-auto mt-5">
-      <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-center mt-10 sm:mt-20 mb-6'>10 Cool & Clever Finds</h1>
-<p className='text-lg sm:text-xl lg:text-2xl text-center px-4 sm:px-32 mb-10'>Discover your next "a-ha" moment in our roundup of standout projects, from live crowdfunding & InDemand campaigns to innovative products shipping now.</p>
+      <h1 className='text-3xl sm:text-4xl lg:text-5xl font-semibold text-center mt-10 sm:mt-20 mb-6'>10 Cool & Clever Finds</h1>
+<p className='text-lg sm:text-xl lg:text-xl text-center px-4 sm:px-32 mb-10'>Discover your next "a-ha" moment in our roundup of standout projects, from live crowdfunding & InDemand campaigns to innovative products shipping now.</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
         {cardsData.map((card) => (

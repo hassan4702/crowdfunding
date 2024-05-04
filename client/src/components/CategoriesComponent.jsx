@@ -1,84 +1,72 @@
 import React from 'react';
-import home from '../assets/home.png';
-import phone from '../assets/phone.png';
-import bag from '../assets/bag.png';
-import fitness from '../assets/fitness.png';
-import audio from '../assets/audio.png';
-import film from '../assets/film.png';
 import Review1 from '../assets/Review1.jpg'
 import Review2 from '../assets/Review2.jpg'
 import Review3 from '../assets/Review3.jpg'
+import CategoriesCards from './CategoriesCards'
+
+const cardsData = [
+  {
+    image: Review1,
+    title: 'Looking Ahead: 5 Trends in Crowdfunding To Watch In 2024',
+    description: "What's in store for Block Fund in the new year?",
+    link: 'LEARN MORE',
+  },
+  {
+    image: Review2,
+    title: 'Unboxing a New Gaming & Productivity Handheld',
+    description: 'Does the OneXPlayer X1 live up to the hype?',
+    link: 'LEARN MORE',
+  },
+  {
+    image: Review3,
+    title: 'Reviewing Retro Mini PC',
+    description: 'We put the new AYANEO AM02 Mini PC to the test!',
+    link: 'LEARN MORE',
+  },
+];
+
+const Card = ({ image, title, description, link }) => {
+
+  return (
+    <div className="max-w-xs rounded overflow-hidden shadow-lg m-4 hover:-translate-y-1 transition-transform bg-white dark:bg-[#1c1c24] ">
+      <a href="#">
+        <img className="w-full h-64 object-cover mb-4 rounded-lg" src={image} alt={title} />
+        <div className="px-6 py-4">
+          <div className="text-sm mb-2">{title}</div>
+          <p className="text-sm mb-2">{description}</p>
+          <p className="text-[#8c6dfd]">{link}</p>
+        </div>
+      </a>
+    </div>
+  );
+};
+
 const CategoriesComponent = () => {
   return (
     <>
     <div className="flex flex-col items-center justify-center px-4 pb-10">
       <h1 className="text-3xl font-semibold text-center mb-4">Which categories interest you?</h1>
-      <p className="text-center mb-6">Discover projects just for you and get great recommendations when your interests.</p>
-      <button className="bg-[#8c6dfd] text-white py-2 px-4 rounded mb-6">SIGN UP AND SELECT INTERESTS</button>
-      <p className="text-center mb-5">Or explore our top categories</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full max-w-screen-lg shadow-gray-400 shadow-sm">
-        <div className="flex flex-col items-center pt-2">
-            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
-                <img src={home} alt="home" className="w-16 h-16 object-cover rounded-lg" />
-                <p className="text-sm text-center pb-5 pt-1">HOME</p>
-            </a>
-        </div>
-        <div className="flex flex-col items-center pt-2">
-            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
-                <img src={phone} alt="phone" className="w-16 h-16 object-cover rounded-lg" />
-                <p className="text-sm text-center pb-5 pt-1">PHONES & ACCESSORIES</p>
-            </a>
-        </div>
-        <div className="flex flex-col items-center pt-2">
-            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
-                <img src={bag} alt="bag" className="w-16 h-16 object-cover rounded-lg" />
-                <p className="text-sm text-center pb-5 pt-1">TRAVEL & OUTDOORS</p>
-            </a>
-        </div>
-        <div className="flex flex-col items-center pt-2">
-            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
-                <img src={fitness} alt="fitness" className="w-16 h-16 object-cover rounded-lg" />
-                <p className="text-sm text-center pb-5 pt-1">HEALTH & FITNESS</p>
-            </a>
-        </div>
-        <div className="flex flex-col items-center pt-2">
-            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
-                <img src={audio} alt="audio" className="w-16 h-16 object-cover rounded-lg" />
-                <p className="text-sm text-center pb-5 pt-1">AUDIO</p>
-            </a>
-        </div>
-        <div className="flex flex-col items-center pt-2">
-            <a href="#" className="rounded-lg p-2 flex flex-col items-center justify-center">
-                <img src={film} alt="film" className="w-16 h-16 object-cover rounded-lg" />
-                <p className="text-sm text-center pb-5 pt-1">FILM</p>
-            </a>
-        </div>
-      </div>
+      <p className="text-center mb-4">Discover projects just for you and get great recommendations when you select your interests.</p>
+      <p className="text-center mb-5">Explore our top categories</p>
+      <CategoriesCards />
     </div>
 
     <div className="flex flex-col items-center justify-center px-4 pb-10 pt-14">
   <h1 className="text-3xl font-semibold text-center mb-4">From the Block Fund Review</h1>
   <p className="text-center mb-2">Your behind-the-scenes</p>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-screen-lg">
-    <div className="rounded-lg shadow-md p-4">
-      <img src={Review1} alt="Review 1" className="w-full h-64 object-cover mb-4 rounded-lg" />
-      <p className="text-sm mb-2">Looking Ahead: 5 Trends in Crowdfunding To Watch In 2024</p>
-      <p className="text-sm mb-2">What's in store for Block Fund in the new year?</p>
-      <a href="#" className="text-[#8c6dfd]">LEARN MORE</a>
+  <div className="container mx-auto">
+      <div className="flex flex-wrap justify-center">
+        {cardsData.map((card, index) => (
+          <Card
+            key={index}
+            image={card.image}
+            title={card.title}
+            description={card.description}
+            link={card.link}
+          />
+        ))}
+      </div>
     </div>
-    <div className="rounded-lg shadow-md p-4">
-      <img src={Review2} alt="Review 2" className="w-full h-64 object-cover mb-4 rounded-lg" />
-      <p className="text-sm mb-2">Unboxing a New Gaming & Productivity Handheld</p>
-      <p className="text-sm mb-2">Does the OneXPlayer X1 live up to the hype?</p>
-      <a href="#" className="text-[#8c6dfd]">LEARN MORE</a>
-    </div>
-    <div className="rounded-lg shadow-md p-4">
-      <img src={Review3} alt="Review 3" className="w-full h-64 object-cover mb-4 rounded-lg" />
-      <p className="text-sm mb-2">Reviewing Retro Mini PC</p>
-      <p className="text-sm mb-2">We put the new AYANEO AM02 Mini PC to the test!</p>
-      <a href="#" className="text-[#8c6dfd]">LEARN MORE</a>
-    </div>
-  </div>
 </div>
     </>
   );

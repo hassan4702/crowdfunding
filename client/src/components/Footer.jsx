@@ -1,13 +1,15 @@
 import React from 'react';
 import email from '../assets/email.png';
-import twitter from '../assets/twitter.png';
-import youtube from '../assets/youtube.png';
-import instagram from '../assets/instagram.png';
-import facebook from '../assets/facebook.png';
+import { FaInstagram } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
+import { FaTwitter } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
+import { FaYoutube } from 'react-icons/fa';
+import { FaShopify } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className=" py-12">
+    <footer className=" py-12 bg-white dark:bg-[#1c1c24]">
       <div className="container mx-auto px-10">
         <div className="flex flex-wrap -mx-4 justify-between">
           <div className="w-full md:w-1/4 px-4 mb-8 md:mb-0">
@@ -56,14 +58,13 @@ const Footer = () => {
 
         {/* Social icons and currency selection */}
         <div className="flex flex-col md:flex-row items-center md:items-start mt-8">
-          {/* <button className="bg-[#dedee4] text-[#646574] px-6 py-3 rounded hover:bg-white transition-colors mb-4 md:mb-0 md:mr-6">
-            Select currency
-          </button> */}
           <div className='flex'>
-            <a href="#"><img className=" bg-white rounded mr-6 mt-3" src={facebook} alt={'facebook'} /></a>
-            <a href="#"><img className=" bg-white rounded mr-6 mt-3" src={twitter} alt={'twitter'} /></a>
-            <a href="#"><img className=" bg-white rounded mr-6 mt-3" src={youtube} alt={'youtube'} /></a>
-            <a href="#"><img className=" bg-white rounded mr-6 mt-3" src={instagram} alt={'instagram'} /></a>
+            <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaInstagram /></a>
+            <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaFacebook /></a>
+            <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaTwitter /></a>
+            <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaLinkedin /></a>
+            <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaYoutube /></a>
+            <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaShopify /></a>
           </div>
         </div>
 

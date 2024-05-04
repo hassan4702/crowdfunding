@@ -69,7 +69,7 @@ const CampaignDetails = () => {
       {isLoading && <Loader />}
 
       <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">
-        <div className="flex-1 flex-col">
+        <div className="flex-1 flex flex-col">
           <div
             className={"font-epilogue font-semibold text-[20px] uppercase p-2"}
           >
@@ -119,7 +119,7 @@ const CampaignDetails = () => {
                 <img
                   src={thirdweb}
                   alt="user"
-                  className="w-[60%] h-[60%] object-contain"
+                  className="w-[60%] h-[60%] object-cover"
                 />
               </div>
               <div>

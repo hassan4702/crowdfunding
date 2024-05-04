@@ -10,7 +10,16 @@ const About = () => {
         Block Fund is a Blockchain based Crowd Funding platform, designed to overcome the challenges faced by traditional crowdfunding platforms like Kickstarter. Our primary focus is to revolutionize the funding landscape by introducing transparency, security, efficiency, eliminating high intermediary costs and geographical limitations to transform the way projects are funded. 
       </p>
 
-      <img src={mission} alt="About Us" className="w-full mb-8"/>
+      <div className="relative mb-20">
+       <img src={mission} alt="Help" className="w-full lg:h-[30rem] h-[27rem] mb-8 object-cover" />
+       <div className="absolute inset-0 flex flex-col justify-center items-center">
+         <div className="max-w-3xl mx-auto text-center">
+           <h1 className="text-3xl lg:text-3xl font-bold text-white">
+             Our mission is to empower people to unite around ideas that matter to them and together make those ideas come to life.
+           </h1>
+         </div>
+       </div>
+     </div>
 
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4">Block Fund Innovation</h2>
 
@@ -34,7 +43,7 @@ const About = () => {
         <img src={about} alt="About Us" className="w-full h-96 mb-8 object-cover" />
         <div className="absolute inset-0 flex flex-col justify-center items-center">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold text-black">
+            <h1 className="text-4xl font-bold text-white">
               Find it first on Block Fund
             </h1>
           </div>

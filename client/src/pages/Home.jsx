@@ -8,6 +8,7 @@ import CategoriesComponent from '../components/CategoriesComponent';
 import ImageGallery from '../components/ImageGallery';
 import BacktheProject from '../components/BacktheProject';
 import Upload from '../components/IPFSupload';
+import TermsOfUse from './TermsOfUse';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([
@@ -280,6 +281,7 @@ const Home = () => {
   return (
 <>
     {/* <Upload/> */}
+    {/* <TermsOfUse /> */}
     <Carousel />
     <DisplayCampaigns
       title="All Campaigns"

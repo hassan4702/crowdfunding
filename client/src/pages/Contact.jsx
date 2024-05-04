@@ -9,7 +9,7 @@ const Contact = () => {
             <a href="#" className="inline-block">Block Fund Help Center &gt; Submit a request</a>
           </div>
           <div className="lg:flex-1 lg:ml-4 order-1 lg:order-none">
-            <input type="text" placeholder="Search" className="border border-gray-300 px-4 py-2 rounded w-full lg:max-w-[458px]" />
+            <input type="text" placeholder="Search" className=" px-4 py-2 rounded-full outline-none w-full lg:max-w-[458px]" />
           </div>
         </div>
         <h2 className="text-4xl font-bold mb-8 mt-20">Have a question?</h2>
