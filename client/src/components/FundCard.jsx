@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { tagType, thirdweb } from '../assets';
 import { daysLeft } from '../utils';
 import { MediaRenderer } from '@thirdweb-dev/react';

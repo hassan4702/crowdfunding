@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global styles */
 .linear-gradient {
   background: linear-gradient(
     179.14deg,
@@ -15,4 +16,22 @@
 input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   filter: invert(0.8);
+}
+
+/* Light and dark mode for the whole website */
+:root {
+  --bg-light: #f2f2f2; /* light gray for light mode */
+  --bg-dark: #0e0d0d;  /* light black for dark mode */
+  --card-bg-light: #ffffff; /* white for cards in light mode */
+  --card-bg-dark: #1c1c24;  /* black for cards in dark mode */
+}
+
+[data-theme='light'] {
+  background-color: var(--bg-light); /* entire site in light mode */
+  color: #000;
+}
+
+[data-theme='dark'] {
+  background-color: var(--bg-dark); /* entire site in dark mode */
+  color: #fff;
 }

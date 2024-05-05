@@ -17,7 +17,7 @@ const cardsData = [
   ];
   const Card = ({ image, name, description, link }) => {
     return (
-      <div className="max-w-sm rounded overflow-hidden m-4">
+      <div className="max-w-sm rounded overflow-hidden m-4 bg-white dark:bg-[#1c1c24]">
           <img className="mx-auto h-28 w-28 object-cover" src={image} alt={name} />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2 text-justify">{name}</div>

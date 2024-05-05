@@ -7,9 +7,7 @@ import Carousel from '../components/Carousel';
 import CategoriesComponent from '../components/CategoriesComponent';
 import ImageGallery from '../components/ImageGallery';
 import BacktheProject from '../components/BacktheProject';
-import WhatWeDo from'../pages/WhatWeDo';
-import About from'../pages/About'; 
-// import Upload from '../pages/IPFSupload';
+import Upload from '../components/IPFSupload';
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([
@@ -282,6 +280,7 @@ const Home = () => {
   return (
 <>
     {/* <Upload/> */}
+    {/* <TermsOfUse /> */}
     <Carousel />
     <DisplayCampaigns
       title="All Campaigns"
@@ -289,7 +288,7 @@ const Home = () => {
       campaigns={campaigns}
     />
     <ImageGallery />
-    <BacktheProject />z
+    <BacktheProject />
     <CategoriesComponent />
     <Footer />
 </>

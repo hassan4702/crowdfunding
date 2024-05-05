@@ -26,7 +26,7 @@ const BlockFundVsKickstarter = () =>{
             </div>
 
             <div class="flex justify-center">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg shadow-gray-400 shadow-sm mb-20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg shadow-sm mb-20">
                     <div className="flex flex-col justify-center items-center pt-2">
                         <img src={PARTNERSHIPS} alt="PARTNERSHIPS & SUPPORT" className="w-24 h-24 object-cover mx-auto" />
                         <p className="text-sm text-center pb-5 pt-1">PARTNERSHIPS & SUPPORT</p>

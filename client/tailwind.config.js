@@ -16,7 +16,7 @@ module.exports = {
       },
     },
   },
-  darkMode: "class",
+  darkMode: ['class', '[data-theme="dark"]'],
   plugins: [nextui()],
 }
 

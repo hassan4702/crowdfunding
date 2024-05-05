@@ -28,7 +28,7 @@ const cardsData = [
   ];
 const Card = ({ image, name }) => {
   return (
-    <div className="max-w-xl  rounded overflow-hidden shadow-sm shadow-gray-400  m-4">
+    <div className="max-w-xl  rounded overflow-hidden bg-white dark:bg-[#1c1c24]  m-4">
         <a href="">
         <img className="mx-auto w-24 h-24" src={image} alt={name} />
       <div className="px-6 py-4">
