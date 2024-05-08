@@ -82,7 +82,7 @@ const TermsOfUse = () => {
                 <p className='text-xl'>The following policies and guidelines are incorporated into the Terms by reference.</p>
                 <ol className='list-decimal text-xl ml-5 mt-4'>
                     <li className='pb-4'>
-                        <a href='#' className='text-[#808191] text-xl'>What is Block Fund</a>
+                        <a href='#' className='text-[#808191] text-xl'>Help Center</a>
                     </li>
                     <li className='pb-4'>
                         <a href='#' className='text-[#808191] text-xl'>Community Guidelines</a>

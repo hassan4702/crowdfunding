@@ -281,7 +281,14 @@ const Home = () => {
 <>
     {/* <Upload/> */}
     {/* <TermsOfUse /> */}
-    <Carousel />
+    
+<div>{campaigns.map((index)=>{
+  if (index.category==="fundraiser") {
+    index.title
+  }
+}
+)}</div>    
+    <Carousel/>
     <DisplayCampaigns
       title="All Campaigns"
       isLoading={isLoading}

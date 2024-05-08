@@ -14,7 +14,7 @@ const CampaignDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
   const [donators, setDonators] = useState([]);
-  const [dropdownOption, setDropdownOption] = useState(""); // State to track dropdown selection
+  const [dropdownOption, setDropdownOption] = useState("fund");
 
   const remainingDays = daysLeft(state.deadline);
 

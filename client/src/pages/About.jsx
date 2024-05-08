@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import about from '../assets/about.jpg';
 import mission from '../assets/mission.jpg';
 const About = () => {
+  const navigate = useNavigate();
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-12">
       <h1 className="text-4xl sm:text-4xl lg:text-4xl font-bold text-center mb-8">About Us</h1>
@@ -11,7 +13,7 @@ const About = () => {
       </p>
 
       <div className="relative mb-20">
-       <img src={mission} alt="Help" className="w-full lg:h-[30rem] h-[27rem] mb-8 object-cover" />
+       <img src={mission} alt="Help" className="w-full lg:h-[30rem] h-[27rem] mb-8 object-cover rounded-[15px]" />
        <div className="absolute inset-0 flex flex-col justify-center items-center">
          <div className="max-w-3xl mx-auto text-center">
            <h1 className="text-3xl lg:text-3xl font-bold text-white">
@@ -40,7 +42,7 @@ const About = () => {
       </div>
 
       <div className="relative">
-        <img src={about} alt="About Us" className="w-full h-96 mb-8 object-cover" />
+        <img src={about} alt="About Us" className="w-full h-96 mb-8 object-cover rounded-[15px]" />
         <div className="absolute inset-0 flex flex-col justify-center items-center">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-bold text-white">
@@ -53,7 +55,7 @@ const About = () => {
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4">The Creative Independent</h2>
 
       <p className="text-lg sm:text-xl lg:text-lg lg:text-justify lg:px-32 text-center mb-8">
-      Block Fund’s support for creative work goes beyond our platform. We publish The Creative Independent (TCI) as a way to share advice and illuminate the many, many routes to living a creative life. 
+      Block Fund's support for creative work goes beyond our platform. We publish The Creative Independent (TCI) as a way to share advice and illuminate the many, many routes to living a creative life. 
       </p>
 
       <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4">Our team</h3>
@@ -63,31 +65,31 @@ const About = () => {
       </p>
 
       <div className="flex flex-col items-center pt-20 sm:pt-10 md:pt-20 lg:pt-24 xl:pt-32">
-        <button className="text-white px-6 py-3 rounded-[10px] bg-[#8c6dfd] mb-14">EXPLORE</button>
+        <button className="text-white px-6 py-3 rounded-[10px] bg-[#8c6dfd] mb-14" onClick={() => navigate("/ExploreProjects")}>EXPLORE</button>
         <div className="flex flex-col sm:flex-row justify-between w-full mb-8">
           <div className="w-full sm:w-1/3 text-center mb-6 sm:mb-0">
             <p className='font-semibold'>LEARN MORE</p>
             <hr className='border-t-2 border-gray-300 mt-3 mr-7 mb-8' />
-            <a href='#' className='text-[#8c6dfd] text-lg font-semibold'>
+            <div className='text-[#8c6dfd] text-lg font-semibold cursor-pointer' onClick={() => navigate("/whatwedo")}>
               <span>What we do</span>
               <span className="ml-1">→</span>
-            </a>
+            </div>
           </div>
           <div className="w-full sm:w-1/3 text-center mb-6 sm:mb-0">
             <p className='font-semibold'>DISCOVER</p>
             <hr className='border-t-2 border-gray-300 mt-3 mr-7 mb-8' />
-            <a href='#' className='text-[#8c6dfd] text-lg font-semibold'>
+            <div className='text-[#8c6dfd] text-lg font-semibold cursor-pointer' onClick={() => navigate("/ExploreProjects")}>
               <span>Explore clever things</span>
               <span className="ml-1">→</span>
-            </a>
+            </div>
           </div>
           <div className="w-full sm:w-1/3 text-center">
             <p className='font-semibold'>JOIN US</p>
             <hr className='border-t-2 border-gray-300 mt-3 mb-8' />
-            <a href='#' className='text-[#8c6dfd] text-lg font-semibold'>
+            <div className='text-[#8c6dfd] text-lg font-semibold cursor-pointer'>
               <span>View careers</span>
               <span className="ml-1">→</span>
-            </a>
+            </div>
           </div>
         </div>
       </div>

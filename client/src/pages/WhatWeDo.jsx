@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Bluesmart from '../assets/Bluesmart.png';
 import Evapolar from '../assets/Evapolar.png';
 import Explore from '../assets/Explore.png';
@@ -9,6 +10,7 @@ import SuperTroopers from '../assets/SuperTroopers.png';
 import MisfitShine from '../assets/MisfitShine.png';
 import Journey from '../assets/Journey.png';
 const WhatWeDo = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center justify-center pb-20">
 
@@ -40,10 +42,10 @@ const WhatWeDo = () => {
        </div>
         <p className='text-justify pt-8'>With Block Fund, you have the opportunity to support entrepreneurs and new technology from the earliest stages of development. Be sure to evaluate every campaign closely and contribute at a level you can afford in the event that the team is unable to complete the project as planned.</p>
         <p className='text-justify'>Browse campaigns, read the stories from the entrepreneurs themselves, evaluate the stage of development and any potential production risks — and then fund the projects that you want to help succeed.</p>
-        <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-bold py-2 px-4 rounded mt-4 mb-4">
+        <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-semibold py-2 px-4 rounded mt-4 mb-4 text-white" onClick={() => navigate("/ExploreProjects")}>
           Explore Projects
         </button>
-        <p className='text-center'>Or <span className='text-[#808191]'><a href='#'>learn more</a></span> about crowdfunding and your role as a backer.</p>
+        <p className='text-center'>Or <span className='text-[#808191] cursor-pointer' onClick={() => navigate("/Crowdfunding")}>learn more</span> about crowdfunding and your role as a backer.</p>
       </div>
 
       {/* Great finds, delivered daily Section */}
@@ -57,14 +59,14 @@ const WhatWeDo = () => {
             placeholder="Enter your email"
             className=" outline-none px-4 py-2 rounded-l mb-2 md:mb-0 md:mr-2 bg-[#dad6d6] dark:bg-[#0e0e11]"
           />
-          <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-bold py-2 px-4 rounded-r ml-0 md:ml-2">
+          <button className="bg-[#8c6dfd] hover:bg-[#9691aa] text-white font-semibold py-2 px-4 rounded-r ml-0 md:ml-2">
             Subscribe
           </button>
         </div>
         <label className="flex flex-col md:flex-row items-center justify-center px-4">
           <input type="checkbox" className="form-checkbox mr-2" />
           <span className="mb-2 md:mb-0 justify-center ">
-            I agree to the <a href='#' className="text-[#8c6dfd]">Terms of Use</a> and have read and understand the <a href='#' className="text-[#8c6dfd]">Privacy Policy.</a> 
+            I agree to the <span className="text-[#8c6dfd] cursor-pointer" onClick={() => navigate("/TermsOfUse")}>Terms of Use</span> and have read and understand the <span className="text-[#8c6dfd] cursor-pointer" onClick={() => navigate("/PrivacyPolicy")}>Privacy Policy.</span> 
           </span>
         </label>
       </div>
@@ -74,7 +76,7 @@ const WhatWeDo = () => {
         <img src={perk} alt="perk" className="w-96 h-86 object-contain rounded-lg" />
         <div className="text-center md:text-left md:pl-8">
           <h2 className="text-2xl font-bold pb-3">What is a perk?</h2>
-          <p className="lg:pr-10">Services, events, or anything that does not violate our Terms of Use. Perks are listed on the right side of the Campaign page, under the "Back It" button. If you do not see any perks listed, the campaign owner may have decided not to offer any perks.</p>
+          <p className="lg:pr-10">A perk is a reward or incentive offered by campaign owners to backers who contribute to their project. Perks can range from tangible items, like merchandise or limited-edition products, to intangible benefits, such as exclusive access, digital downloads, or personalized experiences. They are used to attract and encourage support from potential backers.</p>
         </div>
       </div>
 
@@ -155,7 +157,7 @@ const WhatWeDo = () => {
               className="w-24 md:w-32 h-auto object-cover"
             />
             <h1 className="text-3xl font-semibold py-4 md:mb-4 lg:pt-10">Ready? Explore</h1>
-            <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-semibold py-2 px-4 rounded">
+            <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-semibold py-2 px-4 rounded" onClick={() => navigate("/ExploreProjects")}>
               Discover projects
             </button>
           </div>

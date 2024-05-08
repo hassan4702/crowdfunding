@@ -39,7 +39,7 @@ const cardsData = [
   ];
 const Card = ({ image, name, description, link }) => {
   return (
-    <div className="max-w-xl  rounded overflow-hidden shadow-lg bg-white dark:bg-[#1c1c24]  m-4">
+    <div className="max-w-xl rounded-[15px] overflow-hidden shadow-lg bg-white dark:bg-[#1c1c24]  m-4">
         <a href="">
             <img className="mx-auto w-24 h-24" src={image} alt={name} />
             <div className="px-6 py-4">
@@ -55,7 +55,7 @@ const FindExperts = () => {
     return(
         <>
             <div className="relative mt-10">
-                <img src={HowItWork} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover" />
+                <img src={HowItWork} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover rounded-[15px]" />
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                     <div className="max-w-2xl mx-auto text-center">
                         <h1 className="text-4xl font-bold text-white ">

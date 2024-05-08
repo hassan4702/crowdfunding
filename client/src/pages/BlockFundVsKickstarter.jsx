@@ -7,7 +7,7 @@ const BlockFundVsKickstarter = () =>{
     return(
         <>
             <div className="relative mb-20">
-                <img src={business} alt="business" className="w-full h-auto lg:h-96 h-108 mb-8 object-cover" />
+                <img src={business} alt="business" className="w-full h-auto lg:h-96 h-108 mb-8 object-cover rounded-[15px]" />
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                     <div className="max-w-3xl mx-auto text-center">
                         <h1 className="text-2xl lg:text-5xl font-bold text-white">
@@ -26,7 +26,7 @@ const BlockFundVsKickstarter = () =>{
             </div>
 
             <div class="flex justify-center">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg shadow-sm mb-20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg mb-20">
                     <div className="flex flex-col justify-center items-center pt-2">
                         <img src={PARTNERSHIPS} alt="PARTNERSHIPS & SUPPORT" className="w-24 h-24 object-cover mx-auto" />
                         <p className="text-sm text-center pb-5 pt-1">PARTNERSHIPS & SUPPORT</p>

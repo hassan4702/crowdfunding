@@ -14,8 +14,13 @@ import Contact from './pages/Contact';
 import CommunityGuidelines from './pages/CommunityGuidelines';
 import BlockFundVsKickstarter from './pages/BlockFundVsKickstarter';
 import TermsOfUse from './pages/TermsOfUse';
-
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Crowdfunding from './pages/Crowdfunding';
 import TrustAndSafety from './pages/TrustAndSafety';
+import ExploreProjects from './pages/ExploreProjects';
+import ViewCareers from './pages/ViewCareers';
+import {EducationCampaigns, TravelAndOutdoors, Technology, SocialImpact, HealthAndFitness, ArtsAndCulture } from './pages';
+
 const App = () => {
   return (
     <div className="relative sm:-8 p-4  min-h-screen flex flex-row">
@@ -43,6 +48,16 @@ const App = () => {
           <Route path="/blockFundVskickstarter" element={<BlockFundVsKickstarter/>} />
           <Route path="/TermsOfUse" element={<TermsOfUse/>} />
           <Route path="/TrustAndSafety" element={<TrustAndSafety/>} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>} />
+          <Route path="/Crowdfunding" element={<Crowdfunding/>} />
+          <Route path="/EducationCampaigns" element={<EducationCampaigns/>} />
+          <Route path="/TravelAndOutdoors" element={<TravelAndOutdoors/>} />
+          <Route path="/Technology" element={<Technology/>} />
+          <Route path="/SocialImpact" element={<SocialImpact/>} />
+          <Route path="/HealthAndFitness" element={<HealthAndFitness/>} />
+          <Route path="/ArtsAndCulture" element={<ArtsAndCulture/>} />
+          <Route path="/ExploreProjects" element={<ExploreProjects/>} />
+          <Route path="/ViewCareers" element={<ViewCareers/>} />
         </Routes>
       </div>
     </div>

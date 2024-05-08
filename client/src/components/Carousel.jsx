@@ -1,59 +1,111 @@
 import React, { useState, useEffect } from 'react';
-import image1 from '../assets/image1.jpg';
-import leftArrow from '../assets/left.png'; 
-import rightArrow from '../assets/right.png'; 
-import funding_img2 from '../assets/funding_img2.jpg';
-import AYANEO from '../assets/AYANEO.jpg';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useStateContext } from '../context';
 
-const Carousel = () => {
-  const images = [
-    { id: 1, src: image1, alt: 'Image 1', text: '"Empower dreams, ignite change - support innovation today!"' },
-    { id: 2, src: funding_img2, alt: 'Image 2', text: '"Fuel passion, transform lives - join the movement!"' },
-    { id: 3, src: AYANEO, alt: 'Image 3', text: '"Unite to make a difference - together, we create impact!"' }
-  ];
+const Carousel = ({ autoPlayInterval = 5000 }) => {
+  const { contract, getCampaigns } = useStateContext();
 
-  const [currentImage, setCurrentImage] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [campaigns, setCampaigns] = useState([]);
+  const [currentCampaign, setCurrentCampaign] = useState(1);
 
-  const handleNext = () => {
-    setCurrentImage((currentImage + 1) % images.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentImage((currentImage - 1 + images.length) % images.length);
+  const fetchCampaigns = async () => {
+    setIsLoading(true);
+    const data = await getCampaigns();
+    setCampaigns(data || []); 
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000);
+    if (contract) fetchCampaigns(); 
+  }, [contract]);
 
-    return () => clearInterval(interval);
-  }, [currentImage]);
+  useEffect(() => {
+    if (campaigns.length > 0) { 
+      const interval = setInterval(() => {
+        handleNext(); 
+      }, autoPlayInterval);
+
+      return () => clearInterval(interval);
+    }
+  }, [currentCampaign, autoPlayInterval, campaigns.length]);
+
+  const handleNext = () => {
+    if (campaigns.length > 0) {
+      setCurrentCampaign((currentCampaign + 1) % campaigns.length); 
+    }
+  };
+
+  const handlePrev = () => {
+    if (campaigns.length > 0) {
+      setCurrentCampaign((currentCampaign - 1 + campaigns.length) % campaigns.length);
+    }
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (campaigns.length === 0) {
+    return <div>No campaigns available.</div>;
+  }
+
+  const currentData = campaigns[currentCampaign];
+  if (!currentData) {
+    return <div>Error: No campaign found.</div>; 
+  }
+
+  const { image, title, description } = currentData;
+
+  // Set a maximum description length and adjust it based on screen size
+  const maxDescriptionLength = {
+    sm: 50, // Small devices (mobile)
+    md: 75, // Medium devices (tablet)
+    lg: 100, // Large devices (desktop)
+  };
+
+  const getDescriptionSnippet = () => {
+    const windowWidth = window.innerWidth;
+    let maxLength = maxDescriptionLength.sm;
+
+    if (windowWidth >= 800) {
+      maxLength = maxDescriptionLength.md;
+    }
+    if (windowWidth >= 1024) {
+      maxLength = maxDescriptionLength.lg;
+    }
+
+    return description ? description.slice(0, maxLength) + '...' : '';
+  };
 
   return (
     <div className="relative w-full lg:h-[35rem] md:h-[28rem] h-[22rem]">
-      {/* Carousel Image */}
       <div className="overflow-hidden rounded-lg w-full h-full">
         <img
-          src={images[currentImage].src}
-          alt={images[currentImage].alt}
+          src={image} 
+          alt={title}
           className="w-full h-full object-cover"
         />
       </div>
 
-      <div className="absolute bottom-4 right-4 flex flex-row gap-2">
+      <div className="absolute bottom-16 lg:bottom-4  left-4  text-white bg-black bg-opacity-50 p-2 rounded">
+        <h3 className="font-bold text-sm md:text-lg lg:text-xl">{title}</h3>
+        <p className="text-xs md:text-sm lg:text-base">{getDescriptionSnippet()}</p> 
+      </div>
+
+      <div className="absolute bottom-4 right-4 flex flex-row gap-1">
         <button
-          className="p-2 bg-white rounded-full shadow cursor-pointer"
+          className="text-[24px] text-gray-400 hover:text-black p-2 bg-white dark:bg-[#1c1c24] dark:bg-opacity-50 dark:text-white rounded-full"
           onClick={handlePrev}
         >
-          <img src={leftArrow} alt="Previous" className="w-6 h-6" />
+          <FaChevronLeft />
         </button>
 
         <button
-          className="p-2 bg-white rounded-full shadow cursor-pointer"
+          className="text-[24px] text-gray-400 hover:text-black p-2 bg-white dark:bg-[#1c1c24] dark:bg-opacity-50 dark:text-white rounded-full"
           onClick={handleNext}
         >
-          <img src={rightArrow} alt="Next" className="w-6 h-6" />
+          <FaChevronRight />
         </button>
       </div>
     </div>

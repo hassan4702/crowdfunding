@@ -1,58 +1,59 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import email from '../assets/email.png';
 import { FaInstagram } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
-import { FaShopify } from 'react-icons/fa';
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
-    <footer className=" py-12 bg-white dark:bg-[#1c1c24]">
+    <footer className=" py-12 bg-white dark:bg-[#1c1c24] rounded-[15px]">
       <div className="container mx-auto px-10">
         <div className="flex flex-wrap -mx-4 justify-between">
           <div className="w-full md:w-1/4 px-4 mb-8 md:mb-0">
             <h3 className=" font-bold mb-4">Explore</h3>
             <ul className="">
-              <li className="mb-2"><a href="#">What We Do</a></li>
-              <li className="mb-2"><a href="#">Funding</a></li>
+              <li className="mb-2 cursor-pointer" onClick={() => navigate("/WhatWeDo")}>What We Do</li>
+              <li className="mb-2 cursor-pointer"><a href="#">Funding</a></li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 px-4 mb-8 md:mb-0">
             <h3 className=" font-bold mb-4">About</h3>
             <ul className="">
-              <li className="mb-2"><a href="#">About Us</a></li>
-              <li className="mb-2"><a href="#">Blog</a></li>
-              <li className="mb-2"><a href="#">Trust & Safety</a></li>
-              <li className="mb-2"><a href="#">Help & Support</a></li>
-              <li className="mb-2"><a href="#">Press</a></li>
-              <li className="mb-2"><a href="#">Careers</a></li>
-              <li className="mb-2"><a href="#">Contact</a></li>
+              <li className="mb-2 cursor-pointer" onClick={() => navigate("/About")}>About</li>
+              <li className="mb-2 cursor-pointer" >Blog</li>
+              <li className="mb-2 cursor-pointer" onClick={() => navigate("/TrustAndSafety")}>Trust & Safety</li>
+              <li className="mb-2 cursor-pointer" onClick={() => navigate("/HelpAndSupport")}>Help & Support</li>
+              <li className="mb-2 cursor-pointer">Press</li>
+              <li className="mb-2 cursor-pointer">Careers</li>
+              <li className="mb-2 cursor-pointer" onClick={() => navigate("/Contact")}>Contact</li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 px-4 mb-8 md:mb-0">
             <h3 className=" font-bold mb-4">Entrepreneurs</h3>
             <ul className="">
-              <li className="mb-2"><a href="#">How It Works</a></li>
-              <li className="mb-2"><a href="#">Block Fund vs. Kickstarter</a></li>
-              <li className="mb-2"><a href="#">Education Cerner</a></li>
-              <li className="mb-2"><a href="#">Experts Directory</a></li>
-              <li className="mb-2"><a href="#">Fees</a></li>
-              <li className="mb-2"><a href="#">Enterprise</a></li>
-              <li className="mb-2"><a href="#">China</a></li>
+              <li className="mb-2 cursor-pointer" onClick={() => navigate("/HowItWorks")}>How It Works</li>
+              <li className="mb-2 cursor-pointer" onClick={() => navigate("/BlockFundVsKickstarter")}>Block Fund vs. Kickstarter</li>
+              <li className="mb-2 cursor-pointer" >Education Cerner</li>
+              <li className="mb-2 cursor-pointer" onClick={() => navigate("/FindExperts")}>Experts Directory</li>
+              <li className="mb-2 cursor-pointer">Fees</li>
+              <li className="mb-2 cursor-pointer">Enterprise</li>
+              <li className="mb-2 cursor-pointer">China</li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 px-4">
             <img src={email} alt="Logo" className="w-16 mb-4 mx-auto" />
             <h4 className=" font-bold mb-2 text-center">Find it first on Block Fund</h4>
             <a href="#" className=" mb-6 block text-center">Discover new and clever products in the Block Fund newsletter</a>
-            <input type="email" placeholder="Your email address" className="bg-gray-700 text-white px-4 py-2 mb-4 block w-full rounded" />
+            <input type="email" placeholder="Your email address" className="bg-[#f2f2f2] dark:bg-[#0e0d0d] px-4 py-2 mb-4 block w-full rounded" />
             <label className="flex mb-4">
               <input type="checkbox" className="mr-2" />
               <span className="text-sm text-justify">I agree to the <span className='font-bold underline'><a href='#'>Terms of Use</a></span> and have read and understand the <span className='font-bold underline'><a href='#'>Privacy Policy</a></span></span>
             </label>
-            <button className="bg-[#8c6dfd] px-6 py-3 rounded hover:bg-[#7359d3] transition-colors w-full">Sign Me Up</button>
+            <button className="bg-[#8c6dfd] px-6 py-3 rounded hover:bg-[#7359d3] text-white transition-colors w-full">Sign Me Up</button>
           </div>
         </div>
 
@@ -64,7 +65,6 @@ const Footer = () => {
             <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaTwitter /></a>
             <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaLinkedin /></a>
             <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaYoutube /></a>
-            <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaShopify /></a>
           </div>
         </div>
 
