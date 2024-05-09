@@ -275,11 +275,13 @@ const Home = () => {
   
   useEffect(() => {
     if(contract) fetchCampaigns();
-  }, [address, contract]);
+  }, [address, contract]);     
+  
+
 
   return (
 <>
-    {/* <Upload/> */}
+    <Upload/>
     {/* <TermsOfUse /> */}
     
 <div>{campaigns.map((index)=>{

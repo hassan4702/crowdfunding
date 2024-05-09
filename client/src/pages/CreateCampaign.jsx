@@ -47,8 +47,6 @@ const CreateCampaign = () => {
         options: { uploadWithGatewayUrl: true },
       });
       setForm({ ...form, image: uploadUrl[0].toString() });
-      console.log('uploadUrl:', uploadUrl[0].toString())
-      console.log('form:', form); 
       await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18),image: uploadUrl[0].toString()});
       navigate('/');
     } catch (error) {
