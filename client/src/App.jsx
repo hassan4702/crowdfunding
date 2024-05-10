@@ -18,7 +18,6 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Crowdfunding from './pages/Crowdfunding';
 import TrustAndSafety from './pages/TrustAndSafety';
 import ExploreProjects from './pages/ExploreProjects';
-import ViewCareers from './pages/ViewCareers';
 import {EducationCampaigns, TravelAndOutdoors, Technology, SocialImpact, HealthAndFitness, ArtsAndCulture } from './pages';
 
 const App = () => {
@@ -57,7 +56,6 @@ const App = () => {
           <Route path="/HealthAndFitness" element={<HealthAndFitness/>} />
           <Route path="/ArtsAndCulture" element={<ArtsAndCulture/>} />
           <Route path="/ExploreProjects" element={<ExploreProjects/>} />
-          <Route path="/ViewCareers" element={<ViewCareers/>} />
         </Routes>
       </div>
     </div>

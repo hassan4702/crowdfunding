@@ -66,7 +66,7 @@ const Card = ({ image, name, description, link, route }) => {
         alt={name}
       />
       <div className="px-6 py-4 text-center">
-        <div className="font-bold text-xl mb-2">{name}</div>
+        <div className="font-semibold text-xl mb-2">{name}</div>
         <p className="text-md">{description}</p>
         <p className="text-[#8c6dfd]">{link}</p>
       </div>

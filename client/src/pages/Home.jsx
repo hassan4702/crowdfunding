@@ -275,22 +275,13 @@ const Home = () => {
   
   useEffect(() => {
     if(contract) fetchCampaigns();
-  }, [address, contract]);     
-  
-
+  }, [address, contract]);
 
   return (
 <>
-    <Upload/>
+    {/* <Upload/> */}
     {/* <TermsOfUse /> */}
-    
-<div>{campaigns.map((index)=>{
-  if (index.category==="fundraiser") {
-    index.title
-  }
-}
-)}</div>    
-    <Carousel/>
+    <Carousel />
     <DisplayCampaigns
       title="All Campaigns"
       isLoading={isLoading}

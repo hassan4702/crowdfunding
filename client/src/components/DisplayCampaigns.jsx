@@ -84,7 +84,6 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
             </p>
           ) : (
             displayedCampaigns.map((campaign) => (
-              
               <FundCard
                 key={uuidv4()}
                 {...campaign}

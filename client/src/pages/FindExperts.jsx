@@ -5,6 +5,7 @@ import creative from '../assets/creative.png';
 import marketing from '../assets/marketing.png';
 import fulfillment from '../assets/fulfillment.png';
 import prototype from '../assets/prototype.png';
+import Footer from '../components/Footer';
 const cardsData = [
     {
       image: creative,
@@ -69,19 +70,20 @@ const FindExperts = () => {
                 <h1 className="text-4xl sm:text-4xl lg:text-4xl font-bold text-center mb-1">Categories</h1>
             </div>
 
-            <div className="flex justify-center xs:justify-center md:justify-center sm:justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg">
-          {cardsData.map((card) => (
-            <Card
-              image={card.image}
-              name={card.name}
-              description={card.description}
-              link={card.link}
-            />
-          ))}
-        </div>
-      </div>
-        </>
+            <div className="flex justify-center xs:justify-center md:justify-center sm:justify-center mb-20">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg">
+                {cardsData.map((card) => (
+                  <Card
+                  image={card.image}
+                  name={card.name}
+                  description={card.description}
+                  link={card.link}
+                  />
+                ))}
+              </div>
+            </div>
+        <Footer />
+      </>
     )
 }
 export default FindExperts;

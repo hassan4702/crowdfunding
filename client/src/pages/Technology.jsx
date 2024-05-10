@@ -39,7 +39,7 @@ const Technology = () => {
                 alt={campaign.title}
                 className="w-full h-48 object-cover rounded-[15px]"
               />
-              <h3 className="text-xl font-bold px-3 mt-4">{campaign.title}</h3>
+              <h3 className="text-lg font-semibold px-3 mt-4">{campaign.title}</h3>
               <p className="text-gray-600 dark:text-gray-400 mt-2 px-3">
                 {campaign.description.slice(0, 20) + '...'}
               </p>

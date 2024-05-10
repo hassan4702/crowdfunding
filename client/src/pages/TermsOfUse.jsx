@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 const TermsOfUse = () => {
+    const navigate = useNavigate();
     const [selectedSection, setSelectedSection] = useState(null);
 
     const handleLinkClick = (event, section) => {
@@ -82,16 +84,13 @@ const TermsOfUse = () => {
                 <p className='text-xl'>The following policies and guidelines are incorporated into the Terms by reference.</p>
                 <ol className='list-decimal text-xl ml-5 mt-4'>
                     <li className='pb-4'>
-                        <a href='#' className='text-[#808191] text-xl'>Help Center</a>
+                        <div className='text-[#808191] text-xl cursor-pointer' onClick={() => navigate("/HelpAndSupport")}>Help Center</div>
                     </li>
                     <li className='pb-4'>
-                        <a href='#' className='text-[#808191] text-xl'>Community Guidelines</a>
+                        <div  className='text-[#808191] text-xl cursor-pointer' onClick={() => navigate("/communityGuidelines")}>Community Guidelines</div>
                     </li>
                     <li className='pb-4'>
-                        <a href='#' className='text-[#808191] text-xl'>Block Fund Privacy Policy</a>
-                    </li>
-                    <li className='pb-4'>
-                        <a href='#' className='text-[#808191] text-xl'>Block Fund Cookies Policy</a>
+                        <div className='text-[#808191] text-xl cursor-pointer' onClick={() => navigate("/PrivacyPolicy")}>Block Fund Privacy Policy</div>
                     </li>
                 </ol>
             </div>

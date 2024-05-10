@@ -35,8 +35,8 @@ const Card = ({ image, name, description, link }) => {
         <img className="mx-auto w-24 h-24" src={image} alt={name} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-center">{name}</div>
-        <p className="text-sm text-justify pb-10">{description}</p>
-        <a href="" className="text-[#8c6dfd] text-center font-bold">{link}</a>
+        <p className="text-sm text-justify pb-6">{description}</p>
+        <a href="" className="text-[#8c6dfd] text-center font-semibold">{link}</a>
       </div>
     </div>
   );
@@ -44,7 +44,7 @@ const Card = ({ image, name, description, link }) => {
 
 const ReadToGo = () => {
     return (
-      <div className="container mx-auto">
+      <div className="container mx-auto mb-20">
         <div className="flex flex-wrap justify-center ">
           {cardsData.map((card) => (
             <Card

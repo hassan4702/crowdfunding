@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Carousel from '../components/Carousel';
 import HowItWorksCard from '../components/HowItWorksCard';
 import Experts from '../components/Experts';
 import ReadyToGo from '../components/ReadyToGo';
 import HowItWork from '../assets/HowItWork.jpg';
+import Footer from '../components/Footer';
 const HowItWorks = () => {
+    const navigate = useNavigate();
     return(
         <>
             <Carousel />
@@ -26,7 +29,7 @@ const HowItWorks = () => {
             </div>
             <div className="flex flex-col items-center justify-center mb-10">
                 <p className="text-center">Find Block Fund-vetted companies to help you launch your campaign and take your product to market.</p>
-                <button className="bg-[#8c6dfd] text-white py-2 px-4 rounded mt-2 font-bold">FIND EXPERTS</button>
+                <button className="bg-[#8c6dfd] text-white py-2 px-4 rounded mt-2 font-semibold" onClick={() => navigate("/FindExperts")}>FIND EXPERTS</button>
             </div>
 
             <div className="px-4 sm:px-6 lg:px-8 py-12">
@@ -41,6 +44,7 @@ const HowItWorks = () => {
             </div>
 
             <ReadyToGo />
+            <Footer />
         </>
     )
 }

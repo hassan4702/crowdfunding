@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Help from '../assets/Help.png';
 import HelpFooter from '../assets/HelpFooter.png';
 import HelpCards from '../components/HelpCards';
@@ -9,18 +10,21 @@ const cardsData = [
     image: BestPractice,
     name: "Learn Best Paractices",
     description: "Find advice about everything from planning your launch to shipping your product via articles, guide, webinars and more.",
-    link: "See Education Center"
+    link: "See Education Center",
+    route: "/EducationCampaigns",
   },
   {
     image: ConnectToExperts,
     name: "Connect to Experts",
     description: "Take your further with these experienced companies recommended by Block Fund campaigners and staff.",
-    link: "See Education Center"
+    link: "See Expert Directory",
+    route: "/FindExperts",
   },
 ];
-const Card = ({ image, name, description, link }) => {
+const Card = ({ image, name, description, link, route }) => {
+  const navigate = useNavigate();
 return (
-  <div className="max-w-lg rounded-[15px] overflow-hidden shadow-lg bg-white dark:bg-[#1c1c24] m-4 hover:-translate-y-1 ">
+  <div className="max-w-lg rounded-[15px] overflow-hidden shadow-lg bg-white dark:bg-[#1c1c24] m-4 hover:-translate-y-1 " onClick={() => navigate(route)}>
       <a href="">
       <img className="mx-auto w-full" src={image} alt={name} />
     <div className="px-6 py-4">
@@ -34,6 +38,7 @@ return (
 };
 
 const HelpAndSupport = () => {
+  const navigate = useNavigate();
   return (
     <div className="">
       <div className="relative mb-20">
@@ -63,6 +68,7 @@ const HelpAndSupport = () => {
               name={card.name}
               description={card.description}
               link={card.link}
+              route={card.route}
             />
           ))}
         </div>
@@ -75,7 +81,7 @@ const HelpAndSupport = () => {
             <h1 className="text-3xl font-bold ">
               Still can't find what you need?
             </h1>
-            <button className="bg-[#8c6dfd] text-white py-2 px-4 rounded mt-10 mb-4">CONTACT SUPPORT</button>
+            <button className="bg-[#8c6dfd] text-white py-2 px-4 rounded mt-10 mb-4" onClick={() => navigate("/Contact")}>CONTACT SUPPORT</button>
           </div>
         </div>
       </div>

@@ -9,10 +9,12 @@ import perk from '../assets/perk.png';
 import SuperTroopers from '../assets/SuperTroopers.png';
 import MisfitShine from '../assets/MisfitShine.png';
 import Journey from '../assets/Journey.png';
+import Footer from '../components/Footer';
 const WhatWeDo = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center justify-center pb-20">
+    <>
+    <div className="flex flex-col items-center justify-center mb-10">
 
       {/* Tech Image Section */}
         <div className="relative">
@@ -179,6 +181,8 @@ const WhatWeDo = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

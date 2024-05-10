@@ -61,7 +61,7 @@ const Carousel = ({ autoPlayInterval = 5000 }) => {
   const maxDescriptionLength = {
     sm: 50, // Small devices (mobile)
     md: 75, // Medium devices (tablet)
-    lg: 100, // Large devices (desktop)
+    lg: 200, // Large devices (desktop)
   };
 
   const getDescriptionSnippet = () => {
@@ -88,9 +88,9 @@ const Carousel = ({ autoPlayInterval = 5000 }) => {
         />
       </div>
 
-      <div className="absolute bottom-16 lg:bottom-4  left-4  text-white bg-black bg-opacity-50 p-2 rounded">
-        <h3 className="font-bold text-sm md:text-lg lg:text-xl">{title}</h3>
-        <p className="text-xs md:text-sm lg:text-base">{getDescriptionSnippet()}</p> 
+      <div className="absolute bottom-24 lg:bottom-40 lg:left-20 left-4 right-4 p-2">
+        <h3 className="font-bold text-xl lg:w-2/3 md:text-2xl lg:text-3xl lg:text-justify text-black">{title}</h3>
+        <p className="text-xl lg:w-2/3 lg:text-justify text-black">{getDescriptionSnippet()}</p> 
       </div>
 
       <div className="absolute bottom-4 right-4 flex flex-row gap-1">

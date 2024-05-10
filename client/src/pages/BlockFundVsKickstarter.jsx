@@ -3,6 +3,7 @@ import business from '../assets/business.jpg';
 import PARTNERSHIPS from '../assets/PARTNERSHIPS.png';
 import CUTTINGEDGETOOLS from '../assets/CUTTINGEDGETOOLS.png';
 import WORLDWIDE from '../assets/WORLDWIDE.png';
+import Footer from '../components/Footer';
 const BlockFundVsKickstarter = () =>{
     return(
         <>
@@ -77,6 +78,7 @@ const BlockFundVsKickstarter = () =>{
             <div className="text-center my-8 max-w-3xl mx-auto">
                 <p className="text-justify text-lg pb-8">Block Fund embodies flexibility and global reach, granting creators the freedom to raise funds for any project from anywhere in the world. Whether you're launching a local initiative or targeting a global audience, our platform empowers you to harness the power of crowdfunding without limitations. With seamless access to a diverse pool of backers and a borderless approach to fundraising, Block Fund enables you to realize your vision on a truly international scale, breaking down barriers and unlocking opportunities for success.</p>
             </div>
+            <Footer />
         </>
     )
 }

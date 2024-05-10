@@ -41,7 +41,7 @@ const Card = ({ image, name }) => {
 
 const Experts = () => {
     return (
-      <div className="flex justify-center xs:justify-center md:justify-center sm:justify-center">
+      <div className="flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-screen-lg">
           {cardsData.map((card) => (
             <Card
