@@ -1,37 +1,42 @@
-import { createCampaign, dashboard, logout, payment, profile, withdraw } from '../assets';
+import { MdDashboard, MdCampaign, MdAccountCircle, MdPayment, MdExitToApp } from 'react-icons/md';
 
 export const navlinks = [
   {
     name: 'dashboard',
-    imgUrl: dashboard,
+    iconLight: MdDashboard,
+    iconDark: MdDashboard,
     link: '/',
   },
   {
     name: 'campaign',
-    imgUrl: createCampaign,
+    iconLight: MdCampaign,
+    iconDark: MdCampaign,
     link: '/create-campaign',
   },
   {
     name: 'payment',
-    imgUrl: payment,
+    iconLight: MdPayment,
+    iconDark: MdPayment,
     link: '/',
     disabled: true,
   },
-  
   // {
   //   name: 'withdraw',
-  //   imgUrl: withdraw,
+  //   iconLight: WithdrawIconLight,
+  //   iconDark: WithdrawIconDark,
   //   link: '/',
   //   disabled: true,
   // },
   {
     name: 'profile',
-    imgUrl: profile,
+    iconLight: MdAccountCircle,
+    iconDark: MdAccountCircle,
     link: '/profile',
   },
   {
     name: 'logout',
-    imgUrl: logout,
+    iconLight: MdExitToApp,
+    iconDark: MdExitToApp,
     link: '/',
     disabled: true,
   },

@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-import { logo, sun } from '../assets';
 import { navlinks } from '../constants';
 import BlockFundLogo from '../assets/BlockFundLogo.png';
-const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
-  <div className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disabled && 'cursor-pointer'} ${styles}`} onClick={handleClick}>
-    {!isActive ? (
-      <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2  " />
-    ) : (
-      <img src={imgUrl} alt="fund_logo" className={`w-1/2 h-1/2 ${isActive !== name && 'grayscale'}`} />
-    )}
-  </div>
-);
+import { MdWbSunny }  from 'react-icons/md';
+import { FaMoon } from 'react-icons/fa';
+
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState('dashboard');
@@ -31,26 +23,35 @@ const Sidebar = () => {
   return (
     <div className="flex justify-between items-center flex-col sticky top-5 h-[93vh]">
       <Link to="/">
-      <img src={BlockFundLogo} width={"50px"} height={"50px"} alt="logo" className=" rounded-md" />
+        <img src={BlockFundLogo} width={"50px"} height={"50px"} alt="logo" className="rounded-md" />
       </Link>
 
-      <div className="flex-1 flex flex-col justify-between items-center  bg-[#1c1c24] rounded-[20px] w-[76px] py-4 mt-12">
+      <div className={`flex-1 flex flex-col justify-between items-center ${theme === 'light' ? 'bg-white' : 'dark:bg-[#1c1c24]'} rounded-[20px] w-[76px] py-4 mt-12`}>
         <div className="flex flex-col justify-center items-center gap-3">
-          {navlinks.map((link) => (
-            <Icon 
-              key={link.name}
-              {...link}
-              isActive={isActive}
-              handleClick={() => {
-                if(!link.disabled) {
-                  setIsActive(link.name);
-                  navigate(link.link);
-                }
-              }}
-            />
-          ))}
+          {navlinks.map((link) => {
+            const IconComponent = theme === 'light' ? link.iconLight : link.iconDark;
+            return (
+              <div
+                key={link.name}
+                className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === link.name && (theme === 'light' ? 'bg-gray-100' : 'dark:bg-[#2c2f32]')} flex justify-center items-center ${!link.disabled && 'cursor-pointer'}`}
+                onClick={() => {
+                  if (!link.disabled) {
+                    setIsActive(link.name);
+                    navigate(link.link);
+                  }
+                }}
+              >
+                <IconComponent size={24} />
+              </div>
+            );
+          })}
         </div>
-        <Icon styles="bg-[#1c1c24] " imgUrl={sun} handleClick={toggleTheme} />
+        <div
+          className={`w-[48px] h-[48px] rounded-[10px] ${theme === 'light' ? 'bg-gray-100' : 'dark:bg-[#1c1c24]'} flex justify-center items-center cursor-pointer`}
+          onClick={toggleTheme}
+        >
+          {theme === 'light' ? <MdWbSunny size={24} /> : <FaMoon size={20}  />}
+        </div>
       </div>
     </div>
   );
