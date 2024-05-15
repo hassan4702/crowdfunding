@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useStateContext } from '../context';
-import { Loader } from '../components';
+import { DisplayCampaigns, Loader } from '../components';
 import { useNavigate } from 'react-router-dom';
 
 const EducationCampaigns = () => {
@@ -32,29 +32,33 @@ const EducationCampaigns = () => {
         {campaigns.length === 0 ? (
           <div>No campaigns found.</div> 
         ) : (
-          campaigns.map((campaign) => (
-            <div key={campaign.id} className="bg-white dark:bg-[#1c1c24] pb-6 rounded-[15px] shadow-lg">
-              <img
-                src={campaign.image} 
-                alt={campaign.title}
-                className="w-full h-48 object-cover rounded-[15px]"
-              />
-              <h3 className="text-lg font-semibold px-3 mt-4">{campaign.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 mt-2 px-3">
-                {campaign.description.slice(0, 20) + '...'}
-              </p>
-              <a
-                href={`/campaign/${campaign.id}`}
-                className="mt-4 bg-[#8c6dfd] text-white py-2 px-4 mx-3 rounded-lg hover:bg-[#8062eb] block text-center"
-                onClick={(e) => {
-                  e.preventDefault(); 
-                  navigate(`/campaign-details/${campaign.title}`, { state: campaign }); 
-                }}
-              >
-                View Campaign
-              </a>
-            </div>
-          ))
+          // campaigns.map((campaign) => (
+          //   <div key={campaign.id} className="bg-white dark:bg-[#1c1c24] pb-6 rounded-[15px] shadow-lg">
+          //     <img
+          //       src={campaign.image} 
+          //       alt={campaign.title}
+          //       className="w-full h-48 object-cover rounded-[15px]"
+          //     />
+          //     <h3 className="text-lg font-semibold px-3 mt-4">{campaign.title}</h3>
+          //     <p className="text-gray-600 dark:text-gray-400 mt-2 px-3">
+          //       {campaign.description.slice(0, 20) + '...'}
+          //     </p>
+          //     <a
+          //       href={`/campaign/${campaign.id}`}
+          //       className="mt-4 bg-[#8c6dfd] text-white py-2 px-4 mx-3 rounded-lg hover:bg-[#8062eb] block text-center"
+          //       onClick={(e) => {
+          //         e.preventDefault(); 
+          //         navigate(`/campaign-details/${campaign.title}`, { state: campaign }); 
+          //       }}
+          //     >
+          //       View Campaign
+          //     </a>
+          //   </div>
+          
+          // ))
+          <DisplayCampaigns
+          campaigns={campaigns.filter((campaign) => campaign.category === 'Education')}
+          />
         )}
       </div>
     </div>

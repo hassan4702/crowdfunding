@@ -10,7 +10,6 @@ const TopFinds = () => {
     const data = await getCampaigns();
     setCampaigns(data);
     setIsLoading(false);
-    console.log(campaigns.filter((camp) => camp.category === "Fundraiser"));
   };
 
   useEffect(() => {
