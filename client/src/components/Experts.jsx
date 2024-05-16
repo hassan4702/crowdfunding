@@ -4,6 +4,7 @@ import creative from '../assets/creative.png';
 import marketing from '../assets/marketing.png';
 import fulfillment from '../assets/fulfillment.png';
 import prototype from '../assets/prototype.png';
+
 const cardsData = [
     {
       image: creative,
