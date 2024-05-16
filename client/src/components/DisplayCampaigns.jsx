@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import FundCard from './FundCard';
 import { loader } from '../assets';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -9,7 +8,6 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const navigate = useNavigate();
   const [startIndex, setStartIndex] = useState(0);
 
-  // Determine screen sizes and page sizes
   const extralargeScreenSize = 4; // For large screens
   const mediumScreenSize = 3; // For medium screens
   const smallScreenSize = 2; // For small screens
@@ -18,14 +16,14 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const getPageSize = () => {
     const width = window.innerWidth;
     if (width >= 1200) {
-            return extralargeScreenSize;
-          } else if (width >= 1010) {
-            return mediumScreenSize;
-          }else if (width >= 750) {
-            return smallScreenSize;
-          } else {
-            return extrasmallScreenSize;
-          }
+      return extralargeScreenSize;
+    } else if (width >= 1010) {
+      return mediumScreenSize;
+    } else if (width >= 750) {
+      return smallScreenSize;
+    } else {
+      return extrasmallScreenSize;
+    }
   };
 
   const [pageSize, setPageSize] = useState(getPageSize());
@@ -54,17 +52,24 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   };
 
   const displayedCampaigns = campaigns.slice(startIndex, startIndex + pageSize);
-
   const totalPages = Math.ceil(campaigns.length / pageSize);
   const currentPage = startIndex / pageSize;
 
   const handleNavigate = (campaign) => {
-    navigate(`/campaign-details/${campaign.title}`, { state: campaign })
-  }
+    navigate(`/campaign-details/${campaign.title}`, { state: campaign });
+  };
 
   return (
     <div>
-      <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">Recent Finds</h1>
+      <div className='flex justify-between'>
+        <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">Recent Finds</h1>
+        <h1 
+          className="font-epilogue font-semibold text-[18px] my-10 text-left cursor-pointer" 
+          onClick={() => navigate("/ExploreProjects")}
+        >
+          All Campaigns
+        </h1>
+      </div>
 
       <div className="flex justify-between items-center mt-[10px]">
         <button
@@ -85,7 +90,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
           ) : (
             displayedCampaigns.map((campaign) => (
               <FundCard
-                key={uuidv4()}
+                key={campaign.id}
                 {...campaign}
                 handleClick={() => handleNavigate(campaign)}
               />
@@ -102,7 +107,6 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
         </button>
       </div>
 
-      {/* Dots Navigation */}
       <div className="flex justify-center mt-[14px]">
         {Array.from({ length: totalPages }, (_, index) => (
           <div

@@ -62,7 +62,7 @@ const CampaignDetails = () => {
             alt="campaign"
             className="w-full h-[410px] overflow-auto object-cover rounded-xl"
           />
-          <div className="relative w-full h-[5px] bg-[#3a3a43] mt-2">
+          <div className="relative w-full h-[5px] bg-[#8c6dfd] mt-2">
             <div
               className="absolute h-full bg-[#4acd8d]"
               style={{

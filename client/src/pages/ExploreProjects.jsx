@@ -3,6 +3,7 @@ import { useStateContext } from '../context';
 import { Loader } from '../components';
 import { useNavigate } from 'react-router-dom';
 import ExploreProject from '../assets/ExploreProject.jpg';
+import FundCard from '../components/FundCard';
 
 const ExploreProjects = () => {
   const { contract, getCampaigns } = useStateContext();
@@ -22,6 +23,10 @@ const ExploreProjects = () => {
     if (contract) fetchCampaigns(); 
   }, [contract]);
 
+  const handleNavigate = (campaign) => {
+    navigate(`/campaign-details/${campaign.title}`, { state: campaign });
+  };
+
   if (isLoading) {
     return <Loader />; 
   }
@@ -29,7 +34,7 @@ const ExploreProjects = () => {
   return (
     <div className="p-6">
       <div className="relative">
-        <img src={ExploreProject} alt="Help" className="w-full lg:h-96 h-[20rem] object-cover mb-6" />
+        <img src={ExploreProject} alt="Explore Projects" className="w-full lg:h-[20rem] h-[18rem] object-cover mb-6" />
         <div className="absolute inset-0 flex flex-col justify-center items-center">
           <div className="max-w-2xl mx-auto text-center">
             <h1 className="text-4xl font-semibold text-white">
@@ -38,32 +43,16 @@ const ExploreProjects = () => {
           </div>
         </div>
       </div>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"> 
+      <div className="flex flex-wrap gap-8 justify-center"> 
         {campaigns.length === 0 ? (
           <div>No campaigns found.</div> 
         ) : (
           campaigns.map((campaign) => (
-            <div key={campaign.id} className="bg-white dark:bg-[#1c1c24] pb-6 rounded-[15px] shadow-lg">
-              <img
-                src={campaign.image} 
-                alt={campaign.title}
-                className="w-full h-48 object-cover rounded-[15px]"
-              />
-              <h3 className="text-xl font-bold px-3 mt-4">{campaign.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 mt-2 px-3">
-                {campaign.description.slice(0, 20) + '...'}
-              </p>
-              <a
-                href={`/campaign/${campaign.id}`}
-                className="mt-4 bg-[#8c6dfd] text-white py-2 px-4 mx-3 rounded-lg hover:bg-[#8062eb] block text-center"
-                onClick={(e) => {
-                  e.preventDefault(); 
-                  navigate(`/campaign-details/${campaign.title}`, { state: campaign }); 
-                }}
-              >
-                View Campaign
-              </a>
-            </div>
+            <FundCard
+              key={campaign.id}
+              {...campaign}
+              handleClick={() => handleNavigate(campaign)}
+            />
           ))
         )}
       </div>

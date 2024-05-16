@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Carousel from '../components/Carousel';
-import HowItWorksCard from '../components/HowItWorksCard';
 import Experts from '../components/Experts';
 import ReadyToGo from '../components/ReadyToGo';
 import HowItWork from '../assets/HowItWork.jpg';
@@ -11,11 +10,10 @@ const HowItWorks = () => {
     return(
         <>
             <Carousel />
-            <div className="px-4 sm:px-6 lg:px-8 py-12">
-                <h1 className="text-4xl sm:text-4xl lg:text-4xl font-bold text-center mb-1">Dream it. Fund it. Make it. Ship it.</h1>
-                <h1 className="text-4xl sm:text-4xl lg:text-4xl font-bold text-center">We help at every step from concept to market.</h1>
+            <div className="px-4 sm:px-6 lg:px-8 pt-12">
+                <h1 className="text-2xl lg:text-3xl font-semibold text-center mb-1">Dream it. Fund it. Make it. Ship it.</h1>
+                <h1 className="text-2xl lg:text-3xl font-semibold text-center">We help at every step from concept to market.</h1>
             </div>
-            <HowItWorksCard />
 
             <div className="relative mt-10">
                 <img src={HowItWork} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover rounded-[15px]" />
@@ -33,13 +31,13 @@ const HowItWorks = () => {
             </div>
 
             <div className="px-4 sm:px-6 lg:px-8 py-12">
-                <h1 className="text-4xl sm:text-4xl lg:text-4xl font-bold text-center mb-1">All the Right Experts to Help Your Business</h1>
+                <h1 className="text-2xl  lg:text-3xl font-semibold text-center mb-1">All the Right Experts to Help Your Business</h1>
             </div>
 
             <Experts />
 
             <div className="px-4 sm:px-6 lg:px-48 py-12 ">
-                <h1 className="text-4xl sm:text-4xl lg:text-4xl font-bold text-center mb-1">Ready to Go?</h1>
+                <h1 className="text-2xl lg:text-3xl font-semibold text-center mb-1">Ready to Go?</h1>
                 <p className="text-center text-lg ">You're only a step away from kicking off your entrepreneurial adventure on Block Fund. Here's where to go next:</p>
             </div>
 

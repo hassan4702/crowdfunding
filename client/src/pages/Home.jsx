@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { DisplayCampaigns } from "../components";
 import { useStateContext } from "../context";
 import Footer from "../components/Footer";

@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { Sidebar,Navbar } from './components';
 import { CampaignDetails, CreateCampaign, Home, Profile } from './pages';
+import AllCampaigns from './components/AllCampaigns';
 import UpdateCampaign from './pages/UpdateCampaign';
 import About from './pages/About';
 import WhatWeDo from './pages/WhatWeDo';
@@ -18,6 +19,12 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Crowdfunding from './pages/Crowdfunding';
 import TrustAndSafety from './pages/TrustAndSafety';
 import ExploreProjects from './pages/ExploreProjects';
+import Memorial from './pages/Memorial';
+import Competition from './pages/Competition';
+import PrototypingandProduction from './pages/PrototypingandProduction';
+import CreativeServices from './pages/CreativeServices';
+import Fulfillment from './pages/Fulfillment';
+import HelpDetails from './pages/HelpDetails';
 import {EducationCampaigns, TravelAndOutdoors, Technology, SocialImpact, HealthAndFitness, ArtsAndCulture } from './pages';
 
 const App = () => {
@@ -56,6 +63,13 @@ const App = () => {
           <Route path="/HealthAndFitness" element={<HealthAndFitness/>} />
           <Route path="/ArtsAndCulture" element={<ArtsAndCulture/>} />
           <Route path="/ExploreProjects" element={<ExploreProjects/>} />
+          <Route path="/AllCampaigns" element={<AllCampaigns/>} />
+          <Route path="/Memorial" element={<Memorial/>} />
+          <Route path="/Competition" element={<Competition/>} />
+          <Route path="/PrototypingandProduction" element={<PrototypingandProduction/>} />
+          <Route path="/CreativeServices" element={<CreativeServices/>} />
+          <Route path="/Fulfillment" element={<Fulfillment/>} />
+          <Route path="/HelpDetails" element={<HelpDetails/>} />
         </Routes>
       </div>
     </div>

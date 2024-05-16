@@ -3,7 +3,7 @@ import { useStateContext } from '../context';
 import { AllCampaigns, Loader } from '../components';
 import { useNavigate } from 'react-router-dom';
 
-const SocialImpact = () => {
+const Memorial = () => {
   const { contract, getCampaigns } = useStateContext();
   const navigate = useNavigate(); 
 
@@ -27,13 +27,13 @@ const SocialImpact = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6 text-center">Social Impact</h1>
+      <h1 className="text-2xl font-bold mb-6 text-center">Memorial</h1>
       <div className="flex"> 
         {campaigns.length === 0 ? (
           <div>No campaigns found.</div> 
         ) : (
           <AllCampaigns
-          campaigns={campaigns.filter((campaign) => campaign.category === 'Environment')}
+          campaigns={campaigns.filter((campaign) => campaign.category === 'Memorial')}
           />
         )}
       </div>
@@ -41,4 +41,4 @@ const SocialImpact = () => {
   );
 };
 
-export default SocialImpact;
+export default Memorial;

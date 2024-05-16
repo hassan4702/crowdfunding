@@ -6,4 +6,5 @@ export { default as DisplayCampaigns } from './DisplayCampaigns';
 export { default as FundCard } from './FundCard';
 export { default as CountBox } from './CountBox';
 export { default as Loader } from './Loader';
+export { default as AllCampaigns } from './AllCampaigns';
 // export { default as CardsGrid } from './CardsGrid';

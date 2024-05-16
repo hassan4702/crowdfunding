@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import email from '../assets/email.png';
 import { FaInstagram } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -24,11 +24,8 @@ const Footer = () => {
             <h3 className=" font-bold mb-4">About</h3>
             <ul className="">
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/About")}>About</li>
-              <li className="mb-2 cursor-pointer" >Blog</li>
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/TrustAndSafety")}>Trust & Safety</li>
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/HelpAndSupport")}>Help & Support</li>
-              <li className="mb-2 cursor-pointer">Press</li>
-              <li className="mb-2 cursor-pointer">Careers</li>
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/Contact")}>Contact</li>
             </ul>
           </div>
@@ -39,21 +36,19 @@ const Footer = () => {
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/BlockFundVsKickstarter")}>Block Fund vs. Kickstarter</li>
               <li className="mb-2 cursor-pointer" >Education Cerner</li>
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/FindExperts")}>Experts Directory</li>
-              <li className="mb-2 cursor-pointer">Fees</li>
-              <li className="mb-2 cursor-pointer">Enterprise</li>
-              <li className="mb-2 cursor-pointer">China</li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 px-4">
-            <img src={email} alt="Logo" className="w-16 mb-4 mx-auto" />
+            {/* <img src={email} alt="Logo" className="w-16 mb-4 mx-auto" /> */}
+            <div class="flex justify-center">
+              <div class='mx-auto'>
+                <a href='mailto:your-email@example.com' class='text-[48px] text-[#8c6dfd] mb-4 block'><FaEnvelope /></a>
+              </div>
+            </div>
+
             <h4 className=" font-bold mb-2 text-center">Find it first on Block Fund</h4>
             <a href="#" className=" mb-6 block text-center">Discover new and clever products in the Block Fund newsletter</a>
             <input type="email" placeholder="Your email address" className="bg-[#f2f2f2] dark:bg-[#0e0d0d] px-4 py-2 mb-4 block w-full rounded" />
-            <label className="flex mb-4">
-              <input type="checkbox" className="mr-2" />
-              <span className="text-sm text-justify">I agree to the <span className='font-bold underline'><a href='#'>Terms of Use</a></span> and have read and understand the <span className='font-bold underline'><a href='#'>Privacy Policy</a></span></span>
-            </label>
-            <button className="bg-[#8c6dfd] px-6 py-3 rounded hover:bg-[#7359d3] text-white transition-colors w-full">Sign Me Up</button>
           </div>
         </div>
 

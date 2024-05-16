@@ -1,11 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import phone from '../assets/phone.png';
 import bag from '../assets/bag.png';
 import fitness from '../assets/fitness.png';
 import audio from '../assets/audio.png';
 import film from '../assets/film.png';
 import Education from '../assets/Education.png';
+import sport from '../assets/sport.png';
+import creative from '../assets/creative.png';
+import prototype from '../assets/prototype.png';
+import fulfillment from '../assets/fulfillment.png';
 
 const cardsData = [
     {
@@ -23,9 +26,9 @@ const cardsData = [
       route: "/HealthAndFitness",
     },
     {
-      image: phone,
-      name: "Technology",
-      description: "Innovative technology projects.",
+      image: sport,
+      name: "Sport",
+      description: "Projects focused on innovative sports technology.",
       link: "View All",
       route: "/Technology",
     },
@@ -49,6 +52,27 @@ const cardsData = [
       description: "Projects related to travel and outdoor activities.",
       link: "View All",
       route: "/TravelAndOutdoors",
+    },
+    {
+      image: creative,
+      name: "Creative Services",
+      description: "Projects offering innovative and artistic services.",
+      link: "View All",
+      route: "/CreativeServices",
+    },
+    {
+      image: fulfillment,
+      name: "Fulfillment",
+      description: "Projects dedicated to providing essential services,",
+      link: "View All",
+      route: "/Fulfillment",
+    },
+    {
+      image: prototype,
+      name: "Prototyping and Production",
+      description: "Projects focused on prototypes and final products.",
+      link: "View All",
+      route: "/PrototypingandProduction",
     },
 ];
 

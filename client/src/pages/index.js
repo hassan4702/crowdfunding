@@ -5,7 +5,7 @@ export { default as CampaignDetails } from './CampaignDetails';
 export { default as UpdateCampaign } from './UpdateCampaign';
 export { default as EducationCampaigns } from './EducationCampaigns';
 export { default as TravelAndOutdoors } from './TravelAndOutdoors';
-export { default as Technology } from './Technology';
+export { default as Technology } from './Sports';
 export { default as SocialImpact } from './SocialImpact';
 export { default as HealthAndFitness } from './HealthAndFitness';
 export { default as ArtsAndCulture } from './ArtsAndCulture';
