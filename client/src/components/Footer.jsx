@@ -17,7 +17,6 @@ const Footer = () => {
             <h3 className=" font-bold mb-4">Explore</h3>
             <ul className="">
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/WhatWeDo")}>What We Do</li>
-              <li className="mb-2 cursor-pointer"><a href="#">Funding</a></li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 px-4 mb-8 md:mb-0">
@@ -34,7 +33,7 @@ const Footer = () => {
             <ul className="">
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/HowItWorks")}>How It Works</li>
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/BlockFundVsKickstarter")}>Block Fund vs. Kickstarter</li>
-              <li className="mb-2 cursor-pointer" >Education Cerner</li>
+              <li className="mb-2 cursor-pointer" >Education Cernter</li>
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/FindExperts")}>Experts Directory</li>
             </ul>
           </div>
