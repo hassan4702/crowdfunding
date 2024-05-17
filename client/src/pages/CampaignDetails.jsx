@@ -13,7 +13,7 @@ import { RadioGroup, Radio } from "@nextui-org/radio";
 import { Button } from "@nextui-org/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import TotalCampainCreatedbyuser from "../components/totalCampainCreatedbyuser";
 const CampaignDetails = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -78,6 +78,8 @@ const CampaignDetails = () => {
     const target = parseFloat(ethers.utils.parseEther(state.target));
     return collected <= target;
   };
+
+  
   return (
     <div>
       <ToastContainer
@@ -144,7 +146,7 @@ const CampaignDetails = () => {
                   {state.owner}
                 </h4>
                 <p className="mt-[4px] font-epilogue font-normal text-[12px] text-[#808191]">
-                  10 Campaigns
+                  <TotalCampainCreatedbyuser ownerAddress={state.owner} />
                 </p>
               </div>
             </div>
