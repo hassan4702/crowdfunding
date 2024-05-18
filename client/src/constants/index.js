@@ -20,24 +20,18 @@ export const navlinks = [
     link: '/',
     disabled: true,
   },
-  // {
-  //   name: 'withdraw',
-  //   iconLight: WithdrawIconLight,
-  //   iconDark: WithdrawIconDark,
-  //   link: '/',
-  //   disabled: true,
-  // },
+ 
   {
     name: 'profile',
     iconLight: MdAccountCircle,
     iconDark: MdAccountCircle,
     link: '/profile',
   },
-  {
-    name: 'logout',
-    iconLight: MdExitToApp,
-    iconDark: MdExitToApp,
-    link: '/',
-    disabled: true,
-  },
+  // {
+  //   name: 'logout',
+  //   iconLight: MdExitToApp,
+  //   iconDark: MdExitToApp,
+  //   link: '/',
+  //   disabled: true,
+  // },
 ];

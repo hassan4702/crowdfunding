@@ -1,3 +1,4 @@
+import { Button } from '@nextui-org/button'
 import React from 'react'
 
 const CustomButton = ({ btnType, title, handleClick, styles }) => {
