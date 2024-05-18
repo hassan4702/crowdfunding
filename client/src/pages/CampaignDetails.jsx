@@ -13,6 +13,7 @@ import { RadioGroup, Radio } from "@nextui-org/radio";
 import { Button } from "@nextui-org/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ReactMarkdown from "react-markdown";
 import TotalCampainCreatedbyuser from "../components/TotalCampainCreatedbyuser";
 const CampaignDetails = () => {
   const { state } = useLocation();
@@ -78,7 +79,6 @@ const CampaignDetails = () => {
     const target = parseFloat(ethers.utils.parseEther(state.target));
     return collected <= target;
   };
-
   return (
     <div>
       <ToastContainer
@@ -150,43 +150,79 @@ const CampaignDetails = () => {
               </div>
             </div>
           </div>
-
-          <div>
-            <h4 className="font-epilogue font-semibold text-[18px] uppercase">
-              Story
-            </h4>
-            <div className="mt-[20px]">
-              <p className="font-epilogue font-normal text-[16px] text-[#808191]">
-                {state.description}
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-epilogue font-semibold text-[18px] uppercase">
-              Donators
-            </h4>
-            <div className="mt-[20px]">
-              {donators.length > 0 ? (
-                donators.map((item, index) => (
-                  <div
-                    key={`${item.donator}-${index}`}
-                    className="flex justify-between"
-                  >
-                    <p className="font-epilogue font-normal text-[16px] text-[#b2b3bd]">
-                      {index + 1}. {item.donator}
-                    </p>
-                    <p className="font-epilogue font-normal text-[16px] text-[#808191]">
-                      {item.donation}
-                    </p>
-                  </div>
-                ))
-              ) : (
-                <p className="font-epilogue font-normal text-[16px] text-[#808191]">
-                  No donators yet.
-                </p>
-              )}
-            </div>
+          <div className="flex w-full flex-col">
+            <Tabs variant="underlined" size="lg" aria-label="Options">
+              <Tab key="story" title="Story">
+                <Card>
+                  <CardBody>
+                  <h4 className="font-epilogue font-semibold text-[18px] uppercase">
+                        Story
+                      </h4>
+                    <div className="mt-[20px]">
+                      <p className="font-epilogue font-normal text-[16px] text-[#808191]">
+                        <ReactMarkdown>{state.description}</ReactMarkdown>
+                      </p>
+                    </div>
+                  </CardBody>
+                </Card>
+              </Tab>
+              <Tab key="donators" title="Donators">
+                <Card>
+                  <CardBody>
+                    <div>
+                      <h4 className="font-epilogue font-semibold text-[18px] uppercase">
+                        Donators
+                      </h4>
+                      <div className="mt-[20px]">
+                        {donators.length > 0 ? (
+                          donators.map((item, index) => (
+                            <div
+                              key={`${item.donator}-${index}`}
+                              className="flex justify-between"
+                            >
+                              <p className="font-epilogue font-normal text-[16px] text-[#b2b3bd]">
+                                {index + 1}. {item.donator}
+                              </p>
+                              <p className="font-epilogue font-normal text-[16px] text-[#808191]">
+                                {item.donation}
+                              </p>
+                            </div>
+                          ))
+                        ) : (
+                          <p className="font-epilogue font-normal text-[16px] text-[#808191]">
+                            No donators yet.
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </CardBody>
+                </Card>
+              </Tab>
+              <Tab key="faq" title="FAQ's">
+                <Card>
+                  <CardBody>
+                    Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                  </CardBody>
+                </Card>
+              </Tab>
+              <Tab key="comments" title="Comment Section">
+                <Card>
+                  <CardBody>
+                    Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                  </CardBody>
+                </Card>
+              </Tab>
+              <Tab key="contact" title="Contact">
+                <Card>
+                  <CardBody>
+                    Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                  </CardBody>
+                </Card>
+              </Tab>
+            </Tabs>
           </div>
         </div>
 
