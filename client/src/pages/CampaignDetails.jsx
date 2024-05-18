@@ -155,9 +155,9 @@ const CampaignDetails = () => {
               <Tab key="story" title="Story">
                 <Card>
                   <CardBody>
-                  <h4 className="font-epilogue font-semibold text-[18px] uppercase">
-                        Story
-                      </h4>
+                    <h4 className="font-epilogue font-semibold text-[18px] uppercase">
+                      Story
+                    </h4>
                     <div className="mt-[20px]">
                       <p className="font-epilogue font-normal text-[16px] text-[#808191]">
                         <ReactMarkdown>{state.description}</ReactMarkdown>
@@ -227,14 +227,14 @@ const CampaignDetails = () => {
         </div>
 
         <div className="flex-1">
-          <h4 className="font-epilogue font-semibold text-[18px] uppercase">
-            {state.owner !== address ? "Fund" : ""}
-          </h4>
           <div
             className={`${
               remainingDays >= 0 ? "flex" : "hidden"
             } mt-[20px]  flex-col p-4 bg-white dark:bg-[#1c1c24] rounded-[10px]`}
           >
+            {/* <h4 className="font-epilogue font-semibold text-[18px] uppercase">
+              {state.owner !== address ? "Fund" : ""}
+            </h4> */}
             {/* <select
               className="w-full py-[10px] px-[15px] bg-[#f6f6fa] dark:bg-[#272730] rounded-[10px]"
               onChange={(e) => setDropdownOption(e.target.value)}

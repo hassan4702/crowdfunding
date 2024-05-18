@@ -1,22 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import FundCard from './FundCard';
-import { loader } from '../assets';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import FundCard from "./FundCard";
+import { loader } from "../assets";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const navigate = useNavigate();
   const [startIndex, setStartIndex] = useState(0);
 
-  const extralargeScreenSize = 4; // For large screens
+  const extralargeScreenSize = 5; // For large screens
+  const largeScreenSize = 4; // For large screens
   const mediumScreenSize = 3; // For medium screens
   const smallScreenSize = 2; // For small screens
   const extrasmallScreenSize = 1;
 
   const getPageSize = () => {
+
     const width = window.innerWidth;
-    if (width >= 1200) {
-      return extralargeScreenSize;
+    if (width >= 1400) {
+      return extralargeScreenSize;}
+    else if (width >= 1200) {
+      return largeScreenSize;
     } else if (width >= 1010) {
       return mediumScreenSize;
     } else if (width >= 750) {
@@ -33,9 +37,9 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
       setPageSize(getPageSize());
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -61,10 +65,12 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
 
   return (
     <div>
-      <div className='flex justify-between'>
-        <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">Recent Finds</h1>
-        <h1 
-          className="font-epilogue font-semibold text-[18px] my-10 text-left cursor-pointer" 
+      <div className="flex justify-between">
+        <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">
+          Recent Finds
+        </h1>
+        <h1
+          className="font-epilogue font-semibold text-[18px] my-10 text-left cursor-pointer"
           onClick={() => navigate("/ExploreProjects")}
         >
           All Campaigns
@@ -112,7 +118,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
           <div
             key={index}
             className={`w-[10px] h-[10px] rounded-full mx-[5px] cursor-pointer ${
-              index === currentPage ? 'bg-gray-800' : 'bg-gray-400'
+              index === currentPage ? "bg-gray-800" : "bg-gray-400"
             }`}
             onClick={() => setStartIndex(index * pageSize)}
           ></div>
