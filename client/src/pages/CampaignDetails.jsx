@@ -13,7 +13,7 @@ import { RadioGroup, Radio } from "@nextui-org/radio";
 import { Button } from "@nextui-org/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import TotalCampainCreatedbyuser from "../components/totalCampainCreatedbyuser";
+import TotalCampainCreatedbyuser from "../components/TotalCampainCreatedbyuser";
 const CampaignDetails = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -79,7 +79,6 @@ const CampaignDetails = () => {
     return collected <= target;
   };
 
-  
   return (
     <div>
       <ToastContainer
