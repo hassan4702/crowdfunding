@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useStateContext } from "../context";
 import { Loader } from "../components";
 import { useNavigate } from "react-router-dom";
-import ExploreProject from "../assets/ExploreProject.jpg";
 import FundCard from "../components/FundCard";
 
 const ExploreProjects = () => {
@@ -33,16 +32,7 @@ const ExploreProjects = () => {
 
   return (
     <div className="p-6">
-      <div className="relative">
-        <img src={ExploreProject} alt="Explore Projects" className="w-full lg:h-[20rem] h-[18rem] object-cover mb-6" />
-        <div className="absolute inset-0 flex flex-col justify-center items-center">
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-4xl font-semibold text-white">
-              Block Fund Campaigns
-            </h1>
-          </div>
-        </div>
-      </div>
+      <h1 className="text-5xl lg:text-5xl font-semibold text-center mt-6 mb-20">Block Fund Campaigns</h1>
       <div className="flex flex-wrap gap-8 justify-center">
         {campaigns.length === 0 ? (
           <div>No campaigns found.</div>

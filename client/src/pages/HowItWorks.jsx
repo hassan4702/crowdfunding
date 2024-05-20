@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Experts from '../components/Experts';
 import ReadyToGo from '../components/ReadyToGo';
-import HowItWorks1 from '../assets/HowItWorks1.jpg';
+import HowItWork from '../assets/HowItWork.jpg';
 import Footer from '../components/Footer';
 import WORLDWIDE from '../assets/WORLDWIDE.png';
 const HowItWorks = () => {
@@ -15,7 +15,7 @@ const HowItWorks = () => {
             </div>
 
             <div className="relative mt-10">
-                <img src={HowItWorks1} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover rounded-[15px]" />
+                <img src={HowItWork} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover rounded-[15px]" />
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                     <div className="max-w-2xl mx-auto text-center">
                         <h1 className="text-4xl font-bold text-white ">
@@ -29,7 +29,7 @@ const HowItWorks = () => {
                 <button className="bg-[#8c6dfd] text-white py-2 px-4 rounded mt-2 font-semibold" onClick={() => navigate("/FindExperts")}>FIND EXPERTS</button>
             </div>
 
-            <div className="bg-white dark:bg-[#2c2f32] shadow-lg p-10">
+            <div className="bg-white dark:bg-[#2c2f32] shadow-lg rounded-lg p-10">
                 <div className="px-4 sm:px-6 lg:px-8 pb-8">
                     <h1 className="text-2xl  lg:text-3xl font-semibold text-center mb-1">All the Right Experts to Help Your Business</h1>
                 </div>
@@ -47,7 +47,7 @@ const HowItWorks = () => {
                 <p className="text-justify text-lg pb-8">Block Fund embodies flexibility and global reach, granting creators the freedom to raise funds for any project from anywhere in the world. Whether you're launching a local initiative or targeting a global audience, our platform empowers you to harness the power of crowdfunding without limitations. With seamless access to a diverse pool of backers and a borderless approach to fundraising, Block Fund enables you to realize your vision on a truly international scale, breaking down barriers and unlocking opportunities for success.</p>
             </div>
 
-            <div className="bg-white dark:bg-[#2c2f32] shadow-lg mb-20">
+            <div className="bg-white dark:bg-[#2c2f32] shadow-lg rounded-lg mb-20">
                 <div className="px-4 sm:px-6 lg:px-48 py-12 ">
                     <h1 className="text-2xl lg:text-3xl font-semibold text-center mb-1">Ready to Go?</h1>
                     <p className="text-center text-lg ">You're only a step away from kicking off your entrepreneurial adventure on Block Fund. Here's where to go next:</p>

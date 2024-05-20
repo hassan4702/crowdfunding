@@ -53,7 +53,7 @@ const About = () => {
             <Card>
               <CardBody>
                 <p className="text-lg lg:text-normal text-center">
-                  Products on Block Fund are unique, more interesting. They
+                  Products on Block Fund are unique. They
                   aren’t like what I’d find on the market. They aren’t
                   mainstream. It’s the newest tech that companies don’t even
                   know will be popular.

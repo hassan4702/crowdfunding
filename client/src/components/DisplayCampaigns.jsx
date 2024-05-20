@@ -68,18 +68,14 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
 
   return (
     <div>
-      <div className="flex justify-between">
-        <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">
-          Recent Finds
-        </h1>
-        <h1
-          className="font-epilogue font-semibold text-[18px] my-10 text-left cursor-pointer"
-
+      <div className='flex justify-between'>
+        <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">Recent Finds</h1>
+        <h1 
+          className="font-epilogue font-semibold text-[18px] my-10 text-left cursor-pointer flex items-center" 
           onClick={() => navigate("/ExploreProjects")}
         >
           All Campaigns
-          <HiArrowRight style={{ transform: 'rotate(-45deg)', marginRight: '4px', marginBottom: '4px' }}/>
-          
+          <HiArrowRight style={{ transform: 'rotate(-45deg)', marginleft: '4px' }} />
         </h1>
       </div>
 

@@ -24,7 +24,7 @@ const TrustAndSafety = () => {
                 </div>
             </div>
 
-            <div className="mt-14 px-4 sm:px-6 lg:px-32">
+            <div className="mt-14 px-4 sm:px-6 lg:px-32 py-4 bg-white dark:bg-[#2c2f32] rounded-lg">
                 <h1 className="text-3xl font-semibold pb-4">We have safeguards in place</h1>
                 <p className="text-justify pb-2">Your trust in Block Fund is important. We do our best to ensure you have a positive and safe experience with Block Fund. Our experienced Trust & Safety team is as passionate about innovation as our community is, and we're dedicated to making sure that we do everything we can to prevent fraud on the platform so that we can keep you safe. This includes both automated and manual reviews of campaigns, and working closely with payment leaders to ensure your funds are processed securely and efficiently. We also have round-the-clock monitoring to protect the information we collect online and prevent unauthorized access.</p>
                 <p className="text-justify">Our team also investigates real-time feedback and concerns from our community and partners. We hold our campaign owners accountable, from verifying the identity information they provide to making sure they communicate frequently with their backers. Block Fund does not tolerate abuse of our system and takes appropriate action when necessary to maintain the integrity of our platform.</p>
@@ -56,7 +56,7 @@ const TrustAndSafety = () => {
                 </div>
             </div>
 
-            <div className="mt-14 px-4 sm:px-6 lg:px-32">
+            <div className="mt-14 sm:px-6 py-4 lg:px-32 bg-white dark:bg-[#2c2f32] rounded-lg">
                 <h1 className="text-3xl font-semibold pb-4">We are here to support you</h1>
                 <p className="text-justify pb-2">We are constantly listening to feedback and finding ways to improve our platform so that you feel confident in your decision to back campaigns on Block Fund. Though sometimes projects encounter obstacles and unforeseen circumstances that could prevent entrepreneurs from being able to fulfill, we have policies and tools in place to help them communicate to their supporters in an effective and productive way. Failure to provide monthly updates and maintain open communication may result in restrictions to individual Block Fund accounts or suspension of campaigns.</p>
                 <p className="text-justify pb-2">With crowdfunding, there are always risks, so Block Fund does not guarantee that contributions will be used as promised, that campaign owners will deliver perks, or that campaigns will achieve their goals. However, if our <span className="text-[#808191] cursor-pointer" onClick={() => navigate("/TermsOfUse")}>Terms of Use</span> are violated, we will take action on behalf of our backers to make things right.</p>

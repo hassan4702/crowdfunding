@@ -56,7 +56,7 @@ const FindExperts = () => {
     return(
         <>
             <div className="relative mt-10">
-                <img src={HowItWork} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover rounded-[15px]" />
+                <img src={HowItWork} alt="How It Works" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover rounded-[15px]" />
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                     <div className="max-w-2xl mx-auto text-center">
                         <h1 className="text-4xl font-bold text-white ">
