@@ -16,9 +16,9 @@ const ImageGallery = () => {
       <div className="container mx-auto pb-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
 
-          <div className="relative flex flex-col bg-white dark:bg-[#1c1c24] rounded-lg shadow-lg cursor-pointer" onClick={() => navigate("/TopFinds")}>
-              <img src={CoolClever} alt="Image 1" className="w-full h-64 object-cover rounded-lg mb-2" />
-              <div className='absolute inset-0 flex items-center justify-center'>
+          <div className=" relative overflow-hidden flex flex-col bg-white dark:bg-[#1c1c24] rounded-lg shadow-xl cursor-pointer" onClick={() => navigate("/TopFinds")}>
+              {/* <img src={CoolClever} alt="Image 1" className="w-full h-64 object-cover rounded-lg mb-2" /> */}
+              <div className='bg-gradient-to-r from-purple-300 hover:from-purple-400 to-purple-700 hover:to-purple-800 absolute inset-0 flex items-center justify-center'>
                 <p className='text-center font-extrabold text-3xl text-white'>10 Cool & Clever Finds</p>
               </div>
             <div className="flex justify-between py-2 px-2">
