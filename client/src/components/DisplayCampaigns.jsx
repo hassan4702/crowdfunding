@@ -1,10 +1,4 @@
-<<<<<<< Updated upstream
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import FundCard from "./FundCard";
-import { loader } from "../assets";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-=======
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FundCard from './FundCard';
@@ -12,10 +6,6 @@ import { loader } from '../assets';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
 
-
-
-
->>>>>>> Stashed changes
 
 const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const navigate = useNavigate();
@@ -78,19 +68,13 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
 
   return (
     <div>
-<<<<<<< Updated upstream
       <div className="flex justify-between">
         <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">
           Recent Finds
         </h1>
         <h1
           className="font-epilogue font-semibold text-[18px] my-10 text-left cursor-pointer"
-=======
-      <div className='flex justify-between'>
-        <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">Recent Finds</h1>
-        <h1 
-          className="font-epilogue font-semibold text-[18px] my-10 text-left cursor-pointer flex items-center" 
->>>>>>> Stashed changes
+
           onClick={() => navigate("/ExploreProjects")}
         >
           All Campaigns

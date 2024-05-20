@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-<<<<<<< Updated upstream
 import { Sidebar, Navbar } from "./components";
 import { CampaignDetails, CreateCampaign, Home, Profile } from "./pages";
 import AllCampaigns from "./components/AllCampaigns";
@@ -34,34 +33,7 @@ import {
   HealthAndFitness,
   ArtsAndCulture,
 } from "./pages";
-=======
-import { Sidebar,Navbar } from './components';
-import { CampaignDetails, CreateCampaign, Home, Profile } from './pages';
-import AllCampaigns from './components/AllCampaigns';
-import UpdateCampaign from './pages/UpdateCampaign';
-import About from './pages/About';
-import WhatWeDo from './pages/WhatWeDo';
-import TopFinds from './pages/TopFinds';
-import HowItWorks from './pages/HowItWorks';
-import HelpAndSupport from './pages/HelpAndSupport';
-import FindExperts from './pages/FindExperts';
-import Contact from './pages/Contact';
-import CommunityGuidelines from './pages/CommunityGuidelines';
-import BlockFundVsKickstarter from './pages/BlockFundVsKickstarter';
-import TermsOfUse from './pages/TermsOfUse';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import Crowdfunding from './pages/Crowdfunding';
-import TrustAndSafety from './pages/TrustAndSafety';
-import ExploreProjects from './pages/ExploreProjects';
-import Memorial from './pages/Memorial';
-import Competition from './pages/Competition';
-import PrototypingandProduction from './pages/PrototypingandProduction';
-import CreativeServices from './pages/CreativeServices';
-import Fulfillment from './pages/Fulfillment';
-import HelpDetails from './pages/HelpDetails';
-import EducationCenter from './pages/EducationCenter';
-import {EducationCampaigns, TravelAndOutdoors, Technology, SocialImpact, HealthAndFitness, ArtsAndCulture } from './pages';
->>>>>>> Stashed changes
+import EducationCenter from "./pages/EducationCenter";
 
 const App = () => {
   return (
@@ -82,41 +54,6 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/whatwedo" element={<WhatWeDo />} />
           <Route path="/topfinds" element={<TopFinds />} />
-<<<<<<< Updated upstream
-          <Route path="/howitworks" element={<HowItWorks />} />
-          <Route path="/HelpAndSupport" element={<HelpAndSupport />} />
-          <Route path="/FindExperts" element={<FindExperts />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route
-            path="/communityGuidelines"
-            element={<CommunityGuidelines />}
-          />
-          <Route
-            path="/blockFundVskickstarter"
-            element={<BlockFundVsKickstarter />}
-          />
-          <Route path="/TermsOfUse" element={<TermsOfUse />} />
-          <Route path="/TrustAndSafety" element={<TrustAndSafety />} />
-          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-          <Route path="/Crowdfunding" element={<Crowdfunding />} />
-          <Route path="/EducationCampaigns" element={<EducationCampaigns />} />
-          <Route path="/TravelAndOutdoors" element={<TravelAndOutdoors />} />
-          <Route path="/Technology" element={<Technology />} />
-          <Route path="/SocialImpact" element={<SocialImpact />} />
-          <Route path="/HealthAndFitness" element={<HealthAndFitness />} />
-          <Route path="/ArtsAndCulture" element={<ArtsAndCulture />} />
-          <Route path="/ExploreProjects" element={<ExploreProjects />} />
-          <Route path="/AllCampaigns" element={<AllCampaigns />} />
-          <Route path="/Memorial" element={<Memorial />} />
-          <Route path="/Competition" element={<Competition />} />
-          <Route
-            path="/PrototypingandProduction"
-            element={<PrototypingandProduction />}
-          />
-          <Route path="/CreativeServices" element={<CreativeServices />} />
-          <Route path="/Fulfillment" element={<Fulfillment />} />
-          <Route path="/HelpDetails" element={<HelpDetails />} />
-=======
           <Route path="/howitworks" element={<HowItWorks/>} />
           <Route path="/HelpAndSupport" element={<HelpAndSupport/>} />
           <Route path="/FindExperts" element={<FindExperts/>} />
@@ -142,7 +79,6 @@ const App = () => {
           <Route path="/Fulfillment" element={<Fulfillment/>} />
           <Route path="/HelpDetails" element={<HelpDetails/>} />
           <Route path="/EducationCenter" element={<EducationCenter/>} />
->>>>>>> Stashed changes
         </Routes>
       </div>
     </div>

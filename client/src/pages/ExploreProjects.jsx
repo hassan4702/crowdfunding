@@ -33,7 +33,6 @@ const ExploreProjects = () => {
 
   return (
     <div className="p-6">
-<<<<<<< Updated upstream
       <div className="relative">
         <img src={ExploreProject} alt="Explore Projects" className="w-full lg:h-[20rem] h-[18rem] object-cover mb-6" />
         <div className="absolute inset-0 flex flex-col justify-center items-center">
@@ -45,12 +44,6 @@ const ExploreProjects = () => {
         </div>
       </div>
       <div className="flex flex-wrap gap-8 justify-center">
-=======
-
-      <h1 className="lg:text-5xl font-semibold text-center mb-20 mt-14">Block Fund Campaigns</h1>
-
-      <div className="flex flex-wrap gap-8 justify-center"> 
->>>>>>> Stashed changes
         {campaigns.length === 0 ? (
           <div>No campaigns found.</div>
         ) : (
