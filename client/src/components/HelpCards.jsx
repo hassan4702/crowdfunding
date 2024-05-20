@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Backers from '../assets/Backers.png';
 import Campaign from '../assets/Campaign.png';
 import Payments from '../assets/Payments.png';
@@ -11,48 +12,56 @@ const cardsData = [
       image: Backers,
       name: "Backers",
       description: "Find out how to evaluate and back crowdfunding campaigns, and manage your orders",
-      link: "View All"
+      link: "View All",
+      route: "/HelpDetails"
     },
     {
       image: Campaign,
       name: "Campaigns",
       description: "Discover how to plan, create, and manage your crowdfunding campaign",
-      link: "View All"
+      link: "View All",
+      route: "/HelpDetails"
     },
     {
       image: Payments,
       name: "Payments",
       description: "Learn how to connect your bank account and recieve funds from your crowdfunding campaign",
-      link: "View All"
+      link: "View All",
+      route: "/HelpDetails"
     },
     {
       image: TrustOperations,
       name: "Trust Operations",
       description: "understand Block Fund's policies and how our Trust Operations tram protects our customers",
-      link: "View All"
+      link: "View All",
+      route: "/HelpDetails"
     },
     {
       image: CampaignNextStep,
       name: "Campaign Next Steps",
       description: "Learn about Block Fund and other next steps for your campaign",
-      link: "View All"
+      link: "View All",
+      route: "/HelpDetails"
     },
     {
       image: Legal,
       name: "Legal",
       description: "Read about Block Fund's legal policies and processes",
-      link: "View All"
+      link: "View All",
+      route: "/HelpDetails"
     },
     {
         image: Profile,
         name: "Profile",
         description: "Build and customize your Block Fund profile",
-        link: "View All"
+        link: "View All",
+        route: "/HelpDetails"
       },
   ];
-const Card = ({ image, name, description, link }) => {
+const Card = ({ image, name, description, link, route  }) => {
+  const navigate = useNavigate();
   return (
-    <div className="max-w-xs rounded-[15px] overflow-hidden shadow-lg bg-white dark:bg-[#1c1c24]  m-4 hover:-translate-y-1">
+    <div className="max-w-xs rounded-[15px] overflow-hidden shadow-lg bg-white dark:bg-[#1c1c24]  m-4 hover:-translate-y-1" onClick={() => navigate(route)}>
         <a href="">
         <img className="mx-auto w-24" src={image} alt={name} />
       <div className="px-6 py-4">
@@ -75,6 +84,7 @@ const HelpCards = () => {
               name={card.name}
               description={card.description}
               link={card.link}
+              route={card.route}
             />
           ))}
         </div>

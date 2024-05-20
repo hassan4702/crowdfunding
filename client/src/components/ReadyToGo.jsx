@@ -24,7 +24,7 @@ const cardsData = [
       name: "Education Center",
       description: "Find everything you need for a successful campaign in one convenient, centralized location.",
       link: "EXPLORE RESOURCES",
-      route: "/About",
+      route: "/EducationCenter",
     },
     {
       image: BlockFundVsKickstarter,
@@ -37,7 +37,7 @@ const cardsData = [
 const Card = ({ image, name, description, link, route }) => {
   const navigate = useNavigate(); 
   return (
-    <div className="max-w-xs rounded-[15px] overflow-hidden shadow-lg bg-white dark:bg-[#1c1c24] m-4" onClick={() => navigate(route)}>
+    <div className="max-w-xs rounded-[15px] overflow-hidden shadow-lg bg-gray-50 dark:bg-[#1c1c24] m-4" onClick={() => navigate(route)}>
         <img className="mx-auto w-24 h-24" src={image} alt={name} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-center">{name}</div>
@@ -50,7 +50,7 @@ const Card = ({ image, name, description, link, route }) => {
 
 const ReadToGo = () => {
     return (
-      <div className="container mx-auto mb-20">
+      <div className="container mx-auto pb-10">
         <div className="flex flex-wrap justify-center ">
           {cardsData.map((card) => (
             <Card

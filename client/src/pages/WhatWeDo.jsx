@@ -1,13 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Bluesmart from '../assets/Bluesmart.png';
-import Evapolar from '../assets/Evapolar.png';
 import Explore from '../assets/Explore.png';
-import GetTheTech from '../assets/GetTheTech.png';
 import inspired from '../assets/inspired.png';
 import perk from '../assets/perk.png';
-import SuperTroopers from '../assets/SuperTroopers.png';
-import MisfitShine from '../assets/MisfitShine.png';
 import Journey from '../assets/Journey.png';
 import Footer from '../components/Footer';
 const WhatWeDo = () => {
@@ -16,19 +11,7 @@ const WhatWeDo = () => {
     <>
     <div className="flex flex-col items-center justify-center mb-10">
 
-      {/* Tech Image Section */}
-        <div className="relative">
-            <img src={GetTheTech} alt="Tech Image" className="md:w-full lg:w-screen h-screen object-cover" />
-            <div className="absolute inset-0 flex flex-col justify-center items-center">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h1 className="text-4xl font-bold pb-3 text-[#8c6dfd]">
-                        Get the tech that gets people talking
-                    </h1>
-                    <p className="font-bold text-[#8c6dfd]">With both live crowdfunding campaigns and innovative products shipping now, there’s no better place to start the hunt for cool and clever innovations that surprise and delight. Block Fund is where new launches.</p>
-                </div>
-            </div>
-        </div>
-
+      <h1 className="text-5xl lg:text-7xl font-semibold text-center mt-20 mb-10">What We Do?</h1>
 
       {/* Fund the next big thing Section */}
       <div className="text-center my-8 max-w-3xl mx-auto">
@@ -82,73 +65,6 @@ const WhatWeDo = () => {
         </div>
       </div>
 
-
-      {/* Just a few of our favorite campaigns Section */}
-      <div className="text-center my-8 max-w-5xl mx-auto">
-        <h2 className="text-2xl font-bold pb-3">Just a few of our favorite campaigns</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-4">
-          <div className="flex flex-col items-center md:items-start">
-            <div className="m-auto">
-              <img src={Bluesmart} alt="Bluesmart" className="w-full object-cover md:w-3/4" />
-            </div>
-            <div className="text-center md:text-left mt-4 mx-2">
-              <h3 className="text-2xl font-semibold">Bluesmart</h3>
-              <p>10,984 Backers</p>
-              <p className="text-justify">
-               This smash-hit campaign almost singlehandedly invented the smart suitcase as the must-have
-                travel accessory that it is today. With innovative features like location tracking and a
-                built-in scale, Bluesmart went big on Block Fund before landing in stores around the world.
-             </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center md:items-start">
-            <div className="m-auto">
-              <img src={Evapolar} alt="Evapolar" className="w-full object-cover md:w-3/4" />
-            </div>
-            <div className="text-center md:text-left mt-4 mx-2">
-              <h3 className="text-2xl font-semibold">Evapolar</h3>
-              <p>6,616 Backers</p>
-              <p className="text-justify">
-                The Evapolar team's slick air conditioner is small enough to place exactly where you need
-                it most. It even cleans and humidifies as it cools. The campaign was so successful that
-                the team came back to Block Fund to launch the next-gen version.
-              </p>
-            </div>
-         </div>
-
-          <div className="flex flex-col items-center md:items-start">
-            <div class="m-auto">
-              <img src={MisfitShine} alt="Misfit Shine" className="w-full object-cover md:w-3/4" />
-            </div>
-            <div className="text-center md:text-left mt-4 mx-2">
-              <h3 className="text-2xl font-semibold">Misfit Shine</h3>
-              <p>7,957 Backers</p>
-              <p className="text-justify">
-                With super-smart fitness technology squeezed into a sleek, take-it-anywhere design, the
-                Misfit Shine was a huge hit. Today it's available in stores everywhere, but Block Fund
-                backers were in on the action first.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center md:items-start">
-            <div class="m-auto">
-             <img src={SuperTroopers} alt="Super Troopers 2" className="w-full object-cover md:w-3/4" />
-            </div>
-            <div className="text-center md:text-left mt-4 mx-2">
-              <h3 className="text-2xl font-semibold">Super Troopers 2</h3>
-              <p>6,616 Backers</p>
-              <p className="text-justify">
-                With its truly gigantic backer community, Super Troopers 2 became one of the most iconic
-                Block Fund film projects. The team behind the project offered backers everything from movie
-                tickets to an actual police car from the film!
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Ready? Explore and Feeling Inspired Section */}
      <div className="text-center lg:my-8">
         <div className="flex flex-col lg:flex-row justify-center items-center my-4">
@@ -174,7 +90,7 @@ const WhatWeDo = () => {
               className="w-24 md:w-32 h-auto object-cover"
             />
             <h1 className="text-3xl font-semibold py-4 md:mb-4 lg:pt-10">Feeling Inspired?</h1>
-            <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-semibold py-2 px-4 rounded">
+            <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-semibold py-2 px-4 rounded" onClick={() => navigate("/create-campaign")}>
               Become an Entrepreneur
             </button>
           </div>

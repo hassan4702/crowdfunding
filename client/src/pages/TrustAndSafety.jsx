@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import TrustSafety from '../assets/TrustSafety.jpg';
+import Footer from '../components/Footer';
 
 const TrustAndSafety = () => {
    const navigate = useNavigate();
@@ -51,7 +52,7 @@ const TrustAndSafety = () => {
                     <h3 className="text-xl font-semibold mt-4 text-[#808191]">Engage backers</h3>
                     <p className="mt-1 text-justify">Keep everyone informed of your progress or setbacks through commenting, direct communication and frequent updates. Substantive updates are required at least once per month by our <span className="text-[#808191] cursor-pointer" onClick={() => navigate("/TermsOfUse")}>Terms of Use</span>. Engaging backers will help establish trust, while a lack of communication may result in backers losing faith, leaving bad feedback, requesting a refund, or even making a credit card chargeback.</p>
                     <h3 className="text-xl font-semibold mt-4 text-[#808191]">Prepare for launch</h3>
-                    <p className="mt-1 text-justify">Did you know that most successful campaigners spend months preparing for their campaign launch? Building a community and a strong email list for your idea are two key factors in your campaign's success. Get tips and best practices for running a crowdfunding campaign in the <a href="" className="text-[#808191]">Block Fund Entrepreneur Education Center.</a></p>
+                    <p className="mt-1 text-justify">Did you know that most successful campaigners spend months preparing for their campaign launch? Building a community and a strong email list for your idea are two key factors in your campaign's success. Get tips and best practices that how to create a campaign from the <a className="text-[#808191] cursor-pointer" onClick={() => navigate("/EducationCenter")}>Block Fund Education Center.</a></p>
                 </div>
             </div>
 
@@ -64,8 +65,8 @@ const TrustAndSafety = () => {
                 <p className="text-justify pb-2"><strong>We are here to support you.</strong> You can access our <span className="text-[#808191] cursor-pointer" onClick={() => navigate("/HelpAndSupport")}>Help Center</span> or <span className="text-[#808191] cursor-pointer" onClick={() => navigate("/Contact")}>Contact Us</span> at any time. Our dedicated Customer Happiness agents will reply to any support query within 24 hours.</p>
             </div>
 
-            <div className="relative mt-10">
-                <img src={TrustSafety} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover" />
+            <div className="relative my-10">
+                <img src={TrustSafety} alt="Help" className="w-full rounded-lg h-auto lg:h-96 h-108 mb-2 object-cover" />
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                     <div className="max-w-2xl mx-auto text-center">
                         <h1 className="text-4xl font-bold text-white ">
@@ -77,6 +78,7 @@ const TrustAndSafety = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

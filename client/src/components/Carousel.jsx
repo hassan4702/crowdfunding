@@ -89,8 +89,8 @@ const Carousel = ({ autoPlayInterval = 5000 }) => {
       </div>
 
       <div className="absolute bottom-2 lg:bottom-4 lg:left-10 left-4 right-4 p-2">
-        <h3 className="font-bold text-xl lg:w-2/3 md:text-2xl lg:text-3xl lg:text-justify text-black">{title}</h3>
-        <p className="text-xl lg:w-2/3 lg:text-justify text-black">{getDescriptionSnippet()}</p> 
+        <h3 className="font-bold text-xl lg:w-2/3 w-2/3 md:text-2xl lg:text-3xl lg:text-justify text-black">{title}</h3>
+        <p className="text-xl lg:w-2/3 w-2/3 lg:text-justify text-black">{getDescriptionSnippet()}</p> 
       </div>
 
       <div className="absolute bottom-4 right-4 flex flex-row gap-1">

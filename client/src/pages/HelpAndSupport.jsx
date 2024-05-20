@@ -11,7 +11,7 @@ const cardsData = [
     name: "Learn Best Paractices",
     description: "Find advice about everything from planning your launch to shipping your product via articles, guide, webinars and more.",
     link: "See Education Center",
-    route: "/EducationCampaigns",
+    route: "/EducationCenter",
   },
   {
     image: ConnectToExperts,
