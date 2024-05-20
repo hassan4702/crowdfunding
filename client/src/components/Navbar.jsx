@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ConnectWallet } from '@thirdweb-dev/react';
+import { ConnectWallet } from "@thirdweb-dev/react";
 import { useStateContext } from "../context";
 import { CustomButton } from "./";
 import { logo, menu, search, thirdweb } from "../assets";
 import { navlinks } from "../constants";
 import { Avatar, Button } from "@nextui-org/react";
-import BlockFundLogo from '../assets/BlockFundLogo.png';
-
+import BlockFundLogo from "../assets/BlockFundLogo.png";
 const Navbar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("dashboard");
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const { connect, address } = useStateContext();
-  
+
   const handleUserAccount = () => {
-    return <ConnectWallet /> 
-  }
+    return <ConnectWallet />;
+  };
   return (
     <div className="flex md:flex-row flex-col-reverse  justify-between mb-[10px] gap-6">
       <div></div>
-      <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] shadow-sm rounded-[100px] dark:bg-[#1c1c24] bg-white"> {/* Conditional background */}
+      <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] shadow-sm rounded-[100px] dark:bg-[#1c1c24] bg-white">
+        {" "}
+        {/* Conditional background */}
         <input
           type="text"
           placeholder="Search for campaigns"
           className="flex w-full font-epilogue font-normal text-[14px] dark:text-white text-black bg-transparent outline-none"
         />
-
         <div className="w-[62px] h-full rounded-[20px] dark:bg-[#8c6dfd] bg-[#8c6dfd] flex justify-center items-center cursor-pointer">
           <img
             src={search}
@@ -37,7 +37,6 @@ const Navbar = () => {
       </div>
 
       <div className="sm:flex hidden flex-row justify-end items-center gap-4">
-
         {/* <Button
           className={
             "font-epilogue font-semibold text-[16px]  text-white px-4 rounded-[10px] bg-[#8c6dfd]"
@@ -49,21 +48,20 @@ const Navbar = () => {
         >
           {address ? "Create a campaign" : "Connect"}
         </Button> */}
-        <CustomButton 
+        <CustomButton
           btnType="button"
-          title={!address ? 'Log In / Sign up' : handleUserAccount() }
-          styles={!address ? 'bg-[#8c6dfd]' : '' /*'bg-[#8c6dfd]'*/ }
+          title={!address ? "Log In / Sign up" : handleUserAccount()}
+          styles={!address ? "bg-[#8c6dfd]" : "" /*'bg-[#8c6dfd]'*/}
           handleClick={() => {
             if (window.ethereum && window.ethereum.isMetaMask) {
-              console.log('MetaMask is installed!');
-            }else{
-              alert('MetaMask extension is not installed!');
+              console.log("MetaMask is installed!");
+            } else {
+              alert("MetaMask extension is not installed!");
             }
-            if(address) navigate('/')
-            else connect()
+            if (address) navigate("/");
+            else connect();
           }}
         />
-
       </div>
 
       {/* Small screen navigation */}
@@ -121,13 +119,13 @@ const Navbar = () => {
 
           <div className="flex flex-row justify-between items-center mx-4">
             <Button
-                className={
-                  "font-epilogue font-semibold text-[16px]  text-white px-4 rounded-[10px] bg-[#8c6dfd]"
-                }
-                onClick={() => {
-                  if (address) navigate("create-campaign");
-                  else connect();
-                }}
+              className={
+                "font-epilogue font-semibold text-[16px]  text-white px-4 rounded-[10px] bg-[#8c6dfd]"
+              }
+              onClick={() => {
+                if (address) navigate("create-campaign");
+                else connect();
+              }}
             >
               {address ? "Create a campaign" : "Connect"}
             </Button>
