@@ -114,7 +114,6 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
           <FaChevronRight />
         </button>
       </div>
-
       <div className="flex justify-center mt-[14px]">
         {Array.from({ length: totalPages }, (_, index) => (
           <div

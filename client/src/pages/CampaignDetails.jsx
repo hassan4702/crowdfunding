@@ -14,6 +14,7 @@ import { Button } from "@nextui-org/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ReactMarkdown from "react-markdown";
+import { CommentSection } from "replyke";
 import TotalCampainCreatedbyuser from "../components/TotalCampainCreatedbyuser";
 const CampaignDetails = () => {
   const { state } = useLocation();
@@ -35,6 +36,20 @@ const CampaignDetails = () => {
 
   const remainingDays = daysLeft(state.deadline);
 
+  function LOGIN_CALLBACK() {
+    throw new Error("Function not implemented.");
+  }
+
+  function COMMENT_AUTHOR_CLICK_CALLBACK(User) {
+    throw new Error("Function not implemented.");
+  }
+
+  function CURRENT_USER_CLICK_CALLBACK(User) {
+    throw new Error("Function not implemented.");
+  }
+  const user = {
+    _id: state.pId,
+  };
   const handleUpdate = async () => {
     setIsLoading(true);
     navigate(`/campaign-update/${state.pId}`, { state });
@@ -209,8 +224,25 @@ const CampaignDetails = () => {
               <Tab key="comments" title="Comment Section">
                 <Card>
                   <CardBody>
-                    Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    <CommentSection
+                      apiBaseUrl="http://localhost:3000"
+                      articleId={state.pId}
+                      callbacks={{
+                        loginClickCallback: LOGIN_CALLBACK,
+                        commentAuthorClickCallback:
+                          COMMENT_AUTHOR_CLICK_CALLBACK,
+                        currentUserClickCallback: CURRENT_USER_CLICK_CALLBACK,
+                      }}
+                      currentUser={
+                        user
+                          ? {
+                              _id: state.pId,
+                              name: state.owner,
+                              img: "",
+                            }
+                          : undefined
+                      }
+                    />
                   </CardBody>
                 </Card>
               </Tab>
