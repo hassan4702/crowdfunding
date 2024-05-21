@@ -77,7 +77,7 @@ const Navbar = () => {
         >
           <ul className="mb-4">
             {navlinks.map((link) => {
-              const Icon = link.iconLight; // Use iconLight or iconDark based on theme
+              const Icon = link.iconLight;
               return (
                 <li
                   key={link.name}
