@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Social icons and currency selection */}
+        {/* Social icons */}
         <div className="flex flex-col md:flex-row items-center md:items-start mt-8">
           <div className='flex'>
             <a href='#' className='text-[24px] hover:text-[#8c6dfd] lg:mr-6 md:mr-6 mr-2 mt-3'><FaInstagram /></a>

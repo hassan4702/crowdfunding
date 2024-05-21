@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { ConnectWallet } from "@thirdweb-dev/react";
 import { useStateContext } from "../context";
 import { CustomButton } from "./";
-import { logo, menu, search, thirdweb } from "../assets";
+import { menu, search, thirdweb } from "../assets";
 import { navlinks } from "../constants";
-import { Avatar, Button } from "@nextui-org/react";
+// import { Avatar, Button } from "@nextui-org/react";
 import BlockFundLogo from "../assets/BlockFundLogo.png";
+
 const Navbar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("dashboard");
@@ -16,12 +17,11 @@ const Navbar = () => {
   const handleUserAccount = () => {
     return <ConnectWallet />;
   };
+
   return (
-    <div className="flex md:flex-row flex-col-reverse  justify-between mb-[10px] gap-6">
+    <div className="flex md:flex-row flex-col-reverse justify-between mb-[10px] gap-6">
       <div></div>
       <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] shadow-sm rounded-[100px] dark:bg-[#1c1c24] bg-white">
-        {" "}
-        {/* Conditional background */}
         <input
           type="text"
           placeholder="Search for campaigns"
@@ -37,21 +37,10 @@ const Navbar = () => {
       </div>
 
       <div className="sm:flex hidden flex-row justify-end items-center gap-4">
-        {/* <Button
-          className={
-            "font-epilogue font-semibold text-[16px]  text-white px-4 rounded-[10px] bg-[#8c6dfd]"
-          }
-          onClick={() => {
-            if (address) navigate("create-campaign");
-            else connect();
-          }}
-        >
-          {address ? "Create a campaign" : "Connect"}
-        </Button> */}
         <CustomButton
           btnType="button"
           title={!address ? "Log In / Sign up" : handleUserAccount()}
-          styles={!address ? "bg-[#8c6dfd]" : "" /*'bg-[#8c6dfd]'*/}
+          styles={!address ? "bg-[#8c6dfd]" : ""}
           handleClick={() => {
             if (window.ethereum && window.ethereum.isMetaMask) {
               console.log("MetaMask is installed!");
@@ -82,45 +71,46 @@ const Navbar = () => {
         />
 
         <div
-          className={`absolute top-[60px] right-0 left-0 dark:bg-[#1c1c24] bg-white z-10 py-4 ${
+          className={`absolute top-[60px] right-0 left-0 dark:bg-[#2c2f32] bg-gray-50 shadow-lg z-10 py-4 ${
             !toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
           } transition-all duration-700`}
         >
           <ul className="mb-4">
-            {navlinks.map((link) => (
-              <li
-                key={link.name}
-                className={`flex hover:bg-[#3a3a43] p-4 ${
-                  isActive === link.name && "bg-[#3a3a43]"
-                }`}
-                onClick={() => {
-                  setIsActive(link.name);
-                  setToggleDrawer(false);
-                  navigate(link.link);
-                }}
-              >
-                <img
-                  src={link.imgUrl}
-                  alt={link.name}
-                  className={`w-[24px] h-[24px] object-contain ${
-                    isActive === link.name ? "grayscale-0" : "grayscale"
+            {navlinks.map((link) => {
+              const Icon = link.iconLight; // Use iconLight or iconDark based on theme
+              return (
+                <li
+                  key={link.name}
+                  className={`flex hover:bg-[#3a3a43] p-4 ${
+                    isActive === link.name && "dark:bg-[#3a3a43] bg-slate-500"
                   }`}
-                />
-                <p
-                  className={`ml-[20px] font-epilogue font-semibold text-[14px] ${
-                    isActive === link.name ? "text-white" : "text-[#808191]"
-                  }`}
+                  onClick={() => {
+                    setIsActive(link.name);
+                    setToggleDrawer(false);
+                    navigate(link.link);
+                  }}
                 >
-                  {link.name}
-                </p>
-              </li>
-            ))}
+                  <Icon
+                    className={`w-[24px] h-[24px] object-contain ${
+                      isActive === link.name ? "text-white" : "text-[#808191]"
+                    }`}
+                  />
+                  <p
+                    className={`ml-[20px] font-epilogue font-semibold text-[14px] ${
+                      isActive === link.name ? "text-white" : "text-[#808191]"
+                    }`}
+                  >
+                    {link.name}
+                  </p>
+                </li>
+              );
+            })}
           </ul>
 
-          <div className="flex flex-row justify-between items-center mx-4">
+          {/* <div className="flex flex-row justify-between items-center mx-4">
             <Button
               className={
-                "font-epilogue font-semibold text-[16px]  text-white px-4 rounded-[10px] bg-[#8c6dfd]"
+                "font-epilogue font-semibold text-[16px] text-white px-4 rounded-[10px] bg-[#8c6dfd]"
               }
               onClick={() => {
                 if (address) navigate("create-campaign");
@@ -131,9 +121,25 @@ const Navbar = () => {
             </Button>
             <Link to="/profile">
               <div className="w-[52px] h-[52px] flex justify-center items-center cursor-pointer">
-                <Avatar src={"/img.png"}></Avatar>
+                <Avatar src={"/img.png"} />
               </div>
             </Link>
+          </div> */}
+          <div className="flex flex-row justify-center items-center gap-4">
+            <CustomButton
+              btnType="button"
+              title={!address ? "Log In / Sign up" : handleUserAccount()}
+              styles={!address ? "bg-[#8c6dfd]" : ""}
+              handleClick={() => {
+                if (window.ethereum && window.ethereum.isMetaMask) {
+                  console.log("MetaMask is installed!");
+                } else {
+                  alert("MetaMask extension is not installed!");
+                }
+                if (address) navigate("/");
+                else connect();
+              }}
+            />
           </div>
         </div>
       </div>
