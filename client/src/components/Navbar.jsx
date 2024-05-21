@@ -5,17 +5,22 @@ import { useStateContext } from "../context";
 import { CustomButton } from "./";
 import { menu, search, thirdweb } from "../assets";
 import { navlinks } from "../constants";
-// import { Avatar, Button } from "@nextui-org/react";
 import BlockFundLogo from "../assets/BlockFundLogo.png";
 
-const Navbar = () => {
+const Navbar = ({ setSearchQuery }) => {
   const navigate = useNavigate();
+  const { connect, address } = useStateContext();
   const [isActive, setIsActive] = useState("dashboard");
   const [toggleDrawer, setToggleDrawer] = useState(false);
-  const { connect, address } = useStateContext();
+  const [searchInput, setSearchInput] = useState("");
 
   const handleUserAccount = () => {
     return <ConnectWallet />;
+  };
+
+  const handleSearch = () => {
+    setSearchQuery(searchInput.trim());
+    navigate("/ExploreProjects");
   };
 
   return (
@@ -25,9 +30,14 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Search for campaigns"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
           className="flex w-full font-epilogue font-normal text-[14px] dark:text-white text-black bg-transparent outline-none"
         />
-        <div className="w-[62px] h-full rounded-[20px] dark:bg-[#8c6dfd] bg-[#8c6dfd] flex justify-center items-center cursor-pointer">
+        <div
+          onClick={handleSearch}
+          className="w-[62px] h-full rounded-[20px] dark:bg-[#8c6dfd] bg-[#8c6dfd] flex justify-center items-center cursor-pointer"
+        >
           <img
             src={search}
             alt="search"
@@ -107,24 +117,6 @@ const Navbar = () => {
             })}
           </ul>
 
-          {/* <div className="flex flex-row justify-between items-center mx-4">
-            <Button
-              className={
-                "font-epilogue font-semibold text-[16px] text-white px-4 rounded-[10px] bg-[#8c6dfd]"
-              }
-              onClick={() => {
-                if (address) navigate("create-campaign");
-                else connect();
-              }}
-            >
-              {address ? "Create a campaign" : "Connect"}
-            </Button>
-            <Link to="/profile">
-              <div className="w-[52px] h-[52px] flex justify-center items-center cursor-pointer">
-                <Avatar src={"/img.png"} />
-              </div>
-            </Link>
-          </div> */}
           <div className="flex flex-row justify-center items-center gap-4">
             <CustomButton
               btnType="button"

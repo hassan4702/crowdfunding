@@ -4,12 +4,13 @@ import { Loader } from "../components";
 import { useNavigate } from "react-router-dom";
 import FundCard from "../components/FundCard";
 
-const ExploreProjects = () => {
+const ExploreProjects = ({ searchQuery }) => {
   const { contract, getCampaigns } = useStateContext();
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
   const [campaigns, setCampaigns] = useState([]);
+  const [filteredCampaigns, setFilteredCampaigns] = useState([]);
 
   const fetchCampaigns = async () => {
     setIsLoading(true);
@@ -22,6 +23,15 @@ const ExploreProjects = () => {
     if (contract) fetchCampaigns();
   }, [contract]);
 
+  useEffect(() => {
+    const filtered = campaigns.filter(
+      (campaign) =>
+        campaign.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        campaign.category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredCampaigns(filtered);
+  }, [searchQuery, campaigns]);
+
   const handleNavigate = (campaign) => {
     navigate(`/campaign-details/${campaign.title}`, { state: campaign });
   };
@@ -32,12 +42,14 @@ const ExploreProjects = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-5xl lg:text-5xl font-semibold text-center mt-6 mb-20">Block Fund Campaigns</h1>
+      <h1 className="text-4xl lg:text-4xl font-semibold text-center mt-6 mb-20">
+        Block Fund Campaigns
+      </h1>
       <div className="flex flex-wrap gap-8 justify-center">
-        {campaigns.length === 0 ? (
+        {filteredCampaigns.length === 0 ? (
           <div>No campaigns found.</div>
         ) : (
-          campaigns.map((campaign) => (
+          filteredCampaigns.map((campaign) => (
             <FundCard
               key={campaign.id}
               {...campaign}
