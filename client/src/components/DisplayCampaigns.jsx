@@ -69,7 +69,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   return (
     <div>
       <div className='flex justify-between'>
-        <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">Recent Finds</h1>
+        <h1 className="font-epilogue font-semibold text-[18px] my-10 text-left">{title}</h1>
         <h1 
           className="font-epilogue font-semibold text-[18px] my-10 text-left cursor-pointer flex items-center" 
           onClick={() => navigate("/ExploreProjects")}

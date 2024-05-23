@@ -270,15 +270,12 @@ const CampaignDetails = () => {
                             COMMENT_AUTHOR_CLICK_CALLBACK,
                           currentUserClickCallback: CURRENT_USER_CLICK_CALLBACK,
                         }}
-                        formProps={{
-                          backgroundColor: theme,
-                          textareaTextColor: txt_theme,
-                        }}
+                        formProps={{}}
                         currentUser={
                           user
                             ? {
                                 _id: state.pId,
-                                name: state.owner,
+                                name: address,
                                 img: "",
                               }
                             : undefined

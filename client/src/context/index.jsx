@@ -152,6 +152,22 @@ export const StateContextProvider = ({ children }) => {
     return parsedDonations;
   };
 
+  const getNumberOfCampaignsDonatedTo = async (donatorAddress) => {
+    const allCampaigns = await getCampaigns();
+    let donationCount = 0;
+
+    for (const campaign of allCampaigns) {
+      const donations = await getDonations(campaign.pId);
+      const hasDonated = donations.some(
+        (donation) => donation.donator.toLowerCase() === donatorAddress.toLowerCase()
+      );
+      if (hasDonated) {
+        donationCount++;
+      }
+    }
+
+    return donationCount;
+  };
   return (
     <StateContext.Provider
       value={{
@@ -166,6 +182,7 @@ export const StateContextProvider = ({ children }) => {
         payOutToCampaignTeam,
         updateCampaign,
         deleteCampaign,
+        getNumberOfCampaignsDonatedTo,
       }}
     >
       {children}
