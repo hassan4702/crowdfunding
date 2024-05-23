@@ -16,6 +16,9 @@ import "react-toastify/dist/ReactToastify.css";
 import ReactMarkdown from "react-markdown";
 import { CommentSection } from "replyke";
 import TotalCampainCreatedbyuser from "../components/TotalCampainCreatedbyuser";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const CampaignDetails = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -97,6 +100,13 @@ const CampaignDetails = () => {
     const target = parseFloat(ethers.utils.parseEther(state.target));
     return collected <= target;
   };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <div>
       <ToastContainer
@@ -117,16 +127,27 @@ const CampaignDetails = () => {
           <div className="font-epilogue font-semibold text-[20px] uppercase p-2">
             {state.title}
           </div>
-          {state.image.map((imageUrl, index) => (
-            <MediaRenderer
-              key={index}
-              src={imageUrl}
-              width="100%"
-              height="410px"
-              alt={`campaign-${index}`}
-              className="w-full h-[410px] overflow-auto object-cover rounded-xl"
-            />
-          ))}
+          <div
+            style={
+              {
+                // width: 1550 + "px",
+              }
+            }
+            className="xl:w-[1550px] sm:w-[400px] justify-center items-center"
+          >
+            <Slider adaptiveHeight={true} {...settings}>
+              {state.image.map((imageUrl, index) => (
+                <MediaRenderer
+                  key={index}
+                  src={imageUrl}
+                  width="100%"
+                  height="410px"
+                  alt={`campaign-${index}`}
+                  className="w-full h-[410px] overflow-auto object-cover rounded-xl"
+                />
+              ))}
+            </Slider>
+          </div>
           <div className="relative w-full h-[5px] bg-[#8c6dfd] mt-2">
             <div
               className="absolute h-full bg-[#4acd8d]"
@@ -373,7 +394,6 @@ const CampaignDetails = () => {
                       >
                         {state.packages.map((item, index) => (
                           <Radio
-                          
                             key={index}
                             value={item.amount}
                             description={`Discount${item.discount} %`}

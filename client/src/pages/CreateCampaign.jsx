@@ -45,6 +45,7 @@ const CreateCampaign = () => {
         options: { uploadWithGatewayUrl: true },
       });
       setUris(_uris);
+      alert("File uploaded successfully");
     },
     [upload]
   );
@@ -201,7 +202,7 @@ const CreateCampaign = () => {
       <div className="m-2 text-bold font-epilogue dark:text-white text-black flex items-center bg-[#8c6dfd] justify-center border-dotted border-white p-3 rounded-md">
         <div {...getRootProps()}>
           <input {...getInputProps()} />
-          <button>Drop files</button>
+          <button className="text-white ">Drop files</button>
         </div>
       </div>
 
