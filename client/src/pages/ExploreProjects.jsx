@@ -4,7 +4,7 @@ import { Loader } from "../components";
 import { useNavigate } from "react-router-dom";
 import FundCard from "../components/FundCard";
 
-const ExploreProjects = () => {
+const ExploreProjects = ({ filter }) => {
   const { contract, getCampaigns } = useStateContext();
   const navigate = useNavigate();
 
@@ -16,7 +16,8 @@ const ExploreProjects = () => {
     const data = await getCampaigns();
     if (data) {
       const sortedData = data.sort((a, b) => a.title.localeCompare(b.title));
-      setCampaigns(sortedData);
+      const filteredData = filter ? sortedData.filter(filter) : sortedData;
+      setCampaigns(filteredData);
     } else {
       setCampaigns([]);
     }

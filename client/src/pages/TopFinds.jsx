@@ -45,7 +45,14 @@ const TopFinds = () => {
   const fetchCampaigns = async () => {
     setIsLoading(true); 
     const data = await getCampaigns(); 
-    setCampaigns(data || []); 
+
+    // Sort campaigns by goal in descending order and select the top 10
+    const sortedCampaigns = (data || [])
+      .filter(campaign => campaign.category === 'Fundraiser')
+      .sort((a, b) => b.goal - a.goal)
+      .slice(0, 10);
+
+    setCampaigns(sortedCampaigns); 
     setIsLoading(false); 
   };
 
@@ -64,9 +71,7 @@ const TopFinds = () => {
         {campaigns.length === 0 ? (
           <div>No campaigns found.</div> 
         ) : (
-          <AllCampaigns
-          campaigns={campaigns.filter((campaign) => campaign.category === 'Fundraiser')}
-          />
+          <AllCampaigns campaigns={campaigns} />
         )}
       </div>
     </div>

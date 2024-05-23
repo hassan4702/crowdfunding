@@ -17,8 +17,7 @@ export const navlinks = [
     name: 'payment',
     iconLight: MdPayment,
     iconDark: MdPayment,
-    link: '/',
-    disabled: true,
+    link: '/Withdraw',
   },
  
   {

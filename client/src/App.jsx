@@ -36,6 +36,7 @@ import TrustOperationsDetail from './pages/TrustOperationsDetail';
 import CampaignNextStep from './pages/CampaignNextStep';
 import LegalDetail from './pages/LegalDetail';
 import BackersDetail from './pages/BackersDetail';
+import Withdraw from './pages/Withdraw';
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -85,6 +86,7 @@ const App = () => {
           <Route path="/TrustOperationsDetail" element={<TrustOperationsDetail />} />
           <Route path="/LegalDetail" element={<LegalDetail />} />
           <Route path="/BackersDetail" element={<BackersDetail />} />
+          <Route path="/Withdraw" element={<Withdraw />} />
         </Routes>
       </div>
     </div>
