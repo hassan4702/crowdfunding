@@ -14,7 +14,12 @@ const ExploreProjects = () => {
   const fetchCampaigns = async () => {
     setIsLoading(true);
     const data = await getCampaigns();
-    setCampaigns(data || []);
+    if (data) {
+      const sortedData = data.sort((a, b) => a.title.localeCompare(b.title));
+      setCampaigns(sortedData);
+    } else {
+      setCampaigns([]);
+    }
     setIsLoading(false);
   };
 
