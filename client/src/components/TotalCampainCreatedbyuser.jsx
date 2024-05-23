@@ -17,7 +17,7 @@ const TotalCampainCreatedbyuser = ({ ownerAddress }) => {
   };
   return (
     <div>
-      <p> {getTotalCampaignsByOwner(ownerAddress)} Campaign's</p>
+      <p> {getTotalCampaignsByOwner(ownerAddress)} Campaign(s)</p>
     </div>
   );
 };

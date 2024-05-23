@@ -6,24 +6,36 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 /// @title The crowdfunding platform
 /// @author Hassan shakil
-/// @dev This is a sample crowdfunding smart contract.
-/// @notice As this contract is not audited, use at your own risk!
+/// @dev This is a crowdfunding smart contract.
 contract CrowdFunding is Ownable {
     using SafeMath for uint256;
+    /// Structure of each FAQ item
+    struct FAQ {
+        string question;
+        string answer;
+    }
+
+    struct Packages {
+        string amount;
+        string discount;
+    }
 
     /// Strcuture of each campaign
     struct Campaign {
         address owner;
         bool payedOut;
         string category;
+        string email;
         string title;
         string description;
         uint256 target;
         uint256 deadline;
         uint256 amountCollected;
-        string image;
+        string[] image;
         address[] donators;
         uint256[] donations;
+        FAQ[] faqs;
+        Packages[] packages;
     }
 
     // a mapppig to hold each campaign's data
@@ -31,7 +43,7 @@ contract CrowdFunding is Ownable {
 
     // defining tax of the platform
     uint8 public platformTax;
-    // holding number of all campaigns 
+    // holding number of all campaigns
     uint24 public numberOfCampaigns;
 
     // avtivity status of the contract
@@ -39,7 +51,7 @@ contract CrowdFunding is Ownable {
 
     // Will be emitted when a main functionality executed
     // (such as: creating/deleting/updating capaigns, and etc.)
-    event Action (
+    event Action(
         uint256 id,
         string actionType,
         address indexed executor,
@@ -47,9 +59,7 @@ contract CrowdFunding is Ownable {
     );
 
     // Will be emitted in case of changing activity status of the contract
-    event ContractStateChanged (
-        bool State
-    );
+    event ContractStateChanged(bool State);
 
     /// Will arise when msg.value is lower than minAmount
     /// `minAmount` minimmum amount
@@ -84,21 +94,31 @@ contract CrowdFunding is Ownable {
     // Preventing entering null values as campaign details
     modifier notNull(
         string memory title,
-        string memory description,
         string memory category,
+        string memory email,
+        string memory description,
         uint256 target,
         uint256 deadline,
-        string memory image) {
-            _nullChecker(title,category, description, target, deadline, image);
-            _;
-        }
+        string[] memory image
+    ) {
+        _nullChecker(
+            title,
+            category,
+            email,
+            description,
+            target,
+            deadline,
+            image
+        );
+        _;
+    }
 
     /// @param _platformTax initilizing tax of the platform
     constructor(uint8 _platformTax) {
         platformTax = _platformTax;
     }
 
-    /**  @notice Create a fundraising campaign 
+    /**  @notice Create a fundraising campaign
      *  @param _owner creator of the fundraising campaign
      *  @param _title title of the fundraising campaign
      *  @param _description description of the fundraising campaign
@@ -108,39 +128,64 @@ contract CrowdFunding is Ownable {
      *  @return campaign id
      */
     function createCampaign(
-        address _owner, 
-        string memory _title, 
+        address _owner,
+        string memory _title,
         string memory _category,
+        string memory _email,
         string memory _description,
-        uint256 _target, 
-        uint256 _deadline, 
-        string memory _image
-        ) external notNull(_title, _category,_description, _target, _deadline, _image) notInEmergency returns (uint256) {
-            require(block.timestamp <  _deadline, "Deadline must be in the future");
-            Campaign storage campaign = campaigns[numberOfCampaigns];
-            numberOfCampaigns++;
+        uint256 _target,
+        uint256 _deadline,
+        string[] memory _image,
+        FAQ[] memory _faqs,
+        Packages[] memory _packages
+    )
+        external
+        notNull(
+            _title,
+            _category,
+            _email,
+            _description,
+            _target,
+            _deadline,
+            _image
+        )
+        notInEmergency
+        returns (uint256)
+    {
+        require(block.timestamp < _deadline, "Deadline must be in the future");
+        Campaign storage campaign = campaigns[numberOfCampaigns];
+        numberOfCampaigns++;
 
-            campaign.owner = _owner;
-            campaign.title = _title;
-            campaign.category = _category;
-            campaign.description = _description;
-            campaign.target = _target;
-            campaign.deadline = _deadline;
-            campaign.amountCollected = 0;
-            campaign.image = _image;
-            campaign.payedOut = false;
+        campaign.owner = _owner;
+        campaign.title = _title;
+        campaign.email = _email;
+        campaign.category = _category;
+        campaign.description = _description;
+        campaign.target = _target;
+        campaign.deadline = _deadline;
+        campaign.amountCollected = 0;
+        campaign.payedOut = false;
+        for (uint i = 0; i < _image.length; i++) {
+            campaign.image.push(_image[i]);
+        }
+        for (uint i = 0; i < _faqs.length; i++) {
+            campaign.faqs.push(_faqs[i]);
+        }
+        for (uint i = 0; i < _packages.length; i++) {
+            campaign.packages.push(_packages[i]);
+        }
 
-            emit Action (
-                numberOfCampaigns,
-                "Campaign Created",
-                msg.sender,
-                block.timestamp
-            );
+        emit Action(
+            numberOfCampaigns,
+            "Campaign Created",
+            msg.sender,
+            block.timestamp
+        );
 
-            return numberOfCampaigns - 1;
+        return numberOfCampaigns - 1;
     }
 
-    /** @notice Update a fundraising campaign 
+    /** @notice Update a fundraising campaign
      *  @param _id campign id
      *  @param _title new title of the fundraising campaign
      *  @param _description new description of the fundraising campaign
@@ -151,61 +196,87 @@ contract CrowdFunding is Ownable {
      */
     function updateCampaign(
         uint256 _id,
-        string memory _title, 
+        string memory _title,
         string memory _category,
+        string memory _email,
         string memory _description,
         uint256 _target,
         uint256 _deadline,
-        string memory _image
-        ) external privilageEntity(_id) notNull(_title,_category, _description, _target, _deadline, _image) notInEmergency returns (bool) {
-            require(block.timestamp <  _deadline, "Deadline must be in the future");
-            
-            // Making a pointer for a campaign
-            Campaign storage campaign = campaigns[_id];
-            require(campaign.owner > address(0), "No campaign exist with this ID");
-            require(campaign.amountCollected == 0, "Update error: amount collected");
+        string[] memory _image,
+        FAQ[] memory _updatedFaqs,
+        Packages[] memory _updatedPackages
+    )
+        external
+        privilageEntity(_id)
+        notNull(
+            _title,
+            _category,
+            _email,
+            _description,
+            _target,
+            _deadline,
+            _image
+        )
+        notInEmergency
+        returns (bool)
+    {
+        require(block.timestamp < _deadline, "Deadline must be in the future");
 
-            campaign.title = _title;
-            campaign.category = _category;
-            campaign.description = _description;
-            campaign.target = _target;
-            campaign.deadline = _deadline;
-            campaign.amountCollected = 0;
-            campaign.image = _image;
-            campaign.payedOut = false;
+        // Making a pointer for a campaign
+        Campaign storage campaign = campaigns[_id];
+        require(campaign.owner > address(0), "No campaign exist with this ID");
+        require(
+            campaign.amountCollected == 0,
+            "Update error: amount collected"
+        );
 
-            emit Action (
-                _id,
-                "Campaign Updated",
-                msg.sender,
-                block.timestamp
-            );
-            return true;
+        campaign.title = _title;
+        campaign.category = _category;
+        campaign.email = _email;
+        campaign.description = _description;
+        campaign.target = _target;
+        campaign.deadline = _deadline;
+        campaign.amountCollected = 0;
+        campaign.payedOut = false;
+
+        for (uint i = 0; i < _image.length; i++) {
+            campaign.image.push(_image[i]);
+        }
+        for (uint i = 0; i < _updatedFaqs.length; i++) {
+            campaign.faqs.push(_updatedFaqs[i]);
+        }
+
+        for (uint i = 0; i < _updatedPackages.length; i++) {
+            campaign.packages.push(_updatedPackages[i]);
+        }
+
+        emit Action(_id, "Campaign Updated", msg.sender, block.timestamp);
+        return true;
     }
 
     /// @notice Donate to an specific fundraising campaign
     /// @param _id campaign id
     function donateToCampaign(uint256 _id) external payable notInEmergency {
-        if(msg.value == 0 wei) revert LowEtherAmount({minAmount: 1 wei, payedAmount: msg.value});
+        if (msg.value == 0 wei)
+            revert LowEtherAmount({minAmount: 1 wei, payedAmount: msg.value});
         Campaign storage campaign = campaigns[_id];
-        if(campaigns[_id].payedOut == true) revert("Funds withdrawed before");
+        if (campaigns[_id].payedOut == true) revert("Funds withdrawed before");
         require(campaign.owner > address(0), "No campaign exist with this ID");
-        if(campaign.deadline < block.timestamp) {
-            revert DeadLine(
-                {
-                    campaingDeadline:campaigns[_id].deadline,
-                    requestTime: block.timestamp
-                }
-            );
+        if (campaign.deadline < block.timestamp) {
+            revert DeadLine({
+                campaingDeadline: campaigns[_id].deadline,
+                requestTime: block.timestamp
+            });
         }
         uint256 amount = msg.value;
-        if(campaign.amountCollected > campaign.amountCollected.add(amount)) revert ("Target amount has reached");
+        if (campaign.amountCollected > campaign.amountCollected.add(amount))
+            revert("Target amount has reached");
         campaign.amountCollected = campaign.amountCollected.add(amount);
 
         campaign.donators.push(msg.sender);
         campaign.donations.push(amount);
 
-        emit Action (
+        emit Action(
             _id,
             "Donation To The Campaign",
             msg.sender,
@@ -216,17 +287,17 @@ contract CrowdFunding is Ownable {
     /// @notice Transfering raised funds to the campaign team
     /// @param _id campaign id
     /// @return true, if payout process get completely done
-    function payOutToCampaignTeam(uint256 _id) external privilageEntity(_id) notInEmergency returns (bool) {
+    function payOutToCampaignTeam(
+        uint256 _id
+    ) external privilageEntity(_id) notInEmergency returns (bool) {
         // this line will avoid re-entrancy attack
-        if(campaigns[_id].payedOut == true) revert("Funds withdrawed before");
-        if(msg.sender != address(owner())) {
-            if(campaigns[_id].deadline > block.timestamp) {
-                revert DeadLine(
-                    {
-                        campaingDeadline:campaigns[_id].deadline,
-                        requestTime: block.timestamp
-                    }
-                );
+        if (campaigns[_id].payedOut == true) revert("Funds withdrawed before");
+        if (msg.sender != address(owner())) {
+            if (campaigns[_id].deadline > block.timestamp) {
+                revert DeadLine({
+                    campaingDeadline: campaigns[_id].deadline,
+                    requestTime: block.timestamp
+                });
             }
         }
 
@@ -234,12 +305,7 @@ contract CrowdFunding is Ownable {
         (uint256 raisedAmount, uint256 taxAmount) = _calculateTax(_id);
         _payTo(campaigns[_id].owner, (raisedAmount - taxAmount));
         _payPlatformFee(taxAmount);
-        emit Action (
-            _id,
-            "Funds Withdrawal",
-            msg.sender,
-            block.timestamp
-        );
+        emit Action(_id, "Funds Withdrawal", msg.sender, block.timestamp);
         return true;
     }
 
@@ -249,23 +315,23 @@ contract CrowdFunding is Ownable {
         _payTo(owner(), _taxAmount);
     }
 
-    /// @notice Deleting a specific fundraising campaign 
+    /// @notice Deleting a specific fundraising campaign
     /// @param _id campaign id
     /// @return true, if deleting be correctly done
-    function deleteCampaign(uint256 _id) external privilageEntity(_id) notInEmergency returns (bool) {
+    function deleteCampaign(
+        uint256 _id
+    ) external privilageEntity(_id) notInEmergency returns (bool) {
         // to check if a capmpaign with specific id exists.
-        require(campaigns[_id].owner > address(0), "No campaign exist with this ID");
-        if(campaigns[_id].amountCollected > 0 wei) {
+        require(
+            campaigns[_id].owner > address(0),
+            "No campaign exist with this ID"
+        );
+        if (campaigns[_id].amountCollected > 0 wei) {
             _refundDonators(_id);
         }
         delete campaigns[_id];
 
-        emit Action (
-            _id,
-            "Campaign Deleted",
-            msg.sender,
-            block.timestamp
-        );
+        emit Action(_id, "Campaign Deleted", msg.sender, block.timestamp);
 
         numberOfCampaigns -= 1;
         return true;
@@ -275,7 +341,9 @@ contract CrowdFunding is Ownable {
     /// @param _id campaign id
     /// @return donator's addresses
     /// @return donator's funded amount
-    function getDonators(uint256 _id) external view returns (address[] memory, uint256[] memory) {
+    function getDonators(
+        uint256 _id
+    ) external view returns (address[] memory, uint256[] memory) {
         return (campaigns[_id].donators, campaigns[_id].donations);
     }
 
@@ -285,21 +353,16 @@ contract CrowdFunding is Ownable {
         platformTax = _platformTax;
     }
 
-    /// @notice Halting fundraising of a specific campaign 
+    /// @notice Halting fundraising of a specific campaign
     /// @param _id campaign id
     function haltCampaign(uint256 _id) external onlyOwner {
         campaigns[_id].deadline = block.timestamp;
 
-        emit Action (
-            _id,
-            "Campaign halted",
-            msg.sender,
-            block.timestamp
-        );
+        emit Action(_id, "Campaign halted", msg.sender, block.timestamp);
     }
 
     /** @notice Showing all campaigns data
-     *  @dev todo: making slicing for pagination, 
+     *  @dev todo: making slicing for pagination,
      *  @dev       to reduce the chance of reverting(exceeding block gas limit) in case of big number of campaigns.
      *  @dev           getCampaigns(uint256 startIndex, uint256 endIndex)
      *  @return campaigns data
@@ -307,7 +370,7 @@ contract CrowdFunding is Ownable {
     function getCampaigns() external view returns (Campaign[] memory) {
         Campaign[] memory allCampaigns = new Campaign[](numberOfCampaigns);
 
-        for(uint i=0; i < numberOfCampaigns; i++) {
+        for (uint i = 0; i < numberOfCampaigns; i++) {
             Campaign storage item = campaigns[i];
 
             allCampaigns[i] = item;
@@ -319,15 +382,18 @@ contract CrowdFunding is Ownable {
     /// @dev implemented mainly for any unintended situation which risks campaigns funds
     function changeContractState() external onlyOwner {
         emergencyMode = !emergencyMode;
-        
+
         emit ContractStateChanged(emergencyMode);
     }
 
     /// @notice Withdrawing funds and refunding to donators, in case of an emergency situation(such as bugs, hacks, etc)
     /// @param _startId id of first campaign to refund
     /// @param _endId id of end campaign to refund
-    function withdrawFunds(uint256 _startId, uint256 _endId) external onlyOwner onlyInEmergency {
-        for(uint i = _startId; i <= _endId; i++) {
+    function withdrawFunds(
+        uint256 _startId,
+        uint256 _endId
+    ) external onlyOwner onlyInEmergency {
+        for (uint i = _startId; i <= _endId; i++) {
             _refundDonators(_startId, _endId);
         }
     }
@@ -337,7 +403,7 @@ contract CrowdFunding is Ownable {
     function _refundDonators(uint _id) internal {
         uint256 donationAmount;
         Campaign storage campaign = campaigns[_id];
-        for(uint i; i < campaign.donators.length; i++) {
+        for (uint i; i < campaign.donators.length; i++) {
             donationAmount = campaign.donations[i];
             campaign.donations[i] = 0;
             _payTo(campaign.donators[i], donationAmount);
@@ -351,19 +417,22 @@ contract CrowdFunding is Ownable {
     /// @param _idTo campgin id to
     function _refundDonators(uint256 _idFrom, uint256 _idTo) internal {
         require(_idFrom < _idTo, "Invalid id range");
-        require(campaigns[_idTo].owner > address(0), "No campaign exist with this ID");
+        require(
+            campaigns[_idTo].owner > address(0),
+            "No campaign exist with this ID"
+        );
         uint256 donationAmount;
-        for(uint i = _idFrom; i < _idTo; i++) {
-        Campaign storage campaign = campaigns[i]; 
-        uint256 campaignDonators = campaign.donators.length;
-            if(campaignDonators > 0) {
-                for(uint j = 0; j < campaignDonators; j++) {
+        for (uint i = _idFrom; i < _idTo; i++) {
+            Campaign storage campaign = campaigns[i];
+            uint256 campaignDonators = campaign.donators.length;
+            if (campaignDonators > 0) {
+                for (uint j = 0; j < campaignDonators; j++) {
                     donationAmount = campaign.donations[j];
                     campaign.donations[j] = 0;
                     _payTo(campaign.donators[j], donationAmount);
                     // campaign.donations[j] = 0;
                 }
-                    campaign.amountCollected = 0;
+                campaign.amountCollected = 0;
             }
         }
     }
@@ -386,7 +455,7 @@ contract CrowdFunding is Ownable {
         require(success);
         return true;
     }
-    
+
     /** @notice Preventing entering null values as campaign details
      *  @param _title title of the fundraising campaign
      *  @param _description description of the fundraising campaign
@@ -397,27 +466,29 @@ contract CrowdFunding is Ownable {
     function _nullChecker(
         string memory _title,
         string memory _category,
+        string memory _email,
         string memory _description,
         uint256 _target,
         uint256 _deadline,
-        string memory _image
-        ) internal pure {
-            require((
-                    bytes(_title).length > 0 
-                    && bytes(_description).length > 0 
-                    && _target > 0 
-                    && _deadline > 0 
-                    && bytes(_image).length > 0
-                ), "Null value not acceptable");
+        string[] memory _image
+    ) internal pure {
+        require(
+            (bytes(_title).length > 0 &&
+                bytes(_description).length > 0 &&
+                _target > 0 &&
+                _deadline > 0 &&
+                _image.length > 0 && // Check if at least one image URL is provided
+                bytes(_image[0]).length > 0),
+            "Null value not acceptable"
+        );
     }
 
     /// @notice Preventing unauthorized entity to execute specific function
     /// @param _id campaign id
     function _privilagedEntity(uint256 _id) internal view {
         require(
-            msg.sender == campaigns[_id].owner ||
-            msg.sender == owner(),
+            msg.sender == campaigns[_id].owner || msg.sender == owner(),
             "Unauthorized Entity"
         );
-    } 
+    }
 }

@@ -117,13 +117,16 @@ const CampaignDetails = () => {
           <div className="font-epilogue font-semibold text-[20px] uppercase p-2">
             {state.title}
           </div>
-          <MediaRenderer
-            src={state.image}
-            width="100%"
-            height="410px"
-            alt="campaign"
-            className="w-full h-[410px] overflow-auto object-cover rounded-xl"
-          />
+          {state.image.map((imageUrl, index) => (
+            <MediaRenderer
+              key={index}
+              src={imageUrl}
+              width="100%"
+              height="410px"
+              alt={`campaign-${index}`}
+              className="w-full h-[410px] overflow-auto object-cover rounded-xl"
+            />
+          ))}
           <div className="relative w-full h-[5px] bg-[#8c6dfd] mt-2">
             <div
               className="absolute h-full bg-[#4acd8d]"
@@ -219,8 +222,14 @@ const CampaignDetails = () => {
               <Tab key="faq" title="FAQ's">
                 <Card>
                   <CardBody>
-                    Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    {state.faqs.map((faq, index) => (
+                      <div className="flex flex-col m-2 p-2 " key={index}>
+                        <h4>Question : {faq.question}</h4>
+                        <p className="font-epilogue font-normal text-[16px] text-[#808191]">
+                          Answer : {faq.answer}
+                        </p>
+                      </div>
+                    ))}
                   </CardBody>
                 </Card>
               </Tab>
@@ -228,34 +237,32 @@ const CampaignDetails = () => {
                 <Card>
                   <CardBody>
                     <div className="bg-white px-2 rounded dark:bg-[#1c1c24] text-white ">
-                    <CommentSection
-                    // className='dark:text-white bg-red-100'
-                      apiBaseUrl="http://localhost:3000"
-                      // backgroundColor={'black'}
-                      articleId={state.pId}
-                      // shadow={true}
-                      callbacks={{
-                        loginClickCallback: LOGIN_CALLBACK,
-                        commentAuthorClickCallback:
-                          COMMENT_AUTHOR_CLICK_CALLBACK,
-                        currentUserClickCallback: CURRENT_USER_CLICK_CALLBACK,
-                      }}
-                      formProps={
-                        {
-                          backgroundColor :theme,
-                          textareaTextColor:txt_theme
+                      <CommentSection
+                        // className='dark:text-white bg-red-100'
+                        apiBaseUrl="http://localhost:3000"
+                        // backgroundColor={'black'}
+                        articleId={state.pId}
+                        // shadow={true}
+                        callbacks={{
+                          loginClickCallback: LOGIN_CALLBACK,
+                          commentAuthorClickCallback:
+                            COMMENT_AUTHOR_CLICK_CALLBACK,
+                          currentUserClickCallback: CURRENT_USER_CLICK_CALLBACK,
+                        }}
+                        formProps={{
+                          backgroundColor: theme,
+                          textareaTextColor: txt_theme,
+                        }}
+                        currentUser={
+                          user
+                            ? {
+                                _id: state.pId,
+                                name: state.owner,
+                                img: "",
+                              }
+                            : undefined
                         }
-                      }
-                      currentUser={
-                        user
-                          ? {
-                              _id: state.pId,
-                              name: state.owner,
-                              img: "",
-                            }
-                          : undefined
-                      }
-                    />
+                      />
                     </div>
                   </CardBody>
                 </Card>
@@ -263,8 +270,9 @@ const CampaignDetails = () => {
               <Tab key="contact" title="Contact">
                 <Card>
                   <CardBody>
-                    Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    <a className="text-blue-500" href={`mailto:${state.email}`}>
+                      Send email to Owner
+                    </a>
                   </CardBody>
                 </Card>
               </Tab>
@@ -363,7 +371,17 @@ const CampaignDetails = () => {
                         onValueChange={setAmount}
                         label="Select your package"
                       >
-                        <Radio value="0.01" description="Discount of 10%">
+                        {state.packages.map((item, index) => (
+                          <Radio
+                          
+                            key={index}
+                            value={item.amount}
+                            description={`Discount${item.discount} %`}
+                          >
+                            {item.amount}
+                          </Radio>
+                        ))}
+                        {/* <Radio value="0.01" description="Discount of 10%">
                           ETH 0.01
                         </Radio>
                         <Radio value="0.05" description="Discount of 20%">
@@ -371,7 +389,7 @@ const CampaignDetails = () => {
                         </Radio>
                         <Radio value="0.10" description="Discount of 50%">
                           ETH 0.10
-                        </Radio>
+                        </Radio> */}
                       </RadioGroup>
                       <Button
                         className="w-full bg-[#8c6dfd] text-white"
@@ -379,7 +397,6 @@ const CampaignDetails = () => {
                       >
                         Fund
                       </Button>
-                      {amount}
                     </div>
                   </Tab>
                 </Tabs>
@@ -414,13 +431,13 @@ const CampaignDetails = () => {
                 </Button>
                 <Button
                   className="w-full bg-[#8c6dfd] text-white"
-                  handleClick={handleUpdate}
+                  onClick={handleUpdate}
                 >
                   {remainingDays >= 0 ? "Edit Campaign" : ""}
                 </Button>
                 <Button
                   className="w-full bg-[#8c6dfd] text-white"
-                  handleClick={handleDelete}
+                  onClick={handleDelete}
                 >
                   {remainingDays >= 0 ? "Delete Campaign" : ""}
                 </Button>

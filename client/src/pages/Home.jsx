@@ -13,7 +13,6 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([]);
 
-
   const fetchCampaigns = async () => {
     setIsLoading(true);
     const data = await getCampaigns();
@@ -21,7 +20,6 @@ const Home = () => {
     setCampaigns(data);
     setIsLoading(false);
   };
-  
 
   useEffect(() => {
     if (contract) fetchCampaigns();
@@ -35,7 +33,13 @@ const Home = () => {
       <DisplayCampaigns
         title="All Campaigns"
         isLoading={isLoading}
-        campaigns={campaigns}
+        campaigns={campaigns.filter((campaign) => {
+          // Check if campaign object is not empty
+          return (
+            campaign.owner !== "0x0000000000000000000000000000000000000000"
+            
+          );
+        })}
       />
       <ImageGallery />
       <BacktheProject />
