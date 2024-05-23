@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 const BlockFundVsKickstarter = () =>{
     return(
         <>
-            <div className="relative mb-20">
+            <div className="relative mb-10">
                 <img src={business} alt="business" className="w-full h-auto lg:h-96 h-108 mb-8 object-cover rounded-[15px]" />
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                     <div className="max-w-3xl mx-auto text-center">

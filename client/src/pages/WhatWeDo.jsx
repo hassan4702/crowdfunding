@@ -30,7 +30,7 @@ const WhatWeDo = () => {
         <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-semibold py-2 px-4 rounded mt-4 mb-4 text-white" onClick={() => navigate("/ExploreProjects")}>
           Explore Projects
         </button>
-        <p className='text-center'>Or <span className='text-[#808191] cursor-pointer' onClick={() => navigate("/Crowdfunding")}>learn more</span> about crowdfunding and your role as a backer.</p>
+        <p className='text-center'>Or <span className='text-[#808191] cursor-pointer'><a href='/Crowdfunding'>learn more</a></span> about crowdfunding and your role as a backer.</p>
       </div>
 
       {/* Great finds, delivered daily Section */}
@@ -51,7 +51,7 @@ const WhatWeDo = () => {
         <label className="flex flex-col md:flex-row items-center justify-center px-4">
           <input type="checkbox" className="form-checkbox mr-2" />
           <span className="mb-2 md:mb-0 justify-center ">
-            I agree to the <span className="text-[#8c6dfd] cursor-pointer" onClick={() => navigate("/TermsOfUse")}>Terms of Use</span> and have read and understand the <span className="text-[#8c6dfd] cursor-pointer" onClick={() => navigate("/PrivacyPolicy")}>Privacy Policy.</span> 
+            I agree to the <span className="text-[#8c6dfd] cursor-pointer"><a href="/TermsOfUse">Terms of Use</a></span> and have read and understand the <span className="text-[#8c6dfd] cursor-pointer"><a href="/PrivacyPolicy">Privacy Policy.</a></span> 
           </span>
         </label>
       </div>
@@ -90,8 +90,7 @@ const WhatWeDo = () => {
               className="w-24 md:w-32 h-auto object-cover"
             />
             <h1 className="text-3xl font-semibold py-4 md:mb-4 lg:pt-10">Feeling Inspired?</h1>
-            <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-semibold py-2 px-4 rounded" onClick={() => navigate("/create-campaign")}>
-              Become an Entrepreneur
+            <button className="bg-[#8c6dfd] hover:bg-[#9691aa] font-semibold py-2 px-4 rounded"><a href='/create-campaign'>Become an Entrepreneur</a>
             </button>
           </div>
         </div>

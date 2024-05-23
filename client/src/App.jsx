@@ -22,7 +22,6 @@ import Competition from "./pages/Competition";
 import PrototypingandProduction from "./pages/PrototypingandProduction";
 import CreativeServices from "./pages/CreativeServices";
 import Fulfillment from "./pages/Fulfillment";
-import HelpDetails from "./pages/HelpDetails";
 import SearchCampaigns from "./pages/SearchCampaigns";
 import {
   EducationCampaigns,
@@ -32,6 +31,11 @@ import {
   ArtsAndCulture,
 } from "./pages";
 import EducationCenter from "./pages/EducationCenter";
+import PaymentsDetail from './pages/PaymentsDetail';
+import TrustOperationsDetail from './pages/TrustOperationsDetail';
+import CampaignNextStep from './pages/CampaignNextStep';
+import LegalDetail from './pages/LegalDetail';
+import BackersDetail from './pages/BackersDetail';
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -74,9 +78,13 @@ const App = () => {
           <Route path="/PrototypingandProduction" element={<PrototypingandProduction />} />
           <Route path="/CreativeServices" element={<CreativeServices />} />
           <Route path="/Fulfillment" element={<Fulfillment />} />
-          <Route path="/HelpDetails" element={<HelpDetails />} />
           <Route path="/EducationCenter" element={<EducationCenter />} />
           <Route path="/SearchCampaigns" element={<SearchCampaigns searchQuery={searchQuery} />} />
+          <Route path="/payments" element={<PaymentsDetail />} />
+          <Route path="/CampaignNextStep" element={<CampaignNextStep />} />
+          <Route path="/TrustOperationsDetail" element={<TrustOperationsDetail />} />
+          <Route path="/LegalDetail" element={<LegalDetail />} />
+          <Route path="/BackersDetail" element={<BackersDetail />} />
         </Routes>
       </div>
     </div>

@@ -7,63 +7,48 @@ import TrustOperations from '../assets/TrustOperations.png';
 import Profile from '../assets/Profile.png';
 import CampaignNextStep from '../assets/CampaignNextStep.png';
 import Legal from '../assets/Legal.png';
-import Education from '../assets/Education.png';
 const cardsData = [
     {
       image: Backers,
       name: "Backers",
       description: "Find out how to evaluate and back crowdfunding campaigns, and manage your orders",
       link: "View All",
-      route: "/HelpDetails"
+      route: "/BackersDetail"
     },
     {
       image: Campaign,
       name: "Campaigns",
       description: "Discover how to plan, create, and manage your crowdfunding campaign",
       link: "View All",
-      route: "/HelpDetails"
+      route: "/EducationCenter"
     },
     {
       image: Payments,
       name: "Payments",
       description: "Learn how to connect your bank account and recieve funds from your crowdfunding campaign",
       link: "View All",
-      route: "/HelpDetails"
+      route: "/payments"
     },
     {
       image: TrustOperations,
       name: "Trust Operations",
       description: "understand Block Fund's policies and how our Trust Operations tram protects our customers",
       link: "View All",
-      route: "/HelpDetails"
+      route: "/TrustOperationsDetail"
     },
     {
       image: CampaignNextStep,
       name: "Campaign Next Steps",
       description: "Learn about Block Fund and other next steps for your campaign",
       link: "View All",
-      route: "/HelpDetails"
+      route: "/CampaignNextStep"
     },
     {
       image: Legal,
       name: "Legal",
       description: "Read about Block Fund's legal policies and processes",
       link: "View All",
-      route: "/HelpDetails"
-    },
-    {
-        image: Profile,
-        name: "Profile",
-        description: "Build and customize your Block Fund profile",
-        link: "View All",
-        route: "/HelpDetails"
-    },
-    {
-      image: Education,
-      name: "Learn Best Paractices",
-      description: "Find avice about everyhing from planning your launch to shipping your product",
-      link: "View All",
-      route: "/EducationCenter"
+      route: "/LegalDetail"
     },
   ];
 const Card = ({ image, name, description, link, route  }) => {

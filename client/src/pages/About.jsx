@@ -135,9 +135,7 @@ const About = () => {
               <hr className="border-t-2 border-gray-300 mt-3 mr-7 lg:mb-8 mb-3" />
               <div
                 className="text-[#8c6dfd] text-lg font-semibold cursor-pointer"
-                onClick={() => navigate("/whatwedo")}
-              >
-                <span>What we do</span>
+              ><a href='/WhatWeDo'>What We Do</a>
                 <span className="ml-1">→</span>
               </div>
             </div>

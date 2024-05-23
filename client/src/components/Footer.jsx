@@ -16,24 +16,24 @@ const Footer = () => {
           <div className="w-full md:w-1/4 px-4 mb-8 md:mb-0">
             <h3 className=" font-bold mb-4">Explore</h3>
             <ul className="">
-              <li className="mb-2 cursor-pointer" onClick={() => navigate("/WhatWeDo")}>What We Do</li>
+              <li className="mb-2 cursor-pointer"><a href='/WhatWeDo'>What We Do</a></li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 px-4 mb-8 md:mb-0">
             <h3 className=" font-bold mb-4">About</h3>
             <ul className="">
-              <li className="mb-2 cursor-pointer" onClick={() => navigate("/About")}>About</li>
-              <li className="mb-2 cursor-pointer" onClick={() => navigate("/TrustAndSafety")}>Trust & Safety</li>
-              <li className="mb-2 cursor-pointer" onClick={() => navigate("/HelpAndSupport")}>Help & Support</li>
-              <li className="mb-2 cursor-pointer" onClick={() => navigate("/Contact")}>Contact</li>
+              <li className="mb-2 cursor-pointer"><a href='/About'>About</a></li>
+              <li className="mb-2 cursor-pointer"><a href='/TrustAndSafety'>Trust & Safety</a></li>
+              <li className="mb-2 "> <a href='/HelpAndSupport'>Help & Support</a></li>
+              <li className="mb-2 cursor-pointer"><a href='/contact'>Contact</a></li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 px-4 mb-8 md:mb-0">
             <h3 className=" font-bold mb-4">Entrepreneurs</h3>
             <ul className="">
-              <li className="mb-2 cursor-pointer" onClick={() => navigate("/HowItWorks")}>How It Works</li>
-              <li className="mb-2 cursor-pointer" onClick={() => navigate("/BlockFundVsKickstarter")}>Block Fund vs. Kickstarter</li>
-              <li className="mb-2 cursor-pointer" onClick={() => navigate("/EducationCenter")}>Education Cernter</li>
+              <li className="mb-2 cursor-pointer"><a href='/HowItWorks'>How It Works</a></li>
+              <li className="mb-2 cursor-pointer"><a href='/BlockFundVsKickstarter'>Block Fund vs. Kickstarter</a></li>
+              <li className="mb-2 cursor-pointer"><a href='/EducationCenter'>Education Cernter</a></li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 px-4">
