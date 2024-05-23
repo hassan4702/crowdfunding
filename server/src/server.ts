@@ -6,6 +6,8 @@ import { Article } from '../models/articleSchema';
 import { Comment } from '../models/commentSchema';
 import IArticle from '../models/types';
 import IComment from '../models/types';
+import nodemailer from 'nodemailer';
+import cron from 'node-cron';
 dotenv.config();
 
 const app: Express = express();
@@ -13,6 +15,47 @@ const app: Express = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
+app.post('/send-email', async (req: Request, res: Response) => {
+    try {
+        // Extract subject and message from the request body
+        const { subject, message } = req.body;
+
+        // Create a transporter using Nodemailer with your SMTP configuration
+        const transporter = nodemailer.createTransport({
+            // Add your SMTP configuration here
+            // For example, if using Gmail, you would provide your Gmail SMTP settings
+            service: 'gmail',
+            auth: {
+                user: 'blockfund0@gmail.com',
+                pass: 'ebpoaytnxxaantto',
+            },
+        });
+
+        // Configure the email options
+        const mailOptions = {
+            from: 'blockfund0@gmail.com',
+            to: 'blockfund0@gmail.com',
+            subject: subject,
+            text: message,
+        };
+
+        // Send the email
+        const info = await transporter.sendMail(mailOptions);
+
+        // Log the message ID and response
+        console.log('Message ID:', info.messageId);
+        console.log('Email sent:', info.response);
+
+        // Respond with a success message
+        res.status(200).send('Email sent successfully');
+    } catch (error) {
+        // Handle any errors
+        console.error('Error sending email:', error);
+        res.status(500).send('Error sending email');
+    }
+});
 
 const uri: string =
     process.env.MONGODB_URI || 'mongoose-uri';
@@ -27,6 +70,66 @@ const uri: string =
         console.log('Error connecting to the database');
     }
 })();
+
+const emailSchema = new mongoose.Schema({
+    email: { type: String, required: true, unique: true },
+  });
+  const Email = mongoose.model('Email', emailSchema);
+
+  app.post('/subscribe', async (req: Request, res: Response) => {
+    const { email } = req.body;
+  
+    try {
+      const newEmail = new Email({ email });
+      await newEmail.save();
+      res.status(200).send({ message: 'Subscribed successfully' });
+    } catch (err: any) {
+      if (err.code === 11000) {
+        res.status(409).send({ message: 'Email already subscribed' });
+      } else {
+        res.status(500).send({ message: 'Server error' });
+      }
+    }
+  });
+  
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+  
+  const sendNewsletter = async () => {
+    try {
+      const emails = await Email.find({});
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        subject: 'Your Newsletter',
+        text: 'This is your periodic newsletter.',
+      };
+  
+      emails.forEach((emailDoc) => {
+        transporter.sendMail({ ...mailOptions, to: emailDoc.email }, (err, info) => {
+          if (err) {
+            console.error('Error sending email:', err);
+          } else {
+            console.log('Email sent:', info.response);
+          }
+        });
+      });
+    } catch (err) {
+      console.error('Error sending newsletters:', err);
+    }
+  };
+  
+  // Schedule the task to run every day at 9 AM
+  cron.schedule('0 9 * * *', () => {
+    console.log('Sending newsletters...');
+    sendNewsletter();
+  });
+
+
 
 app.get('/health', (_req: Request, res: Response) => {
     res.status(200).send('Server is running');

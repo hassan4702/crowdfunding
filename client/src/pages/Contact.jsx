@@ -4,10 +4,34 @@ const Contact = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Subject:", subject);
-    console.log("Message:", message);
+  const handleSubjectChange = (event) => {
+    setSubject(event.target.value);
+  };
+
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ subject, message }),
+      });
+      if (response.ok) {
+        alert("Email sent successfully");
+        setSubject("");
+        setMessage("");
+      } else {
+        alert("Error sending email");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Error sending email");
+    }
   };
 
   return (
@@ -18,22 +42,26 @@ const Contact = () => {
         {/* <hr className="border-gray-300 my-8" /> */}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="subject" className="block text-lg font-medium mb-2">Subject</label>
+            <label htmlFor="subject" className="block text-lg font-medium mb-2">
+              Subject
+            </label>
             <input
               type="text"
               id="subject"
               value={subject}
-              onChange={(e) => setSubject(e.target.value)}
+              onChange={handleSubjectChange}
               className="w-full p-2 border border-gray-300 rounded"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="message" className="block text-lg font-medium mb-2">Message</label>
+            <label htmlFor="message" className="block text-lg font-medium mb-2">
+              Message
+            </label>
             <textarea
               id="message"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={handleMessageChange}
               className="w-full p-2 border border-gray-300 rounded"
               rows="6"
               required
