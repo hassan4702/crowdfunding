@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-
 import { Sidebar, Navbar } from "./components";
 import { CampaignDetails, CreateCampaign, Home, Profile } from "./pages";
 import AllCampaigns from "./components/AllCampaigns";
@@ -10,7 +9,6 @@ import WhatWeDo from "./pages/WhatWeDo";
 import TopFinds from "./pages/TopFinds";
 import HowItWorks from "./pages/HowItWorks";
 import HelpAndSupport from "./pages/HelpAndSupport";
-import FindExperts from "./pages/FindExperts";
 import Contact from "./pages/Contact";
 import CommunityGuidelines from "./pages/CommunityGuidelines";
 import BlockFundVsKickstarter from "./pages/BlockFundVsKickstarter";
@@ -25,10 +23,10 @@ import PrototypingandProduction from "./pages/PrototypingandProduction";
 import CreativeServices from "./pages/CreativeServices";
 import Fulfillment from "./pages/Fulfillment";
 import HelpDetails from "./pages/HelpDetails";
+import SearchCampaigns from "./pages/SearchCampaigns";
 import {
   EducationCampaigns,
   TravelAndOutdoors,
-  Technology,
   SocialImpact,
   HealthAndFitness,
   ArtsAndCulture,
@@ -57,7 +55,6 @@ const App = () => {
           <Route path="/topfinds" element={<TopFinds />} />
           <Route path="/howitworks" element={<HowItWorks />} />
           <Route path="/HelpAndSupport" element={<HelpAndSupport />} />
-          <Route path="/FindExperts" element={<FindExperts />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/communityGuidelines" element={<CommunityGuidelines />} />
           <Route path="/blockFundVskickstarter" element={<BlockFundVsKickstarter />} />
@@ -67,11 +64,10 @@ const App = () => {
           <Route path="/Crowdfunding" element={<Crowdfunding />} />
           <Route path="/EducationCampaigns" element={<EducationCampaigns />} />
           <Route path="/TravelAndOutdoors" element={<TravelAndOutdoors />} />
-          <Route path="/Technology" element={<Technology />} />
           <Route path="/SocialImpact" element={<SocialImpact />} />
           <Route path="/HealthAndFitness" element={<HealthAndFitness />} />
           <Route path="/ArtsAndCulture" element={<ArtsAndCulture />} />
-          <Route path="/ExploreProjects" element={<ExploreProjects searchQuery={searchQuery} />} />
+          <Route path="/ExploreProjects" element={<ExploreProjects/>} />
           <Route path="/AllCampaigns" element={<AllCampaigns />} />
           <Route path="/Memorial" element={<Memorial />} />
           <Route path="/Competition" element={<Competition />} />
@@ -80,6 +76,7 @@ const App = () => {
           <Route path="/Fulfillment" element={<Fulfillment />} />
           <Route path="/HelpDetails" element={<HelpDetails />} />
           <Route path="/EducationCenter" element={<EducationCenter />} />
+          <Route path="/SearchCampaigns" element={<SearchCampaigns searchQuery={searchQuery} />} />
         </Routes>
       </div>
     </div>

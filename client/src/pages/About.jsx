@@ -25,7 +25,7 @@ const About = () => {
         <div className="relative mb-20">
           <img
             src={mission}
-            alt="Help"
+            alt="Mission"
             className="w-full lg:h-[30rem] h-[27rem] mb-8 object-cover rounded-[15px]"
           />
           <div className="absolute inset-0 flex flex-col justify-center items-center">

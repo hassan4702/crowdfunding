@@ -1,24 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Contact = () => {
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Subject:", subject);
+    console.log("Message:", message);
+  };
+
   return (
-    <div className="container mx-auto py-8 pt-20 px-4">
-      <div className="mx-auto">
-        <div className="mb-8 flex flex-col lg:flex-row lg:items-center lg:justify-between">
-          <div className="lg:w-auto lg:flex-shrink-0 mb-2 lg:mb-0">
-            <a href="#" className="inline-block">Block Fund Help Center &gt; Submit a request</a>
+    <div className="container mx-auto py-4 px-4">
+      <div className="">
+        <h2 className="text-4xl font-bold mb-10 mt-20">Have a question?</h2>
+        {/* <p className="mb-10">To get started, please log in to your Block Fund account if you have one.</p> */}
+        {/* <hr className="border-gray-300 my-8" /> */}
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="subject" className="block text-lg font-medium mb-2">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded"
+              required
+            />
           </div>
-          <div className="lg:flex-1 lg:ml-4 order-1 lg:order-none">
-            <input type="text" placeholder="write..." className=" px-4 py-2 outline-none w-full lg:max-w-[458px]" />
+          <div className="mb-4">
+            <label htmlFor="message" className="block text-lg font-medium mb-2">Message</label>
+            <textarea
+              id="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded"
+              rows="6"
+              required
+            />
           </div>
-        </div>
-        <h2 className="text-4xl font-bold mb-8 mt-20">Have a question?</h2>
-        <p className="mb-4">To get started, please log in to your Block Fund account if you have one.</p>
-        <div className="mb-8 flex flex-col lg:flex-row lg:justify-center">
-          <button className="bg-[#8c6dfd] hover:bg-[#7d60e7] px-6 py-3 rounded mb-2 lg:mb-0 text-uppercase w-full lg:w-auto lg:mr-4">LOGIN</button>
-          <button className="bg-[#8c6dfd] hover:bg-[#7d60e7] px-6 py-3 rounded text-uppercase w-full lg:w-auto">I DON'T HAVE AN ACCOUNT</button>
-        </div>
-        <hr className="border-gray-300 my-8" /> 
+          <button
+            type="submit"
+            className="px-4 py-2 bg-[#8c6dfd] font-semibold text-white rounded hover:bg-[#7868b3]"
+          >
+            Submit
+          </button>
+        </form>
       </div>
     </div>
   );

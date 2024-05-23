@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import CUTTINGEDGETOOLS from '../assets/CUTTINGEDGETOOLS.png';
 import BlockFundVsKickstarter from '../assets/BlockFundVsKickstarter.png';
 import Education from '../assets/Education.png';
 import crowdfunding from '../assets/crowdfunding.png';
@@ -11,13 +10,6 @@ const cardsData = [
       description: "Take the plunge with our guided campaign-creation tool. Itss free, and you can easily start now and finish later.",
       link: "GET STARTED",
       route: "/create-campaign",
-    },
-    {
-      image: CUTTINGEDGETOOLS,
-      name: "Experts Directory",
-      description: "Take your idea further with these experienced companies recommended by Block Fund campaigners and staff.",
-      link: "FIND SUPPORT",
-      route: "/FindExperts",
     },
     {
       image: Education,

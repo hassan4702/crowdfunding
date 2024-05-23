@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import Experts from '../components/Experts';
 import ReadyToGo from '../components/ReadyToGo';
 import HowItWork from '../assets/HowItWork.jpg';
 import Footer from '../components/Footer';
@@ -19,27 +18,27 @@ const HowItWorks = () => {
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                     <div className="max-w-2xl mx-auto text-center">
                         <h1 className="text-4xl font-bold text-white ">
-                            Explore the Experts Directory
+                            How It Works?
                         </h1>
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col items-center justify-center mb-20">
+            {/* <div className="flex flex-col items-center justify-center mb-20">
                 <p className="text-center">Find Block Fund-vetted companies to help you launch your campaign and take your product to market.</p>
                 <button className="bg-[#8c6dfd] text-white py-2 px-4 rounded mt-2 font-semibold" onClick={() => navigate("/FindExperts")}>FIND EXPERTS</button>
-            </div>
+            </div> */}
 
-            <div className="bg-white dark:bg-[#2c2f32] shadow-lg rounded-lg p-10">
+            {/* <div className="bg-white dark:bg-[#2c2f32] shadow-lg rounded-lg p-10">
                 <div className="px-4 sm:px-6 lg:px-8 pb-8">
                     <h1 className="text-2xl  lg:text-3xl font-semibold text-center mb-1">All the Right Experts to Help Your Business</h1>
                 </div>
                 <Experts />
-            </div>
+            </div> */}
 
             <div className="flex flex-col md:flex-row justify-center items-center my-4 max-w-5xl mx-auto mt-20">
                 <img src={WORLDWIDE} alt="WORLDWIDE" className="w-1/4 mb-4 md:mb-0" />
                 <div className="text-center md:text-left md:pl-8">
-                    <h2 className="text-xl font-bold pb-3 text-[#8c6dfd]">3. FLEXIBILITY & WORLDWIDE REACH</h2>
+                    <h2 className="text-xl font-bold pb-3 text-[#8c6dfd]">FLEXIBILITY & WORLDWIDE REACH</h2>
                     <p className="text-3xl font-bold pb-3">Freedom to raise funding for anything and from everywhere</p>
                 </div>
             </div>

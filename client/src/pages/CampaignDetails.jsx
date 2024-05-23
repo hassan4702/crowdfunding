@@ -31,6 +31,9 @@ const CampaignDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
   const [radio, setRadio] = useState("");
+  const [theme, setTheme] = useState("black");
+  const [txt_theme, setTxt_Theme] = useState("white");
+
   const [donators, setDonators] = useState([]);
   const [dropdownOption, setDropdownOption] = useState("fund");
 
@@ -224,15 +227,25 @@ const CampaignDetails = () => {
               <Tab key="comments" title="Comment Section">
                 <Card>
                   <CardBody>
+                    <div className="bg-white px-2 rounded dark:bg-[#1c1c24] text-white ">
                     <CommentSection
+                    // className='dark:text-white bg-red-100'
                       apiBaseUrl="http://localhost:3000"
+                      // backgroundColor={'black'}
                       articleId={state.pId}
+                      // shadow={true}
                       callbacks={{
                         loginClickCallback: LOGIN_CALLBACK,
                         commentAuthorClickCallback:
                           COMMENT_AUTHOR_CLICK_CALLBACK,
                         currentUserClickCallback: CURRENT_USER_CLICK_CALLBACK,
                       }}
+                      formProps={
+                        {
+                          backgroundColor :theme,
+                          textareaTextColor:txt_theme
+                        }
+                      }
                       currentUser={
                         user
                           ? {
@@ -243,6 +256,7 @@ const CampaignDetails = () => {
                           : undefined
                       }
                     />
+                    </div>
                   </CardBody>
                 </Card>
               </Tab>

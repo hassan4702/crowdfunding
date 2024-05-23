@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ConnectWallet } from "@thirdweb-dev/react";
 import { useStateContext } from "../context";
 import { CustomButton } from "./";
@@ -9,10 +9,13 @@ import BlockFundLogo from "../assets/BlockFundLogo.png";
 
 const Navbar = ({ setSearchQuery }) => {
   const navigate = useNavigate();
-  const { connect, address } = useStateContext();
+  const location = useLocation();
+  const { connect, address, getCampaigns } = useStateContext();
   const [isActive, setIsActive] = useState("dashboard");
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [suggestedCampaigns, setSuggestedCampaigns] = useState([]);
+  const [allCampaigns, setAllCampaigns] = useState([]);
 
   const handleUserAccount = () => {
     return <ConnectWallet />;
@@ -20,30 +23,88 @@ const Navbar = ({ setSearchQuery }) => {
 
   const handleSearch = () => {
     setSearchQuery(searchInput.trim());
-    navigate("/ExploreProjects");
+    setSearchInput(""); // Clear search input
+    setSuggestedCampaigns([]); // Clear suggested campaigns
+    navigate("/SearchCampaigns");
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  // Fetch campaigns for suggestions
+  useEffect(() => {
+    const fetchCampaigns = async () => {
+      const data = await getCampaigns();
+      setAllCampaigns(data || []);
+    };
+
+    fetchCampaigns();
+  }, [getCampaigns]);
+
+  // Clear the search input when the route changes, except on the SearchCampaigns page
+  useEffect(() => {
+    if (location.pathname !== "/SearchCampaigns") {
+      setSearchInput("");
+    }
+  }, [location.pathname]);
+
+  // Filter suggested campaigns based on search input
+  useEffect(() => {
+    if (searchInput) {
+      const filtered = allCampaigns.filter(
+        (campaign) =>
+          campaign.title.toLowerCase().includes(searchInput.toLowerCase()) ||
+          campaign.category.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      setSuggestedCampaigns(filtered);
+    } else {
+      setSuggestedCampaigns([]);
+    }
+  }, [searchInput, allCampaigns]);
 
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[10px] gap-6">
       <div></div>
-      <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] shadow-sm rounded-[100px] dark:bg-[#1c1c24] bg-white">
-        <input
-          type="text"
-          placeholder="Search for campaigns"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          className="flex w-full font-epilogue font-normal text-[14px] dark:text-white text-black bg-transparent outline-none"
-        />
-        <div
-          onClick={handleSearch}
-          className="w-[62px] h-full rounded-[20px] dark:bg-[#8c6dfd] bg-[#8c6dfd] flex justify-center items-center cursor-pointer"
-        >
-          <img
-            src={search}
-            alt="search"
-            className="w-[15px] h-[15px] object-contain"
+      <div className="lg:flex-1 flex flex-col max-w-[458px] py-2 pl-4 pr-2 h-auto shadow-sm rounded-[100px] dark:bg-[#1c1c24] bg-white relative">
+        <div className="flex flex-row py-1">
+          <input
+            type="text"
+            placeholder="Search for campaigns"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="flex w-full font-epilogue font-normal text-[14px] dark:text-white text-black bg-transparent outline-none"
           />
+          <div
+            onClick={handleSearch}
+            className="w-[62px] h-full py-2 mb-1  rounded-[20px] dark:bg-[#8c6dfd] bg-[#8c6dfd] flex justify-center items-center cursor-pointer"
+          >
+            <img
+              src={search}
+              alt="search"
+              className="w-[15px] h-[15px] object-contain"
+            />
+          </div>
         </div>
+        {searchInput && suggestedCampaigns.length > 0 && (
+          <div className="absolute top-[52px] left-0 right-0 bg-white dark:bg-[#1c1c24] rounded-[10px] shadow-lg z-10">
+            {suggestedCampaigns.map((campaign) => (
+              <div
+                key={campaign.id}
+                className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer"
+                onClick={() => {
+                  navigate(`/campaign-details/${campaign.id}`, { state: campaign });
+                  setSearchInput(""); // Clear search input after selecting a suggestion
+                }}
+              >
+                {campaign.title} - <i>{campaign.category}</i>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="sm:flex hidden flex-row justify-end items-center gap-4">

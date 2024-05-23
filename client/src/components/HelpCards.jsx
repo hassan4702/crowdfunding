@@ -7,6 +7,7 @@ import TrustOperations from '../assets/TrustOperations.png';
 import Profile from '../assets/Profile.png';
 import CampaignNextStep from '../assets/CampaignNextStep.png';
 import Legal from '../assets/Legal.png';
+import Education from '../assets/Education.png';
 const cardsData = [
     {
       image: Backers,
@@ -56,7 +57,14 @@ const cardsData = [
         description: "Build and customize your Block Fund profile",
         link: "View All",
         route: "/HelpDetails"
-      },
+    },
+    {
+      image: Education,
+      name: "Learn Best Paractices",
+      description: "Find avice about everyhing from planning your launch to shipping your product",
+      link: "View All",
+      route: "/EducationCenter"
+    },
   ];
 const Card = ({ image, name, description, link, route  }) => {
   const navigate = useNavigate();

@@ -34,7 +34,6 @@ const Footer = () => {
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/HowItWorks")}>How It Works</li>
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/BlockFundVsKickstarter")}>Block Fund vs. Kickstarter</li>
               <li className="mb-2 cursor-pointer" onClick={() => navigate("/EducationCenter")}>Education Cernter</li>
-              <li className="mb-2 cursor-pointer" onClick={() => navigate("/FindExperts")}>Experts Directory</li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 px-4">

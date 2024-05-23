@@ -34,7 +34,7 @@ const EducationCampaigns = () => {
         ) : (
           <AllCampaigns
           campaigns={campaigns.filter((campaign) => campaign.category === 'Education')}
-          />
+          />  
         )}
       </div>
     </div>
