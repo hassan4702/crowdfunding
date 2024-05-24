@@ -28,11 +28,11 @@ const Profile = () => {
         <Card>
           <CardBody>
             <p className={"text-lg"}>
-              Address: <span className={"font-bold"}>{address}</span>
+             Your Address: <span className={"font-bold"}>{address}</span>
             </p>
           </CardBody>
         </Card>
-        <Card>
+        {/* <Card>
           <CardBody>
             <p className={"text-lg"}>
               NumberOfCampaignsDonatedTo:{" "}
@@ -41,7 +41,7 @@ const Profile = () => {
               </span>
             </p>
           </CardBody>
-        </Card>
+        </Card> */}
         <Card>
           <CardBody>
             <p className={"text-lg"}>
