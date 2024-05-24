@@ -1,10 +1,11 @@
-import React from 'react';
-import ExploreProjects from './ExploreProjects';
+import React from "react";
+import ExploreProjects from "./ExploreProjects";
 
 const Withdraw = () => {
+  
   // Filter function to check if the campaign has fulfilled its Ethereum goal
   const filterFulfilledCampaigns = (campaign) => {
-    return parseFloat(campaign.amountCollected) >= parseFloat(campaign.target);
+    return parseFloat(campaign.amountCollected) == parseFloat(campaign.target);
   };
 
   return (

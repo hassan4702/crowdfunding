@@ -14,7 +14,7 @@ const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
   const { contract } = useContract(
-    "0x58A5DE0CF96cDf5264a3d8EA1B93866A752Ce49d"
+    "0xc498F9710257C20D12b41Ab4d73F9d651FE269f3"
   );
   const { mutateAsync: createCampaign } = useContractWrite(
     contract,
@@ -37,7 +37,7 @@ export const StateContextProvider = ({ children }) => {
           new Date(form.deadline).getTime(), // deadline,
           form.image,
           form.faqs,
-          form.packages
+          form.packages,
         ],
       });
 
@@ -99,7 +99,6 @@ export const StateContextProvider = ({ children }) => {
       pId: i,
       faqs: campaign.faqs,
       packages: campaign.packages,
-      
     }));
 
     return parsedCampaings;
@@ -159,7 +158,8 @@ export const StateContextProvider = ({ children }) => {
     for (const campaign of allCampaigns) {
       const donations = await getDonations(campaign.pId);
       const hasDonated = donations.some(
-        (donation) => donation.donator.toLowerCase() === donatorAddress.toLowerCase()
+        (donation) =>
+          donation.donator.toLowerCase() === donatorAddress.toLowerCase()
       );
       if (hasDonated) {
         donationCount++;

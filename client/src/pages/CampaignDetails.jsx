@@ -133,7 +133,7 @@ const CampaignDetails = () => {
                 // width: 1550 + "px",
               }
             }
-            className="xl:w-[1550px] sm:w-[400px] justify-center items-center"
+            className="xl:w-[1200px] lg-w-[1000px] sm:w-[400px] justify-center items-center"
           >
             <Slider adaptiveHeight={true} {...settings}>
               {state.image.map((imageUrl, index) => (

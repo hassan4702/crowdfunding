@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useStateContext } from "../context";
 import { money } from "../assets";
 import { CustomButton, FormField, Loader } from "../components";
@@ -28,6 +29,7 @@ const CreateCampaign = () => {
   });
   const [file, setFile] = useState([]);
   const [uris, setUris] = useState([]);
+
   const { mutateAsync: upload } = useStorageUpload();
   console.log(" file:", file);
   console.log(" uris:", uris);
@@ -40,12 +42,16 @@ const CreateCampaign = () => {
   // };
   const onDrop = useCallback(
     async (acceptedFiles) => {
-      const _uris = await upload({
-        data: acceptedFiles,
-        options: { uploadWithGatewayUrl: true },
-      });
-      setUris(_uris);
-      alert("File uploaded successfully");
+      try {
+        const _uris = await upload({
+          data: acceptedFiles,
+          options: { uploadWithGatewayUrl: true },
+        });
+        setUris(_uris);
+        toast.success("File uploaded successfully");
+      } catch (error) {
+        toast.error("Failed to upload file");
+      }
     },
     [upload]
   );
@@ -187,6 +193,7 @@ const CreateCampaign = () => {
 
   return (
     <div className=" flex justify-center items-center flex-col rounded-[10px] sm:p-10 mt-8 p-4 bg-white dark:bg-[#1c1c24]">
+      <ToastContainer />
       {isLoading && <Loader />}
       <div className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-[#8c6dfd] rounded-[10px]">
         <h1 className="font-epilogue font-bold sm:text-[25px] text-[18px] leading-[38px] text-white">

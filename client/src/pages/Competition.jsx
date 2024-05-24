@@ -33,7 +33,7 @@ const Competition = () => {
           <div>No campaigns found.</div> 
         ) : (
           <AllCampaigns
-          campaigns={campaigns.filter((campaign) => campaign.category === 'Competition')}
+          campaigns={campaigns.filter((campaign) => campaign.category === 'Nonprofit')}
           />
         )}
       </div>

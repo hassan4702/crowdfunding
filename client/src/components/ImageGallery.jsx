@@ -29,7 +29,7 @@ const ImageGallery = () => {
             onClick={() => navigate("/Competition")}
           >
             <div className='absolute inset-0 bg-gradient-to-l from-purple-700 to-purple-300 hover:from-purple-800 hover:to-purple-400 flex items-center justify-center'>
-              <p className='font-semibold text-4xl text-white'>Competition</p>
+              <p className='font-semibold text-4xl text-white'>Non Profit</p>
               <HiArrowRight style={{ transform: 'rotate(-45deg)', marginleft: '4px', color: 'white' }} />
             </div>
           </div>
