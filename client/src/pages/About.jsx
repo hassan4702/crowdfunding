@@ -26,7 +26,7 @@ const About = () => {
           <img
             src={mission}
             alt="Mission"
-            className="w-full lg:h-[30rem] h-[27rem] mb-8 object-cover rounded-[15px]"
+            className="w-full lg:h-[30rem] h-[27rem] mb-8 object-cover rounded-[15px] "
           />
           <div className="absolute inset-0 flex flex-col justify-center items-center">
             <div className="max-w-3xl mx-auto text-center">

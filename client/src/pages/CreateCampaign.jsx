@@ -153,9 +153,9 @@ const CreateCampaign = () => {
           handleChange={(e) => handleFAQChange(index, "answer", e.target.value)}
         />
         {form.faqs.length > 1 && (
-          <button type="button" onClick={() => removeFAQ(index)}>
+          <Button   type="button" onClick={() => removeFAQ(index)}>
             Remove FAQ
-          </button>
+          </Button>
         )}
       </div>
     ));
@@ -183,9 +183,9 @@ const CreateCampaign = () => {
           }
         />
         {form.packages.length > 1 && (
-          <button type="button" onClick={() => removePackage(index)}>
+          <Button type="button" onClick={() => removePackage(index)}>
             Remove package
-          </button>
+          </Button>
         )}
       </div>
     ));
@@ -266,15 +266,23 @@ const CreateCampaign = () => {
         </div>
         <div className="flex flex-wrap gap-[40px]">
           {renderFAQs()} {/* Render FAQ input fields */}
-          <button type="button" onClick={addFAQ}>
+          <Button
+            // className="bg-[#8c6dfd] rounded-md p-2 "
+            type="button"
+            onClick={addFAQ}
+          >
             Add FAQ
-          </button>
+          </Button>
         </div>
         <div className="flex flex-wrap gap-[40px]">
           {renderPackages()} {/* Render FAQ input fields */}
-          <button type="button" onClick={addPackage}>
+          <Button
+            // className="bg-[#8c6dfd] rounded-md p-2 "
+            type="button"
+            onClick={addPackage}
+          >
             Add Package
-          </button>
+          </Button>
         </div>
         <div className="flex flex-wrap gap-[40px]">
           <FormField
