@@ -31,15 +31,6 @@ const CreateCampaign = () => {
   const [uris, setUris] = useState([]);
 
   const { mutateAsync: upload } = useStorageUpload();
-  console.log(" file:", file);
-  console.log(" uris:", uris);
-  // const handleFileChange = (e) => {
-  //   const selectedFile = e.target.files;
-  //   console.log("Selected file:", selectedFile);
-  //   setFile(selectedFile);
-
-  //   // setForm({ ...form, image: selectedFile });
-  // };
   const onDrop = useCallback(
     async (acceptedFiles) => {
       try {
@@ -56,20 +47,6 @@ const CreateCampaign = () => {
     [upload]
   );
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
-  // const uploadImage = async () => {
-  //   try {
-  //     const _uris = await upload({
-  //       data: [file],
-  //       options: { uploadWithGatewayUrl: true },
-  //     });
-  //     setUris(_uris);
-  //     console.log("Uploaded uris:", uris);
-  //     setForm({ ...form, image: data });
-  //   } catch (error) {
-  //     console.error("Error uploading image:", error);
-  //     alert("Error uploading image. Please try again.");
-  //   }
-  // };
 
   const handleFAQChange = (index, fieldName, value) => {
     const updatedFAQs = [...form.faqs];
@@ -118,13 +95,11 @@ const CreateCampaign = () => {
     setIsLoading(true);
     try {
       setForm({ ...form, image: uris });
-      console.log("Form data:", form);
       await createCampaign({
         ...form,
         target: ethers.utils.parseUnits(form.target, 18),
         image: uris,
       });
-      console.log("Form data:", form);
       navigate("/");
     } catch (error) {
       console.error("Error uploading image:", error);

@@ -54,13 +54,10 @@ import { ThirdwebStorage } from "@thirdweb-dev/storage";
     });
     const uploadData = async () => {
         // Get any data that you want to upload'
-        console.log(files);
         const dataToUpload = files;
-        console.log(dataToUpload);
 
         // And upload the data with the upload function
         const uris = await storage.upload({ data: dataToUpload , options: { uploadWithGatewayUrl: true }});
-        console.log(uris);
     }
     return (
       <>
