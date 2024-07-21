@@ -113,11 +113,11 @@ const Navbar = ({ setSearchQuery }) => {
           title={!address ? "Log In / Sign up" : handleUserAccount()}
           styles={!address ? "bg-[#8c6dfd]" : ""}
           handleClick={() => {
-            // if (window.ethereum && window.ethereum.isMetaMask) {
-            //   console.log("MetaMask is installed!");
-            // } else {
-            //   alert("MetaMask extension is not installed!");
-            // }
+            if (window.ethereum && window.ethereum.isMetaMask) {
+              console.log("MetaMask is installed!");
+            } else {
+              alert("MetaMask extension is not installed!");
+            }
             if (address) navigate("/");
             else connect();
           }}
