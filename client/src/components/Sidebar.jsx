@@ -23,7 +23,7 @@ const Sidebar = () => {
   return (
     <div className="flex justify-between items-center flex-col sticky top-5 h-[93vh]">
       <Link to="/">
-        <img src={BlockFundLogo} width={"50px"} height={"50px"} alt="logo" className="rounded-md" />
+        <img src={BlockFundLogo} width={"50px"} height={"50px"} alt="logo" loading="lazy" decoding="async" className="rounded-md" />
       </Link>
 
       <div className={`flex-1 flex flex-col justify-between items-center ${theme === 'light' ? 'bg-white' : 'dark:bg-[#1c1c24]'} rounded-[20px] w-[76px] py-4 mt-12`}>

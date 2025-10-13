@@ -14,6 +14,7 @@ const Navbar = ({ setSearchQuery }) => {
   const [isActive, setIsActive] = useState("dashboard");
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [suggestedCampaigns, setSuggestedCampaigns] = useState([]);
   const [allCampaigns, setAllCampaigns] = useState([]);
 
@@ -34,15 +35,18 @@ const Navbar = ({ setSearchQuery }) => {
     }
   };
 
-  // Fetch campaigns for suggestions
+  // Fetch campaigns lazily when the user starts searching
   useEffect(() => {
-    const fetchCampaigns = async () => {
+    if (!debouncedQuery || allCampaigns.length > 0) return;
+    let cancelled = false;
+    (async () => {
       const data = await getCampaigns();
-      setAllCampaigns(data || []);
+      if (!cancelled) setAllCampaigns(data || []);
+    })();
+    return () => {
+      cancelled = true;
     };
-
-    fetchCampaigns();
-  }, [getCampaigns]);
+  }, [debouncedQuery, allCampaigns.length, getCampaigns]);
 
   // Clear the search input when the route changes, except on the SearchCampaigns page
   useEffect(() => {
@@ -51,19 +55,24 @@ const Navbar = ({ setSearchQuery }) => {
     }
   }, [location.pathname]);
 
-  // Filter suggested campaigns based on search input
+  // Debounce the search input to avoid filtering on every keystroke
   useEffect(() => {
-    if (searchInput) {
-      const filtered = allCampaigns.filter(
-        (campaign) =>
-          campaign.title.toLowerCase().includes(searchInput.toLowerCase()) ||
-          campaign.category.toLowerCase().includes(searchInput.toLowerCase())
+    const id = setTimeout(() => setDebouncedQuery(searchInput.trim().toLowerCase()), 250);
+    return () => clearTimeout(id);
+  }, [searchInput]);
+
+  // Filter suggested campaigns based on debounced input
+  useEffect(() => {
+    if (debouncedQuery) {
+      const filtered = allCampaigns.filter((campaign) =>
+        campaign.title.toLowerCase().includes(debouncedQuery) ||
+        campaign.category.toLowerCase().includes(debouncedQuery)
       );
       setSuggestedCampaigns(filtered);
     } else {
       setSuggestedCampaigns([]);
     }
-  }, [searchInput, allCampaigns]);
+  }, [debouncedQuery, allCampaigns]);
 
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[10px] gap-6">

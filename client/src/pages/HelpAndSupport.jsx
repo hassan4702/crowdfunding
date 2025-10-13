@@ -42,7 +42,7 @@ const HelpAndSupport = () => {
   return (
     <div className="">
       <div className="relative mb-20">
-       <img src={Help} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-8 object-cover" />
+       <img src={Help} alt="Help" loading="lazy" decoding="async" className="w-full h-auto lg:h-96 h-108 mb-8 object-cover" />
        <div className="absolute inset-0 flex flex-col justify-center items-center">
          <div className="max-w-3xl mx-auto text-center">
            <h1 className="text-3xl lg:text-5xl font-bold ">
@@ -75,7 +75,7 @@ const HelpAndSupport = () => {
       </div> */}
 
       <div className="relative">
-        <img src={HelpFooter} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-8 mt-20 object-cover" />
+        <img src={HelpFooter} alt="Help" loading="lazy" decoding="async" className="w-full h-auto lg:h-96 h-108 mb-8 mt-20 object-cover" />
         <div className="absolute inset-0 flex flex-col justify-center items-center">
           <div className="max-w-2xl mx-auto text-center">
             <h1 className="text-3xl font-bold ">

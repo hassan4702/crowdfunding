@@ -90,7 +90,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
 
         <div className="flex flex-wrap justify-center gap-[24px] w-full overflow-x-hidden">
           {isLoading ? (
-            <img src={loader} alt="Loading" className="w-[100px] h-[100px]" />
+            <img src={loader} alt="Loading" loading="lazy" decoding="async" className="w-[100px] h-[100px]" />
           ) : campaigns.length === 0 ? (
             <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
               No campaigns available.

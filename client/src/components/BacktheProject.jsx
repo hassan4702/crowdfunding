@@ -8,7 +8,7 @@ const BacktheProject = () => {
     return (
         <div className="flex flex-col md:flex-row items-center justify-center my-20 px-1 bg-white dark:bg-[#1c1c24]">
             <div className="w-full md:w-1/4 flex md:mb-0 justify-center">
-                <img src={game} alt="Left Image" className="w-64 h-[25rem]" />
+                <img src={game} alt="Left Image" loading="lazy" decoding="async" className="w-64 h-[25rem]" />
             </div>
             <div className="w-full md:w-1/2 md:pl-8">
                 <div className="text-center md:text-left">
@@ -20,7 +20,7 @@ const BacktheProject = () => {
                 <div className='hover:text-[#808191] text-md block text-center mt-4 md:text-left cursor-pointer'><a href='/WhatWeDo'>LEARN ABOUT CROWDFUNDING</a></div>
             </div>
             <div className="w-full md:w-1/4 flex lg:justify-end md:justify-end justify-center mt-6 md:mt-0">
-                <img src={cycle} alt="Right Image" className="w-64 h-[25rem]" />
+                <img src={cycle} alt="Right Image" loading="lazy" decoding="async" className="w-64 h-[25rem]" />
             </div>
         </div>
     )

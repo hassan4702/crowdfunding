@@ -56,7 +56,7 @@ const Card = ({ image, name, description, link, route  }) => {
   return (
     <div className="max-w-xs rounded-[15px] overflow-hidden shadow-lg bg-white dark:bg-[#1c1c24]  m-4 hover:-translate-y-1" onClick={() => navigate(route)}>
         <a href="">
-        <img className="mx-auto w-24" src={image} alt={name} />
+        <img className="mx-auto w-24" src={image} alt={name} loading="lazy" decoding="async" />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-center">{name}</div>
         <p className="text-sm text-center">{description}</p>

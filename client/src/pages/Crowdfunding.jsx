@@ -48,7 +48,7 @@ const Crowdfunding = () => {
     </div>
 
     <div className="relative">
-        <img src={HelpFooter} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-8 object-cover" />
+        <img src={HelpFooter} alt="Help" loading="lazy" decoding="async" className="w-full h-auto lg:h-96 h-108 mb-8 object-cover" />
         <div className="absolute inset-0 flex flex-col justify-center items-center">
           <div className="max-w-2xl mx-auto text-center">
             <h1 className="text-3xl font-bold ">

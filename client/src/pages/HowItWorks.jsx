@@ -14,7 +14,7 @@ const HowItWorks = () => {
             </div>
 
             <div className="relative mt-10">
-                <img src={HowItWork} alt="Help" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover rounded-[15px]" />
+                <img src={HowItWork} alt="Help" loading="lazy" decoding="async" className="w-full h-auto lg:h-96 h-108 mb-2 object-cover rounded-[15px]" />
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                     <div className="max-w-2xl mx-auto text-center">
                         <h1 className="text-4xl font-bold text-white ">
@@ -36,7 +36,7 @@ const HowItWorks = () => {
             </div> */}
 
             <div className="flex flex-col md:flex-row justify-center items-center my-4 max-w-5xl mx-auto mt-20">
-                <img src={WORLDWIDE} alt="WORLDWIDE" className="w-1/4 mb-4 md:mb-0" />
+                <img src={WORLDWIDE} alt="WORLDWIDE" loading="lazy" decoding="async" className="w-1/4 mb-4 md:mb-0" />
                 <div className="text-center md:text-left md:pl-8">
                     <h2 className="text-xl font-bold pb-3 text-[#8c6dfd]">FLEXIBILITY & WORLDWIDE REACH</h2>
                     <p className="text-3xl font-bold pb-3">Freedom to raise funding for anything and from everywhere</p>
