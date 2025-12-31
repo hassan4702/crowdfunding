@@ -66,7 +66,7 @@ const TrustAndSafety = () => {
             </div>
 
             <div className="relative my-10">
-                <img src={TrustSafety} alt="Help" className="w-full rounded-lg h-auto lg:h-96 h-108 mb-2 object-cover" />
+                <img src={TrustSafety} alt="Help" loading="lazy" decoding="async" className="w-full rounded-lg h-auto lg:h-96 h-108 mb-2 object-cover" />
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                     <div className="max-w-2xl mx-auto text-center">
                         <h1 className="text-4xl font-bold text-white ">

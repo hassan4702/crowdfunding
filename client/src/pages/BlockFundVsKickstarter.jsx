@@ -12,6 +12,8 @@ const BlockFundVsKickstarter = () => {
         <img
           src={business}
           alt="business"
+          loading="lazy"
+          decoding="async"
           className="w-full h-auto lg:h-96 h-108 mb-8 object-cover rounded-[15px]"
         />
         <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-xl absolute inset-0 flex flex-col justify-center items-center">
@@ -58,6 +60,8 @@ const BlockFundVsKickstarter = () => {
             <img
               src={PARTNERSHIPS}
               alt="PARTNERSHIPS & SUPPORT"
+              loading="lazy"
+              decoding="async"
               className="w-24 h-24 object-cover mx-auto"
             />
             <p className="text-sm text-center pb-5 pt-1">BACKER CONFIDENCE</p>
@@ -70,6 +74,8 @@ const BlockFundVsKickstarter = () => {
             <img
               src={WORLDWIDE}
               alt="FLEXIBILITY & WORLDWIDE REACH"
+              loading="lazy"
+              decoding="async"
               className="w-24 h-24 object-cover rounded-lg mx-auto"
             />
             <p className="text-sm text-center pb-5 pt-1">
@@ -80,6 +86,8 @@ const BlockFundVsKickstarter = () => {
             <img
               src={Payments}
               alt="REDUCED "
+              loading="lazy"
+              decoding="async"
               className="w-24 h-24 object-cover rounded-lg mx-auto"
             />
             <p className="text-sm text-center pb-5 pt-1">
@@ -90,6 +98,8 @@ const BlockFundVsKickstarter = () => {
             <img
               src={CUTTINGEDGETOOLS}
               alt="REDUCED "
+              loading="lazy"
+              decoding="async"
               className="w-24 h-24 object-cover rounded-lg mx-auto"
             />
             <p className="text-sm text-center pb-5 pt-1">IMPROVED SECURITY</p>
@@ -101,6 +111,8 @@ const BlockFundVsKickstarter = () => {
         <img
           src={PARTNERSHIPS}
           alt="PARTNERSHIPS"
+          loading="lazy"
+          decoding="async"
           className="w-1/4 mb-4 md:mb-0"
         />
         <div className="text-center md:text-left md:pl-8">
@@ -146,7 +158,7 @@ const BlockFundVsKickstarter = () => {
             </div> */}
 
       <div className="flex flex-col md:flex-row justify-center items-center my-4 max-w-5xl mx-auto">
-        <img src={WORLDWIDE} alt="WORLDWIDE" className="w-1/6 mb-4 md:mb-0" />
+        <img src={WORLDWIDE} alt="WORLDWIDE" loading="lazy" decoding="async" className="w-1/6 mb-4 md:mb-0" />
         <div className="text-center md:text-left md:pl-8">
           <h2 className="text-xl font-bold pb-3 text-[#8c6dfd]">
             2. FLEXIBILITY & WORLDWIDE REACH
@@ -174,6 +186,8 @@ const BlockFundVsKickstarter = () => {
         <img
           src={CUTTINGEDGETOOLS}
           alt="WORLDWIDE"
+          loading="lazy"
+          decoding="async"
           className="w-1/6 mb-4 md:mb-0"
         />
         <div className="text-center md:text-left md:pl-8">
@@ -206,7 +220,7 @@ const BlockFundVsKickstarter = () => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-center items-center my-4 max-w-5xl mx-auto">
-        <img src={Payments} alt="WORLDWIDE" className="w-1/6 mb-4 md:mb-0" />
+        <img src={Payments} alt="WORLDWIDE" loading="lazy" decoding="async" className="w-1/6 mb-4 md:mb-0" />
         <div className="text-center md:text-left md:pl-8">
           <h2 className="text-xl font-bold pb-3 text-[#8c6dfd]">
             4. REDUCED INTERMEDIARY COSTS

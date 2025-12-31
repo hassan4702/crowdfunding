@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MediaRenderer } from "@thirdweb-dev/react";
 import { useStateContext } from "../context";
@@ -13,12 +13,19 @@ import { RadioGroup, Radio } from "@nextui-org/radio";
 import { Button } from "@nextui-org/button";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ReactMarkdown from "react-markdown";
-import { CommentSection } from "replyke";
+const ReactMarkdown = lazy(() => import("react-markdown"));
+const ReplykeCommentSection = lazy(() =>
+  import("replyke").then((m) => ({ default: m.CommentSection }))
+);
 import TotalCampainCreatedbyuser from "../components/TotalCampainCreatedbyuser";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+const SlickSlider = lazy(async () => {
+  await Promise.all([
+    import("slick-carousel/slick/slick.css"),
+    import("slick-carousel/slick/slick-theme.css"),
+  ]);
+  const mod = await import("react-slick");
+  return { default: mod.default };
+});
 const CampaignDetails = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -135,18 +142,20 @@ const CampaignDetails = () => {
             }
             className="xl:w-[1200px] lg-w-[1000px] sm:w-[400px] justify-center items-center"
           >
-            <Slider adaptiveHeight={true} {...settings}>
-              {state.image.map((imageUrl, index) => (
-                <MediaRenderer
-                  key={index}
-                  src={imageUrl}
-                  width="100%"
-                  height="410px"
-                  alt={`campaign-${index}`}
-                  className="w-full h-[410px] overflow-auto object-cover rounded-xl"
-                />
-              ))}
-            </Slider>
+            <Suspense fallback={<div className="p-4 text-center">Loading gallery...</div>}>
+              <SlickSlider adaptiveHeight={true} {...settings}>
+                {state.image.map((imageUrl, index) => (
+                  <MediaRenderer
+                    key={index}
+                    src={imageUrl}
+                    width="100%"
+                    height="410px"
+                    alt={`campaign-${index}`}
+                    className="w-full h-[410px] overflow-auto object-cover rounded-xl"
+                  />
+                ))}
+              </SlickSlider>
+            </Suspense>
           </div>
           <div className="relative w-full h-[5px] bg-[#8c6dfd] mt-2">
             <div
@@ -202,7 +211,9 @@ const CampaignDetails = () => {
                     </h4>
                     <div className="mt-[20px]">
                       <p className="font-epilogue font-normal text-[16px] text-[#808191]">
-                        <ReactMarkdown>{state.description}</ReactMarkdown>
+                        <Suspense fallback={<span>Loading content…</span>}>
+                          <ReactMarkdown>{state.description}</ReactMarkdown>
+                        </Suspense>
                       </p>
                     </div>
                   </CardBody>
@@ -258,7 +269,8 @@ const CampaignDetails = () => {
                 <Card>
                   <CardBody>
                     <div className="bg-white px-2 rounded dark:bg-[#1c1c24] text-white ">
-                      <CommentSection
+                      <Suspense fallback={<div className="p-2">Loading comments…</div>}>
+                        <ReplykeCommentSection
                         // className='dark:text-white bg-red-100'
                         apiBaseUrl="http://localhost:3000"
                         // backgroundColor={'black'}
@@ -280,7 +292,8 @@ const CampaignDetails = () => {
                               }
                             : undefined
                         }
-                      />
+                        />
+                      </Suspense>
                     </div>
                   </CardBody>
                 </Card>

@@ -14,7 +14,7 @@ const AllCampaigns = ({ isLoading, campaigns = [] }) => {
     <div className="container mx-auto p-4">
       <div className="flex flex-wrap gap-8 justify-center">
         {isLoading ? (
-          <img src={loader} alt="Loading" className="w-16 h-16" />
+          <img src={loader} alt="Loading" loading="lazy" decoding="async" className="w-16 h-16" />
         ) : campaigns.length === 0 ? (
           <p className="font-epilogue font-semibold text-sm leading-5 text-[#818183]">
             No campaigns available.
