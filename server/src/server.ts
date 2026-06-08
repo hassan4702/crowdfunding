@@ -22,21 +22,20 @@ app.post('/send-email', async (req: Request, res: Response) => {
         // Extract subject and message from the request body
         const { subject, message } = req.body;
 
-        // Create a transporter using Nodemailer with your SMTP configuration
+        // Create a transporter using Nodemailer. Credentials come from the
+        // environment so they are never committed to source control.
         const transporter = nodemailer.createTransport({
-            // Add your SMTP configuration here
-            // For example, if using Gmail, you would provide your Gmail SMTP settings
             service: 'gmail',
             auth: {
-                user: 'blockfund0@gmail.com',
-                pass: 'ebpoaytnxxaantto',
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
             },
         });
 
         // Configure the email options
         const mailOptions = {
-            from: 'blockfund0@gmail.com',
-            to: 'blockfund0@gmail.com',
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_TO || process.env.EMAIL_USER,
             subject: subject,
             text: message,
         };
